@@ -1,0 +1,29 @@
+# ===== 依赖与构建产物 =====
+node_modules/
+dist/
+dist-electron/
+release/
+out/
+.vite/
+*.tsbuildinfo
+
+# ===== AWR 本地运行时 =====
+.awr/state.db
+.awr/state.db-*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.log
+.awr-backups/
+
+# ===== 规范库与报告样式（非项目业务源码） =====
+.agents/skills/
+html-report/
+
+# ===== 本地 Agent 客户端私有适配 =====
+.omp/
+.claude/
+.codex/
+
+# ===== VCS =====
+.git/

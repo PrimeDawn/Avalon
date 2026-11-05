@@ -1,0 +1,34 @@
+[project]
+name = "Avalon"
+authority_mode = "source_first"
+authorized_roots = []
+context_profile = "minimal"
+
+[[sources]]
+domain = "goal"
+role = "primary"
+path = "GOALS.md"
+adapter = "markdown-heading-v1"
+
+[sources.options]
+key_prefix = "goal"
+status = "active"
+
+[[sources]]
+domain = "ledger"
+role = "primary"
+path = "work-ledger.yaml"
+adapter = "yaml-ledger-v1"
+
+[sources.options]
+
+[[sources]]
+domain = "rules"
+role = "primary"
+path = ".agents/rules/spec-workflow.md"
+adapter = "markdown-rules-v1"
+
+[sources.options]
+scope = "project"
+severity = "soft"
+value = "*"
