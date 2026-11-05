@@ -8,7 +8,91 @@ work_items:
     required: true
     depends_on: []
     acceptance:
-      - 确认 DESIGN.md 中的产品决策与"明确不做"清单仍与用户意图一致，冲突处记录差异。
+      - 确认 DESIGN.md 中的产品决策与「明确不做」清单仍与用户意图一致，冲突处记录差异。
       - 从 M1~M6 里程碑中确定首个 Version 的范围与验收口径，形成下一步可执行的 spec-start 输入。
-    next_action: 运行 awr intake inspect 复核缺项；随后用 version-start 建立首个 Version 并创建首个 Spec（M1 书库与编辑器）。
-    summary: 项目刚完成 Spec 工作流接入，尚无任何业务代码；本工作项只做目标与范围核实，不代表功能已实现。
+    next_action: 运行 awr intake inspect 复核缺项；v0.1 范围已确定（窗口 / 文件系统 / 编辑器），可直接认领 SPEC-001 开工。
+    summary: 目标与范围核实已完成（v0.1 = 地基版），保留本项用于追溯立项依据。
+
+  - id: SPEC-001
+    kind: spec
+    title: 项目骨架与构建管线
+    status: ready
+    goal: "goal#intake-goal"
+    priority: P0
+    required: true
+    depends_on: []
+    acceptance:
+      - Electron + Vite + TS + React 三进程骨架可启动，开发态与打包态均可运行。
+      - 模块注册表与 IPC 契约层就位，跨平台路径解析不出现硬编码目录。
+    next_action: 认领开工，输出 writer/plan.html 前先完成探索。
+    summary: v0.1 地基的第一块，其余 Spec 均依赖它。
+
+  - id: SPEC-002
+    kind: spec
+    title: 领域模型与存储层
+    status: ready
+    goal: "goal#intake-goal"
+    priority: P0
+    required: true
+    depends_on: [SPEC-001]
+    acceptance:
+      - 书 / 章节 / 文件模型可读写，路径守卫拒绝越出书库根的访问。
+      - 保存走原子写，自动保存与索引缓存位置可配置且不落在书目录内。
+    next_action: 等 SPEC-001 完成后认领开工。
+    summary: 决定后续所有能力的数据落点，必须先于业务功能完成。
+
+  - id: SPEC-003
+    kind: spec
+    title: 应用外壳与导航
+    status: ready
+    goal: "goal#intake-goal"
+    priority: P1
+    required: true
+    depends_on: [SPEC-001]
+    acceptance:
+      - 三栏布局与左栏书库树可用，右栏标签容器可开、关、切换标签页。
+      - 布局与导航不硬编码任何业务枚举，后续模块可注册新的入口。
+    next_action: 等 SPEC-001 完成后认领开工。
+    summary: 承载后续所有界面的壳子，空壳但契约必须正确。
+
+  - id: SPEC-004
+    kind: spec
+    title: 书库与章节管理
+    status: ready
+    goal: "goal#intake-goal"
+    priority: P0
+    required: true
+    depends_on: [SPEC-001, SPEC-002]
+    acceptance:
+      - 可选择书库根目录、新建书、列出已有书；重启后状态保持。
+      - 章节可增删改名与拖拽排序，磁盘表现与界面一致。
+    next_action: 等 SPEC-002 完成后认领开工。
+    summary: 用户能真正开始写书的前提。
+
+  - id: SPEC-005
+    kind: spec
+    title: 整本导入
+    status: ready
+    goal: "goal#intake-goal"
+    priority: P1
+    required: true
+    depends_on: [SPEC-004]
+    acceptance:
+      - 文件夹与单文件 md、txt 均可导入并按规则切章，切点预览可手动调整。
+      - 超出支持语法子集的内容给出明确提示，不静默丢弃。
+    next_action: 等 SPEC-004 完成后认领开工。
+    summary: 让已有作品能搬进来，是开源项目被采用的关键入口。
+
+  - id: SPEC-006
+    kind: spec
+    title: 所见即所得编辑器
+    status: ready
+    goal: "goal#intake-goal"
+    priority: P0
+    required: true
+    depends_on: [SPEC-002, SPEC-003]
+    acceptance:
+      - 块模型编辑器可输入中文正文，界面不出现任何 Markdown 源码标记。
+      - Markdown 双向序列化往返稳定，自动保存接入存储层。
+    next_action: 等 SPEC-002 与 SPEC-003 完成后认领开工。
+    summary: v0.1 的核心体验，决定这个项目能不能被拿来真写字。
