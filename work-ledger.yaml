@@ -1,98 +1,129 @@
+# Source declarations confirmed by user on 2026-11-07; runtime remains a projection.
+milestones:
+  - id: v0.1
+    title: Avalon v0.1 本地小说编辑器
+    status: planned
+    summary: 六项范围已确认，版本规划中；具体 Spec 仍须阶段门禁。
+    scope: [SPEC-001, SPEC-007, SPEC-003, SPEC-002, SPEC-004, SPEC-006]
+    acceptance:
+      - 目标 Windows 机器无需开发工具即可运行最终交付包。
+      - 新建一本书、三章中文稿件，保存、切章与退出重启后内容一致，可继续修改。
+      - 保存失败保留编辑内容，未保存离开有保护，最终界面符合确认稿。
 work_items:
   - id: INTAKE-001
     kind: intake
     title: 核实 Avalon v0.1 目标、现状与首个 Version 范围
-    status: ready
+    status: cancelled
     goal: "goal#intake-goal"
     priority: P0
-    required: true
+    required: false
     depends_on: []
     acceptance:
-      - 确认 DESIGN.md 中的产品决策与「明确不做」清单仍与用户意图一致，冲突处记录差异。
-      - 从 M1~M6 里程碑中确定首个 Version 的范围与验收口径，形成下一步可执行的 spec-start 输入。
-    next_action: 运行 awr intake inspect 复核缺项；v0.1 范围已确定（窗口 / 文件系统 / 编辑器），可直接认领 SPEC-001 开工。
-    summary: 目标与范围核实已完成（v0.1 = 地基版），保留本项用于追溯立项依据。
-
+      - 确认产品设计与用户意图一致，确定首版范围和验收。
+    next_action: 查阅版本账本 D-003 及六项具体工作，无开工动作。
+    summary: 历史组织任务退役，由用户确认的版本规划替代；不是机器验收完成声明。
   - id: SPEC-001
     kind: spec
-    title: 项目骨架与构建管线
+    title: 开发态应用骨架
     status: ready
+    milestone: v0.1
     goal: "goal#intake-goal"
+    tags: [v0.1, tech]
     priority: P0
     required: true
     depends_on: []
     acceptance:
-      - Electron + Vite + TS + React 三进程骨架可启动，开发态与打包态均可运行。
-      - 模块注册表与 IPC 契约层就位，跨平台路径解析不出现硬编码目录。
-    next_action: 认领开工，输出 writer/plan.html 前先完成探索。
-    summary: v0.1 地基的第一块，其余 Spec 均依赖它。
-
-  - id: SPEC-002
+      - 按说明从干净依赖安装启动 Electron 窗口，React 页面与开发态更新可验证。
+      - 主进程、preload、渲染端职责清晰，最小受控 IPC 往返和窗口退出正常。
+    next_action: 以 dev 为集成基线完成需求对齐、分支准备及探索，方案与测试计划经用户确认后实现。
+    summary: 原骨架与构建管线拆分，打包归 SPEC-007，视觉归 SPEC-003。
+  - id: SPEC-007
     kind: spec
-    title: 领域模型与存储层
+    title: Windows 打包与运行路径
     status: ready
+    milestone: v0.1
     goal: "goal#intake-goal"
+    tags: [v0.1, tech]
     priority: P0
     required: true
     depends_on: [SPEC-001]
     acceptance:
-      - 书 / 章节 / 文件模型可读写，路径守卫拒绝越出书库根的访问。
-      - 保存走原子写，自动保存与索引缓存位置可配置且不落在书目录内。
-    next_action: 等 SPEC-001 完成后认领开工。
-    summary: 决定后续所有能力的数据落点，必须先于业务功能完成。
-
+      - 确定目标 Windows、架构与交付形态，未装开发工具的机器可从 exe 离线启动基础窗口。
+      - 资源、中文与空格路径、用户数据目录可用且不写死开发机器目录。
+    next_action: 骨架完成后验收基础窗口打包，形成存储层依赖的路径约定。
+    summary: 基础窗口打包通过不代表整版完成；最终功能包仍需整体验收。
   - id: SPEC-003
     kind: spec
-    title: 应用外壳与导航
+    title: 窗口视觉与工作台外壳
     status: ready
+    milestone: v0.1
     goal: "goal#intake-goal"
-    priority: P1
+    tags: [v0.1, feat]
+    priority: P0
     required: true
     depends_on: [SPEC-001]
     acceptance:
-      - 三栏布局与左栏书库树可用，右栏标签容器可开、关、切换标签页。
-      - 布局与导航不硬编码任何业务枚举，后续模块可注册新的入口。
-    next_action: 等 SPEC-001 完成后认领开工。
-    summary: 承载后续所有界面的壳子，空壳但契约必须正确。
-
-  - id: SPEC-004
+      - 高保真界面稿及交互样例获用户确认后，落地一套主题、布局及共用组件。
+      - 示例数据下空态、列表、正文、弹窗、保存状态符合确认稿，约定窗口尺寸与缩放及键盘焦点可用。
+    next_action: 设计探索可提前；骨架就绪且视觉方案确认后实现外壳。
+    summary: 沿用外壳编号并收窄范围，不实现右侧多工具标签。
+  - id: SPEC-002
     kind: spec
-    title: 书库与章节管理
+    title: 本地书与章节存储
     status: ready
+    milestone: v0.1
     goal: "goal#intake-goal"
+    tags: [v0.1, tech]
     priority: P0
     required: true
-    depends_on: [SPEC-001, SPEC-002]
+    depends_on: [SPEC-001, SPEC-007]
     acceptance:
-      - 可选择书库根目录、新建书、列出已有书；重启后状态保持。
-      - 章节可增删改名与拖拽排序，磁盘表现与界面一致。
-    next_action: 等 SPEC-002 完成后认领开工。
-    summary: 用户能真正开始写书的前提。
-
-  - id: SPEC-005
+      - 书与章节可新建、读取、更新，Markdown 仅含标题与正文，管理信息独立存储。
+      - 独立验证内容往返一致、写入失败时原稿保全，并向调用方返回明确错误。
+    next_action: 打包运行路径约定明确后启动存储设计与验证。
+    summary: 手动保存基线；不纳入自动保存、AI 索引缓存与未来业务注册体系。
+  - id: SPEC-004
     kind: spec
-    title: 整本导入
+    title: 书库与章节操作
     status: ready
+    milestone: v0.1
     goal: "goal#intake-goal"
-    priority: P1
-    required: true
-    depends_on: [SPEC-004]
-    acceptance:
-      - 文件夹与单文件 md、txt 均可导入并按规则切章，切点预览可手动调整。
-      - 超出支持语法子集的内容给出明确提示，不静默丢弃。
-    next_action: 等 SPEC-004 完成后认领开工。
-    summary: 让已有作品能搬进来，是开源项目被采用的关键入口。
-
-  - id: SPEC-006
-    kind: spec
-    title: 所见即所得编辑器
-    status: ready
-    goal: "goal#intake-goal"
+    tags: [v0.1, feat]
     priority: P0
     required: true
     depends_on: [SPEC-002, SPEC-003]
     acceptance:
-      - 块模型编辑器可输入中文正文，界面不出现任何 Markdown 源码标记。
-      - Markdown 双向序列化往返稳定，自动保存接入存储层。
-    next_action: 等 SPEC-002 与 SPEC-003 完成后认领开工。
-    summary: v0.1 的核心体验，决定这个项目能不能被拿来真写字。
+      - 可选择书库、新建或打开书与章节、显示列表并切换，重开后列表与磁盘一致。
+      - 正文区只读呈现已选章节，空态和操作错误态可用，复用确认外壳。
+    next_action: 存储和视觉外壳完成后接入真实操作；书名重命名在需求阶段另行对齐。
+    summary: 不含删除、拖拽排序与正文编辑行为。
+  - id: SPEC-006
+    kind: spec
+    title: 正文编辑与保存闭环
+    status: ready
+    milestone: v0.1
+    goal: "goal#intake-goal"
+    tags: [v0.1, feat]
+    priority: P0
+    required: true
+    depends_on: [SPEC-004]
+    acceptance:
+      - ProseMirror 支持中文输入、段落、选择与复制粘贴、撤销重做、标题修改，支持内容的 Markdown 往返一致。
+      - 保存按钮与 Ctrl+S 可用，显示修改和保存状态；切章、切书、关闭有保存、放弃、取消，失败保留编辑内容。
+      - 一本书三章保存重启后可继续修改，中文输入法与性能按确认矩阵验证。
+    next_action: 书库操作完成后接入编辑与保护行为；实现前确定性能样本、阈值和异常用例。
+    summary: 复用视觉组件；不纳入自动保存或复杂排版。
+  - id: SPEC-005
+    kind: spec
+    title: 整本导入（已退出 v0.1）
+    status: cancelled
+    goal: "goal#intake-goal"
+    tags: [deferred, feat]
+    priority: P1
+    required: false
+    depends_on: [SPEC-004]
+    acceptance:
+      - 文件夹与单文件 md、txt 均可导入并按规则切章，切点预览可手动调整。
+      - 超出支持语法子集的内容给出明确提示，不静默丢弃。
+    next_action: 后续版本另行决定入版与重新开启，v0.1 不执行。
+    summary: 用户确认六项范围后退出本版；cancelled 只表示本轮执行撤销，不代表永久取消或已实现。

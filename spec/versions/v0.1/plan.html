@@ -9,8 +9,8 @@
 <meta name="rk:version"        content="v0.1">
 <meta name="rk:role"           content="TeamLead">
 <meta name="rk:created"        content="2026-11-05">
-<meta name="rk:updated"        content="2026-11-05">
-<meta name="rk:revision"       content="1">
+<meta name="rk:updated"        content="2026-11-07">
+<meta name="rk:revision"       content="4">
 <meta name="rk:base-branch"    content="dev">
 <meta name="rk:tags"           content="version,plan,foundation">
 
@@ -28,12 +28,90 @@
     <span><b>版本</b> <code>v0.1</code></span>
     <span><b>基线分支</b> <code>dev</code></span>
     <span><b>创建</b> 2026-11-05</span>
-    <span><b>修订</b> r1</span>
+    <span><b>更新</b> 2026-11-07</span>
+    <span><b>角色</b> TeamLead</span>
+    <span><b>修订</b> r4</span>
+    <span><b>标签</b> version,plan,foundation</span>
   </div>
 </header>
 
 <nav class="rk-revbar"></nav>
 
+<section class="rk-added" data-rev="4">
+  <div class="rk-cal ok"><div class="t">版本范围已确认 · D-003 · 2026-11-07</div><p>用户确认：「我觉得这个可以，第一个版本就按照这个做吧」。下列六项成为 v0.1 正式范围，版本仍处于规划中，Spec 均待启动；范围确认不代替具体方案门禁或 Git 提交授权。</p></div>
+  <p>产品范围已同步 DESIGN.md §10，GOALS.md 已清除旧 AI 范围，AWR 以 v0.1 milestone 分组登记六项工作及依赖；整本导入退出本版。冻结与发布日期待估算确认。</p>
+</section>
+
+<section class="rk-added" data-rev="3">
+  <h2><del class="rk-del" data-rev="4">当前提案</del><ins class="rk-ins" data-rev="4">正式规划</ins>：六个可独立验收的 Spec</h2>
+  <div class="rk-cal key"><div class="t"><del class="rk-del" data-rev="4">D-002 · 六项边界待确认</del><ins class="rk-ins" data-rev="4">D-002 → D-003 · 六项边界已确认</ins></div><p>根据反馈，将开发态骨架与 Windows 打包拆开，窗口视觉与工作台外壳独立成项。版本仍处于规划中；下方 r2 四项提案保留修订痕迹，r1 保留历史对照。未启动实现、未提交 Git。</p></div>
+  <p><strong>里程碑：</strong>双击 exe，选择书库，新建或打开书与章节，阅读并编辑标题、正文，保存后退出，重启后继续修改。</p>
+  <table>
+    <thead><tr><th>标识 / 属性</th><th>独立目标</th><th>验收结果</th><th>前置</th></tr></thead>
+    <tbody>
+      <tr><td>SPEC-001 / tech</td><td>开发态应用骨架</td><td>从干净依赖安装按说明启动 Electron 窗口，React 页面及开发态更新可用，最小受控 IPC 往返与退出正常</td><td>无</td></tr>
+      <tr><td>SPEC-007 / tech（<del class="rk-del" data-rev="4">拟新增</del><ins class="rk-ins" data-rev="4">已登记</ins>）</td><td>Windows 打包与运行路径</td><td>确定目标系统、架构及交付形态；未装开发工具的目标机器能离线启动基础窗口，资源、中文 / 空格路径和用户数据目录正确</td><td>SPEC-001</td></tr>
+      <tr><td>SPEC-003 / feat</td><td>窗口视觉与工作台外壳</td><td>确认界面稿，再实现共用样式与外壳；用示例数据检查空态、列表、正文、弹窗、保存状态、缩放和键盘焦点</td><td>SPEC-001；设计探索可提前</td></tr>
+      <tr><td>SPEC-002 / tech</td><td>本地书与章节存储</td><td>存储层独立验证新建、读取、更新、Markdown 往返及写入失败时原稿保全，无需完整界面</td><td>SPEC-001、SPEC-007 的路径约定</td></tr>
+      <tr><td>SPEC-004 / feat</td><td>书库与章节操作</td><td>选书库、新建 / 打开书与章节、切换选择；重开后列表与磁盘一致，正文区能只读呈现已选章节</td><td>SPEC-002、SPEC-003</td></tr>
+      <tr><td>SPEC-006 / feat</td><td>正文编辑与保存闭环</td><td>中文输入、段落、复制粘贴、撤销重做、标题修改、手动保存、未保存保护及重启后继续编辑正确</td><td>SPEC-004</td></tr>
+    </tbody>
+  </table>
+  <p class="rk-removed" data-rev="4">六项均为待确认 / 未启动，规划负责人 TeamLead；本轮无独立 debt / fix 项。沿用已有任务编号，SPEC-007 在确认后登记 AWR；正式目录在 spec-start 时创建。</p>
+  <p class="rk-added" data-rev="4">六项范围已确认，均待启动，规划负责人 TeamLead；本轮无独立 debt / fix 项。已有编号保留，SPEC-007 已登记 AWR，正式目录在 spec-start 时创建。</p>
+  <h3>外观先设计，再按稿实现</h3>
+  <p>SPEC-003 先提供高保真界面稿 / 交互样例，确认窗口结构、导航、正文阅读宽度、字体层级、间距、配色、按钮、弹窗及状态反馈，再进入实现。先交付一套确认主题；标题栏形态、三栏及辅助区域如何呈现均在设计评审决定，不把尚未确认的方向自动变成完整功能。</p>
+  <p>验收覆盖默认窗口、约定最小尺寸、最大化及 Windows 缩放；具体矩阵在该 Spec 确定。长书名 / 章名不遮挡主要操作，焦点、选中、禁用和错误状态可辨识。样例数据只用于外观验收。</p>
+  <p>视觉 Spec 负责共用组件及状态样式，书库 Spec 负责真实书与章节操作，编辑 Spec 接通真实保存和未保存弹窗行为。版本整体验收检查最终视觉一致性，偏差回到所属 Spec 修正；不追加验收标准模糊的“最后再美化”任务。</p>
+  <h3>依赖与交付节奏</h3>
+  <p>技术路径：<code>001 → 007 → 002</code>；界面路径：<code>001 → 003</code>；汇合：<code>002 + 003 → 004 → 006 → 最终包整体验收</code>。设计探索可提前，但外壳实现须经过视觉稿与方案确认。打包先用基础窗口验收，功能齐备后用最终包复验。</p>
+  <h3>版本验收与范围</h3>
+  <ul>
+    <li>未装开发工具的目标 Windows 机器能运行交付包；允许 exe 携带依赖目录，暂不要求单文件便携 exe。</li>
+    <li>新建一本书、三章含标点及多段中文的稿件；保存、切章、退出重启后标题和正文一致，可继续修改。</li>
+    <li>保存按钮与 Ctrl+S 可用，显示已修改 / 已保存 / 保存失败；切章、切书、关闭时支持保存 / 放弃 / 取消，保存失败不丢编辑内容。</li>
+    <li>内容视图编辑标题和段落，普通 Markdown 落盘；支持内容往返不丢失，不支持内容提示并避免静默覆盖。</li>
+    <li>中文输入法、撤销重做、粘贴、中文 / 空格路径和保存失败均有验证；性能样本及阈值在编辑器 Spec 实现前确定。</li>
+    <li>最终窗口符合已确认视觉稿；交付可运行包、使用说明、验证记录。无需账号、联网或 AI 配置。</li>
+  </ul>
+  <p>暂缓整本导入 / 自动切章（SPEC-005）、右侧多工具标签功能、删除、拖拽排序、自动保存、字数统计和专注模式。章节标题修改纳入，书名重命名在书管理 Spec 对齐。AI、wiki、大纲工具、地图、生图、检索、同步留后续版本。</p>
+  <p class="rk-removed" data-rev="4">冻结 / 发布日期仍待估算确认。GOALS.md 与 AWR 源账本仍保留旧范围；确认后统一同步，AWR ready 不代表人工门禁放行。</p>
+  <p class="rk-added" data-rev="4">冻结 / 发布日期仍待估算确认。GOALS.md 与 AWR 源账本已同步正式范围；SPEC-001 为依赖就绪入口，AWR ready 不代表实现门禁放行。首个 Spec 的需求输入已登记在版本账本，待规划文件提交确认后准备独立分支。</p>
+</section>
+
+<div class="rk-removed" data-rev="3">
+<section class="rk-added" data-rev="2">
+  <h2>本轮提案：可用的本地小说编辑器</h2>
+  <div class="rk-cal warn"><div class="t">待用户确认 · D-001</div><p>v0.1 已有旧规划，本轮建议收窄范围。以下为待确认提案，后面的 r1 内容保留作历史对照；旧排期与 AWR 工作清单尚未变更。本报告不授权实现。</p></div>
+  <p><strong>里程碑：</strong>双击 Windows 交付包中的 exe → 选择书库 → 新建或打开书与章节 → 阅读、编辑标题和正文 → 保存 → 退出重启后继续修改。</p>
+  <h3>四项工作与依赖</h3>
+  <table>
+    <thead><tr><th>AWR 标识</th><th>属性</th><th>交付范围</th><th>前置</th><th>状态 / 负责人</th></tr></thead>
+    <tbody>
+      <tr><td>SPEC-001</td><td>tech</td><td>Electron + React + TypeScript + Vite 骨架、受控 IPC、路径解析与 Windows 打包</td><td>无</td><td>待确认 / TeamLead</td></tr>
+      <tr><td>SPEC-002</td><td>tech</td><td>书与章节本地读写，普通 Markdown，可靠保存与错误反馈</td><td>SPEC-001</td><td>待确认 / TeamLead</td></tr>
+      <tr><td>SPEC-004</td><td>feat</td><td>选书库、新建 / 打开书与章节、章节列表与正文区；吸收必要导航</td><td>SPEC-002</td><td>待确认 / TeamLead</td></tr>
+      <tr><td>SPEC-006</td><td>feat</td><td>ProseMirror 标题 / 正文编辑、中文输入、段落、复制粘贴、撤销重做、手动保存与未保存保护</td><td>SPEC-004</td><td>待确认 / TeamLead</td></tr>
+    </tbody>
+  </table>
+  <p>本轮无独立 debt / fix 项。沿用现有任务编号，正式 Spec 目录在启动时创建；依赖链完成后进行 Windows 打包态整体验收。</p>
+  <h3>版本验收</h3>
+  <ul>
+    <li>未安装 Node.js / 开发工具的目标 Windows 机器能启动交付包；允许 exe 携带依赖目录。安装包形态、Windows 版本与架构在 SPEC-001 对齐。</li>
+    <li>新建一本书、三章中文稿件，包含标点与多段正文；保存、切换章节、退出重启后标题与正文一致，能继续修改。</li>
+    <li>保存按钮与 Ctrl+S 可用，显示已修改 / 已保存 / 保存失败。切章、切书、关闭时有保存 / 放弃 / 取消；保存失败保留编辑内容并阻止丢稿关闭。</li>
+    <li>内容视图直接编辑标题和正文段落，稿件以普通 Markdown 落盘；支持内容往返不丢失，不支持内容明确提示并避免静默覆盖。</li>
+    <li>覆盖中文输入法组合输入、撤销重做、粘贴、中文与空格路径、保存失败。编辑性能样本与阈值在 SPEC-006 实现前明确。</li>
+    <li>交付可运行包、使用说明和验证记录；无需账号、联网或 AI 配置。开发态通过不能替代打包态验收。</li>
+  </ul>
+  <h3>建议暂缓与风险</h3>
+  <p>暂缓整本导入 / 自动切章（SPEC-005）、独立右侧工具壳（SPEC-003）、删除、拖拽排序、自动保存、字数统计与专注模式。章节标题修改纳入，书名重命名在书管理 Spec 中另行对齐。后续 AI、wiki、大纲工具、地图、生图、检索和同步不纳入本版。</p>
+  <p>保留必要模块边界，不把通用模块注册体系或未来业务枚举设为首版验收前提。关键风险是中文输入、Markdown 往返与保存失败时的数据完整性；具体实现交由 Spec 方案确认。</p>
+  <p>冻结 / 发布日期待估算后确认。GOALS.md 与 AWR 源账本仍含旧范围，确认后同步；已验证 AWR 0.6.0 可用，不能把其 ready 状态当作人工放行。</p>
+</section>
+
+</div>
+<h2 class="rk-added" data-rev="2">r1 历史规划（本轮拟调整，保留对照）</h2>
 <section class="rk-verdict is-pass">
   <div class="rk-verdict-label">版本里程碑目标</div>
   <p>交付可运行的<strong>地基版</strong>：窗口、文件系统、编辑器三块能跑通，并把模块边界、路径处理与 IPC 契约一次打正，让后续 AI 能力只需“加模块”而不动地基。</p>
@@ -44,6 +122,9 @@
   <thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead>
   <tbody>
     <tr><td>r1</td><td>2026-11-05</td><td>TeamLead</td><td>版本初始规划大盘建立</td><td>—</td></tr>
+    <tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-07</td><td>TeamLead</td><td>新增四项写作闭环提案、验收与延期建议；保留 r1 对照</td><td>按账本 D-001，待用户确认</td></tr>
+    <tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-07</td><td>TeamLead</td><td>骨架拆分、视觉与外壳独立；新增六项验收边界与依赖，替代 r2 拆分</td><td>按账本 D-002，响应用户细化验收与窗口外观设计诉求</td></tr>
+    <tr class="rk-added" data-rev="4"><td>r4</td><td>2026-11-07</td><td>TeamLead</td><td>六项范围转为正式规划；同步产品设计、目标、AWR 分组和依赖</td><td>按账本 D-003 用户明确确认</td></tr>
   </tbody>
 </table>
 
@@ -105,5 +186,11 @@
   <li>在干净的 Windows 上安装后，能新建一本书、手写三章、重启后内容原样</li>
 </ul>
 
+<section class="rk-added" data-rev="2">
+<h2>关联产物</h2>
+<ul class="rk-links"><li><a href="version-context.md" data-rk-link="ledger">版本运行账本（含 <del class="rk-del" data-rev="3">D-001</del><ins class="rk-ins" data-rev="3">D-001 / D-002</ins>、AWR 核验及范围变更记录）</a></li></ul>
+<h2>引用本报告</h2>
+<ul class="rk-backlinks"><li><a href="version-context.md" data-rk-backlink="ledger">版本运行账本</a></li></ul>
+</section>
 </body>
 </html>
