@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>测试计划：开发态应用骨架</title>
+<meta name="rk:title" content="测试计划：开发态应用骨架">
+<meta name="rk:type" content="test-plan">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架">
+<meta name="rk:role" content="spec-tester">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已确认">
+<meta name="rk:created" content="2026-11-07">
+<meta name="rk:updated" content="2026-11-07">
+<meta name="rk:revision" content="5">
+<meta name="rk:git-branch" content="tech/spec-20261107-1429-dev-shell">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,test-plan">
+<link rel="rk-plan" href="../writer/plan.html">
+<link rel="rk-exploration" href="../explorer/exploration-report.html">
+<link rel="rk-ledger" href="../lead/team-context.md">
+<link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css"><script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head><body><nav class="rk-nav"></nav><header class="rk-head"><h1>测试计划：开发态应用骨架</h1><div class="rk-meta"><span><b>title</b> 测试计划：开发态应用骨架</span><span><b>type</b> test-plan</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架</span><span><b>role</b> spec-tester</span><span><b>mode</b> gated</span><span><b>status</b> 已确认</span><span><b>created</b> 2026-11-07</span><span><b>updated</b> 2026-11-07</span><span><b>revision</b> 5</span><span><b>git-branch</b> tech/spec-20261107-1429-dev-shell</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,test-plan</span></div></header><nav class="rk-revbar"></nav><section class="rk-added" data-rev="4"><h2>本轮执行状态</h2><p>实现报告已获用户确认；测试报告 r1 已产出，5 项通过、1 项启动失败、9 项未验证。下方“未执行”等文字保留为原计划时点记录。实际运行器使用 UTC 时间加随机后缀；桌面以 package 根启动，让 app.getVersion 返回项目版本。TC-009/010/012 与 dev Ctrl+C 待原生启动恢复后执行，验收标准不变。</p></section><h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-07</td><td>spec-tester</td><td>初版</td><td>按运行账本 D-001 / D-002</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-07</td><td>spec-tester</td><td>开发端口改为 5178，同步地址、安全策略及端口冲突验收</td><td>按运行账本 D-005，用户指定开发端口</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-07</td><td>TeamLead</td><td>登记用户批准进入实现</td><td>用户明确调用 spec-execute，见 gate-2</td></tr><tr class="rk-added" data-rev="4"><td>r4</td><td>2026-11-07</td><td>TeamLead / spec-tester</td><td>登记首次测试结果与测试脚本，保留原计划</td><td>本轮测试执行与证据登记，不改变确认的验收标准</td></tr><tr class="rk-added" data-rev="5"><td>r5</td><td>2026-11-07</td><td>TeamLead / spec-ender</td><td>登记收尾确认与归档关联</td><td>用户本轮测试确认与收尾授权；见账本 D-009</td></tr></tbody></table>
+<p class="rk-added" data-rev="3">用户已确认本方案并要求按 plan 执行实现。开发端口为 5178。executor 负责实现与单元 / 聚焦测试；E2E、真实桌面更新与最终结论在实现报告确认后交 tester，以下原始阶段说明保留作历史。</p><section class="rk-verdict"><div class="rk-verdict-label">计划状态</div><p>本文件定义待执行测试，不是测试通过报告。当前尚无应用源码与依赖安装；用户确认实现方案与本计划后，才进入 RED → GREEN 和桌面验证。</p></section>
+<h2>1. 测试目标和范围</h2><p>证明 SPEC-001 能从可复现安装启动真实 Electron，渲染 React，完成最小 IPC，验证开发更新与退出。覆盖 FR-001 至 FR-005，不验收小说内容、文件保存、最终视觉或 Windows 分发包。</p>
+<h2>2. 环境与启动</h2><ul><li>Windows x64 交互桌面；Node 24.18.0 / npm 11.16.0 为探索快照，执行时重新记录实际版本及锁文件指纹。</li><li>无账户、无真实书稿、无远程服务。UI 样例只用 Avalon 名称与本地版本。</li><li>开发地址 http://127.0.0.1:<del class="rk-del" data-rev="2">5173</del><ins class="rk-ins" data-rev="2">5178</ins>，默认窗口 1000×700；Playwright 启动本项目 Electron 及 out/main/index.cjs，实际加载构建 HTML。</li><li>npm ci → npm run typecheck → npm run test:unit → npm run build → npm run test:e2e；开发态另运行 npm run dev。所有脚本在实现阶段创建。</li><li>E2E 单 worker、retries=0、每用例最长 30 秒；等窗口 / 可见文本 / IPC 事件，禁止固定 sleep 代替状态判断。</li></ul>
+<h2>3. 用例矩阵</h2><table><thead><tr><th>用例</th><th>场景与操作</th><th>预期 / 证据</th><th>归属</th></tr></thead><tbody>
+<tr><td>TC-001 / FR-001</td><td>临时副本用锁文件 npm ci，运行 typecheck 与 build</td><td>退出码 0；存在 main/preload CJS 与 renderer HTML；安装 / 编译日志</td><td>tester</td></tr>
+<tr><td>TC-002 / FR-001</td><td>真实 Electron 启动</td><td>一个窗口、标题 Avalon、显示“工作台已启动”；截图，主进程 stderr、console、pageerror</td><td>E2E</td></tr>
+<tr><td>TC-003 / FR-003</td><td>点击“检查连接”</td><td>按钮 checking 时禁用，最终“连接正常”，版本与主进程 app.getVersion() 一致；不能只断言静态文案</td><td>E2E</td></tr>
+<tr><td>TC-004 / FR-003</td><td>调用来源 ID / URL 不同，子 frame，非法 URL</td><td>策略返回 false；合法主 frame 返回 true。覆盖每条拒绝分支</td><td>executor unit</td></tr>
+<tr><td>TC-005 / FR-003</td><td>真实主进程临时移除 IPC handler，再点检查</td><td>显示“连接失败，请重试”，页面不崩溃；用新应用实例恢复后检查成功</td><td>E2E</td></tr>
+<tr><td>TC-006 / FR-003</td><td>连接 helper：API 缺失、reject、错误结构、永不返回</td><td>各自失败；假计时器验证默认 3000ms 超时，结束后无定时器泄漏</td><td>executor unit</td></tr>
+<tr><td>TC-007 / FR-003</td><td>在 renderer 检查桥接表面与运行权限</td><td>window.avalon 只有 getAppInfo，window.require / window.process 不可用；BrowserWindow 配置中隔离 / 沙箱开启，nodeIntegration 关闭</td><td>E2E</td></tr>
+<tr><td>TC-008 / FR-003</td><td>注册处理器的受控测试回调传额外参数；真实页面尝试外部导航 / window.open</td><td>非法参数被拒绝；原窗口 URL 保持，窗口数量不增加，无外部浏览器打开</td><td>executor IPC 集成 / E2E</td></tr>
+<tr><td>TC-009 / FR-002</td><td>npm run dev，修改 renderer 的可见文本后还原</td><td>不手动重启即可显示修改；保留前后截图和开发终端输出</td><td>tester 人工 + 自动采集</td></tr>
+<tr><td>TC-010 / FR-002</td><td>修改 main 窗口标题；再修改 preload 响应中的版本显示测试值，各自还原</td><td>main 重启后标题变更；preload 重载后响应可见且 API 可用。记录 PID / 窗口重建事件，回滚源文件</td><td>tester 人工 + 自动采集</td></tr>
+<tr><td>TC-011 / FR-004</td><td>关闭最后一个窗口；另一次运行中 Ctrl+C 结束 dev</td><td>Electron 退出；随后显式停止 watcher，核对本次启动 PID 全退出及端口释放。不得关闭用户其他 Electron 应用</td><td>E2E + 人工</td></tr>
+<tr><td>TC-012 / FR-001</td><td>临时副本中制造缺失 renderer HTML；运行输出入口</td><td>输出明确加载错误、退出非零，不能长期空白；只改副本，不动用户文件</td><td>tester</td></tr>
+<tr><td>TC-013 / FR-002</td><td>测试进程占用 <del class="rk-del" data-rev="2">5173</del><ins class="rk-ins" data-rev="2">5178</ins> 再运行 dev</td><td>明确端口占用错误，未静默跳端口，未留下新窗口；只释放测试自身占用</td><td>tester</td></tr>
+<tr><td>TC-014 / FR-005</td><td>在含中文与空格路径的副本运行构建 / 启动检查</td><td>预加载与资源解析正常，截图 / 日志 / 命令退出码可追溯</td><td>tester</td></tr>
+<tr><td>TC-015 / FR-005</td><td>检查本轮产物与 Git diff</td><td>用例均有证据或明确失败；无书库 / 编辑器 / 打包扩项，无假通过或偷偷跳过</td><td>tester 审核</td></tr>
+</tbody></table>
+<h2>4. 用户使用场景</h2><table><thead><tr><th>编号</th><th>用户目标与路径</th><th>关键断言</th><th>证据</th></tr></thead><tbody>
+<tr><td>US-001</td><td>开发者安装 → 启动 → 检查连接 → 关闭</td><td>真实窗口、真实主进程数据、正常退出</td><td>截图、console、主进程日志、PID 退出记录</td></tr>
+<tr><td>US-002</td><td>开发者检查连接失败 → 看见错误 → 恢复后重试</td><td>失败不是成功状态，可重试，无未处理异常</td><td>失败 / 成功截图、IPC 日志</td></tr>
+<tr><td>US-003</td><td>开发者改页面 / main / preload 并查看更新</td><td>更新通道分别验证，源文件最终恢复</td><td>终端输出、前后截图、最终 diff</td></tr>
+</tbody></table>
+<h2>5. 接口边界对齐</h2><p>TeamLead 以串行角色对齐：writer 提供固定通道、AppInfo、来源判断与 3000ms 超时；tester 确认不需要测试后门，连接失败通过真实主进程移除 handler 制造，非法参数由注册回调测试断言。禁止给产品新增任意 IPC 转发器以便测试。</p><p>TC-008 需要新增 <code>tests/unit/ipc.test.ts</code> 覆盖处理器适配层，先测试再实现，归 executor。renderer 的权限隔离必须通过真实 Electron 验证，纯 mocks 不能替代。TC-010 的临时改动在 finally 恢复，恢复失败必须报告，禁止覆盖用户并发编辑。</p>
+<h2>6. 覆盖与通过标准</h2><p>FR-001 至 FR-005 均有用例，15 项全部执行且满足预期才可提出通过；不设置缺乏意义的全工程覆盖率门槛。策略函数与 connection helper 的成功 / 失败 / 超时分支全部覆盖；测试工具不可用或人工项未执行都记为未验证。</p>
+<h2>7. 日志与审计要求</h2><p>运行器生成 run-id（本地时间 + 随机后缀），证据写入 <code>tester/artifacts/test-logs/&lt;run-id&gt;/</code>：audit.log、main.stdout.log、main.stderr.log、renderer-console.ndjson、network-summary.json、results.json、screenshots/ 与失败 trace。executor RED/GREEN 输出写 executor/artifacts 对应运行目录。日志、JSON、截图必须由命令和测试监听器生成，不得补写结果。</p><p>选择器优先角色和名称：窗口标题 Avalon、button“检查连接”、role=status / alert。主进程记录启动 / 加载失败 / IPC 成功或拒绝 / 退出事件，不记录敏感配置；没有服务器，后端日志对应 Electron main。网络监听记录开发本地资源 / websocket，构建态预期无远程请求；不写虚构请求记录。</p><p>记录 OS、Node、npm、Electron 与实际 Git SHA、工作树是否有改动和锁文件指纹。失败时保存日志和截图后交回 TeamLead，单元测试只评估不由 tester 改写；进入修复循环前确认预算，当前尚未开始修复循环。</p>
+<h2>8. 执行顺序和当前结论</h2><p>先 RED/GREEN 单元测试，再类型检查与构建，再真实桌面 E2E，最后开发态更新 / 退出 / 异常与干净安装复验。当前结论仅为测试设计完成，实际测试 0 项。未产出 test-report.html，未生成虚假运行证据。</p>
+<h2>9. 关联产物</h2><ul class="rk-links"><li><a href="../writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="../explorer/exploration-report.html" data-rk-link="exploration">探索报告</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li></ul><ul class="rk-backlinks"><li class="rk-added" data-rev="4"><a href="test-report.html" data-rk-backlink="test-report">首次测试报告（原生启动受阻）</a></li><li><a href="../executor/summary.html" data-rk-backlink="summary">实现总结</a></li><li><a href="../../../plan.html" data-rk-backlink="version-plan">v0.1 版本规划</a></li><li><a href="../writer/plan.html" data-rk-backlink="plan">实现方案</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li><li>测试报告在执行阶段创建</li></ul>
+<section class="rk-added" data-rev="5"><h2>收尾确认与归档关联</h2><p>2026-11-07 用户确认“测试就通过了，你执行收尾吧”，并要求不推送。原阶段正文保留为历史；当前完成状态及新鲜验证以收尾报告为准。本次只登记确认和反链，不改已确认方案或验收标准。</p><ul class="rk-backlinks"><li><a href="../ender/end-report.html" data-rk-backlink="end-report">SPEC-001 收尾报告</a></li></ul></section></body></html>
+

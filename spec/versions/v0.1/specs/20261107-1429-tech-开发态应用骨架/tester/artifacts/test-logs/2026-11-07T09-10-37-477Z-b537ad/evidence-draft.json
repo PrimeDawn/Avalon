@@ -1,0 +1,16 @@
+{
+  "branch_id": null,
+  "command": "npm run test:e2e; node scripts/check-test-environment.mjs; node scripts/check-dev-updates.mjs <tester-replica> <evidence-dir> 9237 + PTY Ctrl+C",
+  "evidence_type": "verification_report",
+  "external_key": "SPEC-001/evidence/closeout-20261107",
+  "level": "locally_verified",
+  "locator": "spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/artifacts/test-logs/2026-11-07T09-10-37-477Z-b537ad/completion-report.json",
+  "scope": [
+    "SPEC-001"
+  ],
+  "sha256": "8ba8a3ffbfa725326ca7d293be5ae47dce87c626b42360dc34935771f484531e",
+  "source_sha": "975c33bb72c1caef77a80ef6c526726279e2a143",
+  "summary": "Completion report for SPEC-001",
+  "verified_at": 1794043026167,
+  "work_item_key": "SPEC-001"
+}

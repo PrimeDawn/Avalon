@@ -1,0 +1,5 @@
+Business source and executor unit hashes unchanged
+HTML links and structure PASS: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\debugger\debug-001.html
+HTML links and structure PASS: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\test-report.html
+HTML links and structure PASS: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\executor\summary.html
+Manifest 7 docs PASS

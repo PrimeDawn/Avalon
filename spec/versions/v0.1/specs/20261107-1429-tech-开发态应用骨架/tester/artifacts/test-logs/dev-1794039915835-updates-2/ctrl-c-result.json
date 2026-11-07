@@ -1,0 +1,77 @@
+{
+  "time": "2026-11-07T16:30:26.9960761+08:00",
+  "action": "PTY Ctrl+C after source updates/restores",
+  "processes": [
+    {
+      "pid": 27900,
+      "alive": false
+    },
+    {
+      "pid": 33440,
+      "alive": false
+    },
+    {
+      "pid": 29064,
+      "alive": false
+    },
+    {
+      "pid": 4344,
+      "alive": false
+    },
+    {
+      "pid": 28964,
+      "alive": false
+    },
+    {
+      "pid": 19664,
+      "alive": false
+    },
+    {
+      "pid": 32576,
+      "alive": false
+    },
+    {
+      "pid": 32032,
+      "alive": false
+    },
+    {
+      "pid": 32884,
+      "alive": false
+    },
+    {
+      "pid": 31408,
+      "alive": false
+    },
+    {
+      "pid": 24448,
+      "alive": false
+    },
+    {
+      "pid": 32056,
+      "alive": false
+    },
+    {
+      "pid": 31968,
+      "alive": false
+    },
+    {
+      "pid": 33312,
+      "alive": false
+    },
+    {
+      "pid": 32280,
+      "alive": false
+    }
+  ],
+  "ports": [
+    {
+      "port": 5178,
+      "listening": false
+    },
+    {
+      "port": 9237,
+      "listening": false
+    }
+  ],
+  "passed": true
+}

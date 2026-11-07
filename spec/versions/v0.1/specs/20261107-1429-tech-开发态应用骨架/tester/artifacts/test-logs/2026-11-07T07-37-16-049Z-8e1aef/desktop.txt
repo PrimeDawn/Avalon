@@ -1,0 +1,157 @@
+Command: node C:\workspace\Avalon\node_modules\@playwright\test\cli.js test
+Timestamp: 2026-11-07T07:37:18.728Z
+
+Running 7 tests using 1 worker
+
+(node:15152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=27432 +14ms
+  pw:browser [pid=27432][out]  +44ms
+  pw:browser [pid=27432] <kill> +10ms
+  pw:browser [pid=27432] <will force kill> +0ms
+  pw:browser [pid=27432] <process did exit: exitCode=2147483651, signal=null> +256ms
+  pw:browser [pid=27432] starting temporary directories cleanup +0ms
+  x  1 tests\e2e\shell.spec.ts:68:1 › TC-002/003/007/011 — actual window, real IPC, isolation and close (327ms)
+  pw:browser [pid=27432] finished temporary directories cleanup +6ms
+(node:27476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=30708 +13ms
+  pw:browser [pid=30708][out]  +43ms
+  pw:browser [pid=30708] <kill> +9ms
+  pw:browser [pid=30708] <will force kill> +0ms
+  pw:browser [pid=30708] <process did exit: exitCode=2147483651, signal=null> +225ms
+  pw:browser [pid=30708] starting temporary directories cleanup +0ms
+  x  2 tests\e2e\shell.spec.ts:97:1 › TC-003/006 — pending, real IPC timeout and retry (292ms)
+  pw:browser [pid=30708] finished temporary directories cleanup +5ms
+(node:31124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=28892 +15ms
+  pw:browser [pid=28892][out]  +43ms
+  pw:browser [pid=28892] <kill> +10ms
+  pw:browser [pid=28892] <will force kill> +0ms
+  pw:browser [pid=28892] <process did exit: exitCode=2147483651, signal=null> +225ms
+  pw:browser [pid=28892] starting temporary directories cleanup +0ms
+  x  3 tests\e2e\shell.spec.ts:117:1 › TC-005 — missing native handler produces a retryable failure (296ms)
+  pw:browser [pid=28892] finished temporary directories cleanup +6ms
+(node:31264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=17636 +16ms
+  pw:browser [pid=17636][out]  +44ms
+  pw:browser [pid=17636] <kill> +8ms
+  pw:browser [pid=17636] <will force kill> +0ms
+  pw:browser [pid=17636] <process did exit: exitCode=2147483651, signal=null> +220ms
+  pw:browser [pid=17636] starting temporary directories cleanup +0ms
+  x  4 tests\e2e\shell.spec.ts:130:1 › TC-006 — malformed native response never displays success (289ms)
+  pw:browser [pid=17636] finished temporary directories cleanup +4ms
+(node:31432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=11464 +16ms
+  pw:browser [pid=11464][out]  +42ms
+  pw:browser [pid=11464] <kill> +9ms
+  pw:browser [pid=11464] <will force kill> +0ms
+  pw:browser [pid=11464] <process did exit: exitCode=2147483651, signal=null> +226ms
+  pw:browser [pid=11464] starting temporary directories cleanup +0ms
+  x  5 tests\e2e\shell.spec.ts:141:1 › TC-008 — new windows and navigation away are denied (295ms)
+  pw:browser [pid=11464] finished temporary directories cleanup +6ms
+(node:31504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=29840 +15ms
+  pw:browser [pid=29840][out]  +44ms
+  pw:browser [pid=29840] <kill> +8ms
+  pw:browser [pid=29840] <will force kill> +0ms
+  pw:browser [pid=29840] <process did exit: exitCode=2147483651, signal=null> +227ms
+  pw:browser [pid=29840] starting temporary directories cleanup +0ms
+  x  6 tests\e2e\shell.spec.ts:154:1 › TC-004 — a real foreign window cannot invoke the app handler (298ms)
+  pw:browser [pid=29840] finished temporary directories cleanup +5ms
+(node:28532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  pw:browser <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\中文 空格 副本" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"  +0ms
+  pw:browser <launched> pid=31320 +14ms
+  pw:browser [pid=31320][out]  +45ms
+  pw:browser [pid=31320] <kill> +8ms
+  pw:browser [pid=31320] <will force kill> +0ms
+  pw:browser [pid=31320] <process did exit: exitCode=2147483651, signal=null> +219ms
+  pw:browser [pid=31320] starting temporary directories cleanup +0ms
+  pw:browser [pid=31320] finished temporary directories cleanup +1ms
+  x  7 tests\e2e\shell.spec.ts:170:1 › TC-014 — built app starts from Chinese and space-containing path (306ms)
+
+
+  1) tests\e2e\shell.spec.ts:68:1 › TC-002/003/007/011 — actual window, real IPC, isolation and close 
+
+    Error: Process failed to launch!
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-002-003-007-011-—-43b7d-eal-IPC-isolation-and-close\error-context.md
+
+  2) tests\e2e\shell.spec.ts:97:1 › TC-003/006 — pending, real IPC timeout and retry ───────────────
+
+    Error: Process failed to launch!
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-003-006-—-pending-real-IPC-timeout-and-retry\error-context.md
+
+  3) tests\e2e\shell.spec.ts:117:1 › TC-005 — missing native handler produces a retryable failure ──
+
+    Error: Process failed to launch!
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-005-—-missing-nat-c07a6-roduces-a-retryable-failure\error-context.md
+
+  4) tests\e2e\shell.spec.ts:130:1 › TC-006 — malformed native response never displays success ─────
+
+    Error: Process failed to launch!
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-006-—-malformed-n-4c6e2-onse-never-displays-success\error-context.md
+
+  5) tests\e2e\shell.spec.ts:141:1 › TC-008 — new windows and navigation away are denied ───────────
+
+    Error: Process failed to launch!
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-008-—-new-windows-and-navigation-away-are-denied\error-context.md
+
+  6) tests\e2e\shell.spec.ts:154:1 › TC-004 — a real foreign window cannot invoke the app handler ──
+
+    Error: Process failed to launch!
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-004-—-a-real-fore-2caad-nnot-invoke-the-app-handler\error-context.md
+
+  7) tests\e2e\shell.spec.ts:170:1 › TC-014 — built app starts from Chinese and space-containing path 
+
+    Error: Process failed to launch!
+
+    Error: electron.launch: Process failed to launch!
+    Call log:
+      - <launching> "C:\workspace\Avalon\node_modules\electron\dist\electron.exe" "--inspect=0" "--remote-debugging-port=0" "C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\中文 空格 副本" "--user-data-dir=C:\workspace\Avalon\.awr\cache\2026-11-07T07-37-16-049Z-8e1aef\1\profile"
+      - <launched> pid=31320
+      - [pid=31320][out]
+      - [pid=31320] <kill>
+      - [pid=31320] <will force kill>
+      - [pid=31320] <process did exit: exitCode=2147483651, signal=null>
+      - [pid=31320] starting temporary directories cleanup
+      - [pid=31320] finished temporary directories cleanup
+
+
+      27 |   mkdirSync(folder, { recursive: true });
+      28 |   const profile = join(root, '.awr/cache', process.env.AVALON_TEST_RUN_ID!, String(launchSequence), 'profile');
+    > 29 |   const app = await electron.launch({
+         |               ^
+      30 |     executablePath, args: [appRoot, `--user-data-dir=${profile}`],
+      31 |     cwd: appRoot, env: cleanEnv, timeout: 20_000,
+      32 |   });
+        at withApp (C:\workspace\Avalon\tests\e2e\shell.spec.ts:29:15)
+        at C:\workspace\Avalon\tests\e2e\shell.spec.ts:175:3
+
+    Error Context: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\artifacts\test-logs\2026-11-07T07-37-16-049Z-8e1aef\playwright\shell-TC-014-—-built-app-s-f4ea8-e-and-space-containing-path\error-context.md
+
+  7 failed
+    tests\e2e\shell.spec.ts:68:1 › TC-002/003/007/011 — actual window, real IPC, isolation and close 
+    tests\e2e\shell.spec.ts:97:1 › TC-003/006 — pending, real IPC timeout and retry ────────────────
+    tests\e2e\shell.spec.ts:117:1 › TC-005 — missing native handler produces a retryable failure ───
+    tests\e2e\shell.spec.ts:130:1 › TC-006 — malformed native response never displays success ──────
+    tests\e2e\shell.spec.ts:141:1 › TC-008 — new windows and navigation away are denied ────────────
+    tests\e2e\shell.spec.ts:154:1 › TC-004 — a real foreign window cannot invoke the app handler ───
+    tests\e2e\shell.spec.ts:170:1 › TC-014 — built app starts from Chinese and space-containing path 
+Exit code: 1

@@ -1,0 +1,179 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\workspace\\Avalon\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-g",
+      "actual window"
+    ],
+    "configFile": "C:\\workspace\\Avalon\\playwright.config.ts",
+    "rootDir": "C:/workspace/Avalon/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/workspace/Avalon/spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/artifacts/test-logs/2026-11-07T07-28-47-541Z-4b7045/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/workspace/Avalon/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\workspace\\Avalon\\spec\\versions\\v0.1\\specs\\20261107-1429-tech-开发态应用骨架\\tester\\artifacts\\test-logs\\2026-11-07T07-28-47-541Z-4b7045\\playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\workspace\\Avalon\\tests\\e2e",
+        "snapshotDir": "C:\\workspace\\Avalon\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {},
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\workspace\\Avalon\\spec\\versions\\v0.1\\specs\\20261107-1429-tech-开发态应用骨架\\tester\\artifacts\\test-logs\\2026-11-07T07-28-47-541Z-4b7045\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "shell.spec.ts",
+      "file": "shell.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-002/003/007/011 — actual window, real IPC, isolation and close",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 308,
+                  "error": {
+                    "message": "Error: Process failed to launch!",
+                    "stack": "Error: Process failed to launch!"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Process failed to launch!"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launching> \"C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe\" \"--inspect=0\" \"--remote-debugging-port=0\" \"C:\\workspace\\Avalon\" \"--user-data-dir=C:\\workspace\\Avalon\\.awr\\cache\\2026-11-07T07-28-47-541Z-4b7045\\3420664513cb\\profile\"  \u001b[30m+0ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m<launched> pid=11516 \u001b[30m+15ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=11516][out]  \u001b[30m+47ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=11516] <kill> \u001b[30m+9ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=11516] <will force kill> \u001b[30m+1ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=11516] <process did exit: exitCode=2147483651, signal=null> \u001b[30m+233ms\u001b[0m\n"
+                    },
+                    {
+                      "text": "  \u001b[30;1mpw:browser \u001b[0m[pid=11516] starting temporary directories cleanup \u001b[30m+1ms\u001b[0m\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-07T07:28:50.531Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\workspace\\Avalon\\spec\\versions\\v0.1\\specs\\20261107-1429-tech-开发态应用骨架\\tester\\artifacts\\test-logs\\2026-11-07T07-28-47-541Z-4b7045\\playwright\\shell-TC-002-003-007-011-—-43b7d-eal-IPC-isolation-and-close\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3420664513cb0bae123e-ed63638abd12c8fc29f1",
+          "file": "shell.spec.ts",
+          "line": 65,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T07:28:50.089Z",
+    "duration": 797.591,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

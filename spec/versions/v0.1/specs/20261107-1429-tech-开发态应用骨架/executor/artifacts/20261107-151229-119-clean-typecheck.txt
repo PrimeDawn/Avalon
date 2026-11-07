@@ -1,0 +1,8 @@
+=== clean-typecheck Run ===
+Command: npm.cmd run typecheck
+Timestamp: 2026-11-07T15:12:29.1353514+08:00
+
+> avalon@0.1.0 typecheck
+> tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json
+
+Exit code: 0

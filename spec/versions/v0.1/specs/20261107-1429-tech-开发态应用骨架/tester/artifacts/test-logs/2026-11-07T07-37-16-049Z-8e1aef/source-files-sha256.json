@@ -1,0 +1,22 @@
+{
+  "src\\main\\index.ts": "6ee2396063c0ceb2cf5f5e384a3d6f42fd0309b8483a25c0fc9e6c4133b010cc",
+  "src\\main\\ipc-policy.ts": "f9e2a009a1a3be7b710f3336d4ddc64e60fbf39b93140b10c326c3b05ff419ce",
+  "src\\main\\ipc.ts": "edeefa6a47df194f1398e43242d5ec8e4238d3e4e18cfd74fd7524c82d763a87",
+  "src\\main\\window.ts": "be9e926fc7f1da55b21be74d58ce39daa5e3427b5daeb1485b2fb8c5edf9bde8",
+  "src\\preload\\index.ts": "313d73bc1cc345497c885e1c57a1f93662fbcf15c5093c088c4426931e55b046",
+  "src\\renderer\\index.html": "c2efb10fdd24adf95bd0ae4b2abe9c47d3f83cb50d4e943d7c5337b682218d49",
+  "src\\shared\\contracts.ts": "393c25209f03dddabe9ce6134f4b9ed4a5387cb4633f455fab101ad59a1e07a0",
+  "src\\renderer\\src\\App.tsx": "00d6c7ac8979bd8e9e8c98b65731bc34cb0d9049d21d1e35b54edd3485c2cc09",
+  "src\\renderer\\src\\connection.ts": "6fb1ae40621e45ed4d486e19dc76d75bc317237a4142679f43f018aa90364271",
+  "src\\renderer\\src\\env.d.ts": "49845e371a16ecb756876182b6ebdea0d1d1c5fe709141488380ad58684eee9a",
+  "src\\renderer\\src\\main.tsx": "e7c6e3f7c08dc1fa60378fff08d191a963b1a3ada752b23f4353cedeba92b1f6",
+  "src\\renderer\\src\\style.css": "cb2f15f3f8325a300cbf761121492dc202dd4fba13c79977b2ff13059fd2963e",
+  "tests\\unit\\connection.test.ts": "d9a93e8306735e116a16e65bd43ad14c3a29707f2bfd7ec6b272884ee2c6f307",
+  "tests\\unit\\ipc-policy.test.ts": "6d0dd5f7fbd83058ae162342c3d1eda2d8e6292477d6d377635ee7c3f8e66365",
+  "tests\\unit\\ipc.test.ts": "13a8babf8b3d6a5d911eb8a844cea6c90ab93cd68621392f4a8b50adf31c61c6",
+  "tests\\e2e\\shell.spec.ts": "61c7df39c86887fd9749a5ff08bafea01ee0d5668dc3575251740ce83b1296fa",
+  "scripts\\check-test-environment.mjs": "4f7cef9915640f0acfdc2577f46d9a9ac3b3cdaaddfe5292336a2f747e7e1023",
+  "scripts\\rk-awr-checkpoint.ps1": "164c4cfe7fe75a07789a1093d9f914b9874aee694ae67c76d05cfeaf4349ef92",
+  "scripts\\rk-awr-checkpoint.sh": "f53cf4047aeadcc9fd713d27b902fd155696ce226dfebc380966e3e9f24431ac",
+  "scripts\\run-e2e.mjs": "741d8dc2e6efe79474742ac58d74e471217c31a95bd47c9a017aa58dcd497700"
+}

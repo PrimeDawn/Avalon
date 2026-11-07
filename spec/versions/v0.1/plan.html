@@ -10,7 +10,7 @@
 <meta name="rk:role"           content="TeamLead">
 <meta name="rk:created"        content="2026-11-05">
 <meta name="rk:updated"        content="2026-11-07">
-<meta name="rk:revision"       content="4">
+<meta name="rk:revision"       content="10">
 <meta name="rk:base-branch"    content="dev">
 <meta name="rk:tags"           content="version,plan,foundation">
 
@@ -30,12 +30,18 @@
     <span><b>创建</b> 2026-11-05</span>
     <span><b>更新</b> 2026-11-07</span>
     <span><b>角色</b> TeamLead</span>
-    <span><b>修订</b> r4</span>
+    <span><b>修订</b> r10</span>
     <span><b>标签</b> version,plan,foundation</span>
   </div>
 </header>
 
-<nav class="rk-revbar"></nav>
+<nav class="rk-revbar"></nav><section class="rk-added" data-rev="9"><h2>SPEC-001 已完成并原位归档</h2><p>用户已确认测试并授权收尾；新鲜验证再次通过。六项中首项完成，其余五项待启动；版本仍在执行中。<del class="rk-del" data-rev="10">本地提交，暂不推送，未合并 dev。</del><ins class="rk-ins" data-rev="10">用户追加授权后已合并本地 dev，合并结果回归通过；源分支保留，未推送。</ins>验收范围不变。</p><ul class="rk-links"><li><a href="specs/20261107-1429-tech-开发态应用骨架/ender/end-report.html" data-rk-link="end-report">首个 Spec 收尾报告</a></li></ul><ul class="rk-backlinks"><li><a href="specs/20261107-1429-tech-开发态应用骨架/ender/end-report.html" data-rk-backlink="end-report">首个 Spec 收尾报告</a></li></ul></section><div class="rk-removed" data-rev="9"><section class="rk-added" data-rev="8"><h2>SPEC-001 当前进展</h2><p>仅 Avalon 的 Low 标签修复后，15 项验收、52 项单元、8 组桌面测试及干净安装 / 开发更新全部通过。测试报告 r3 待用户确认；版本仍在执行中，Spec 尚未收尾。</p><ul class="rk-links"><li><a href="specs/20261107-1429-tech-开发态应用骨架/tester/test-report.html" data-rk-link="test-report">测试报告 r3 与证据</a></li></ul></section></div><div class="rk-removed" data-rev="8"><section class="rk-added" data-rev="7"><h2>SPEC-001 当前进展</h2><p>实现报告已确认；本轮单元、类型、构建、干净安装和端口冲突检查通过。原生 Electron 启动失败，真实桌面验收未通过，版本仍在执行中；后续 Spec 不提前放行。</p><ul class="rk-links"><li><a href="specs/20261107-1429-tech-开发态应用骨架/tester/test-report.html" data-rk-link="test-report">测试报告 r1 与证据</a></li></ul></section></div>
+<section class="rk-added" data-rev="6"><h2>发版前文档整理 · D-004</h2>
+<p><ins class="rk-ins" data-rev="6">用户已确认在 v0.1 发版准备阶段完成，当前仅登记待办。README 改为产品介绍、实际功能与截图、安装使用及限制；开发环境、构建、测试和开发流程迁入独立开发文档，README 保留简短入口。源码目录树与模块职责归 CODEMAP。</ins></p>
+<p><ins class="rk-ins" data-rev="6">目前以用户与 Agent 自用开发为主，不预建 CONTRIBUTING.md，需要协作者指南时再创建。此项归版本发版交付检查，不新增 Spec，不改变六项功能依赖或首个 Spec 的方案门禁。</ins></p>
+<p><ins class="rk-ins" data-rev="6">发布前核对：使用说明与最终 Windows 包一致；开发命令与实际脚本一致；链接有效；规划能力未写成已实现。在 release-report 中记录完成结果。</ins></p></section>
+
+<section class="rk-added" data-rev="5"><div class="rk-cal key"><div class="t">SPEC-001 已启动 · 版本进入执行中</div><p>用户授权的规划提交为 975c33b；dev 干净后创建 tech/spec-20261107-1429-dev-shell。开发态骨架已完成探索并产出方案与测试计划，当前等待实现门禁，其余五项待启动。r4 确认记录保留其当时状态。</p><ul class="rk-links"><li><a href="specs/20261107-1429-tech-开发态应用骨架/lead/team-context.md" data-rk-link="ledger">首个 Spec 账本</a></li><li><a href="specs/20261107-1429-tech-开发态应用骨架/writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="specs/20261107-1429-tech-开发态应用骨架/tester/test-plan.html" data-rk-link="test-plan">测试计划</a></li></ul></div></section>
 
 <section class="rk-added" data-rev="4">
   <div class="rk-cal ok"><div class="t">版本范围已确认 · D-003 · 2026-11-07</div><p>用户确认：「我觉得这个可以，第一个版本就按照这个做吧」。下列六项成为 v0.1 正式范围，版本仍处于规划中，Spec 均待启动；范围确认不代替具体方案门禁或 Git 提交授权。</p></div>
@@ -125,7 +131,9 @@
     <tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-07</td><td>TeamLead</td><td>新增四项写作闭环提案、验收与延期建议；保留 r1 对照</td><td>按账本 D-001，待用户确认</td></tr>
     <tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-07</td><td>TeamLead</td><td>骨架拆分、视觉与外壳独立；新增六项验收边界与依赖，替代 r2 拆分</td><td>按账本 D-002，响应用户细化验收与窗口外观设计诉求</td></tr>
     <tr class="rk-added" data-rev="4"><td>r4</td><td>2026-11-07</td><td>TeamLead</td><td>六项范围转为正式规划；同步产品设计、目标、AWR 分组和依赖</td><td>按账本 D-003 用户明确确认</td></tr>
-  </tbody>
+<tr class="rk-added" data-rev="5"><td>r5</td><td>2026-11-07</td><td>TeamLead</td><td>登记 SPEC-001 分支与方案入口，版本转执行中</td><td>用户明确授权启动第一个 Spec，见首个 Spec 账本 D-001</td></tr>
+  <tr class="rk-added" data-rev="6"><td>r6</td><td>2026-11-07</td><td>TeamLead</td><td>登记发版前 README 与开发文档分离、贡献指南按需创建</td><td>按版本账本 D-004，用户明确要求</td></tr>
+<tr class="rk-added" data-rev="7"><td>r7</td><td>2026-11-07</td><td>TeamLead / spec-tester</td><td>登记 SPEC-001 测试受阻状态</td><td>本轮测试执行与证据登记，不改变确认的验收标准</td></tr><tr class="rk-added" data-rev="8"><td>r8</td><td>2026-11-07</td><td>TeamLead / spec-tester</td><td>更新首个 Spec 修复后测试通过状态</td><td>本轮授权修复及真实复验；六项范围与验收不变</td></tr><tr class="rk-added" data-rev="9"><td>r9</td><td>2026-11-07</td><td>TeamLead / spec-ender</td><td>登记收尾确认与归档关联</td><td>用户确认 SPEC-001 测试与收尾；不改变六项版本范围</td></tr><tr class="rk-added" data-rev="10"><td>r10</td><td>2026-11-07</td><td>TeamLead</td><td>首项已合并本地 dev，回归通过</td><td>用户追加本地合并授权；Spec D-010</td></tr></tbody>
 </table>
 
 <h2>1. 规划 Spec 大盘（四类属性平权）</h2>

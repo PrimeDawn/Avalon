@@ -1,0 +1,5 @@
+Command: node C:\workspace\Avalon\.awr\cache\independent-1794042637021\中文 空格\node_modules\electron\install.js
+Timestamp: 2026-11-07T09:10:43.554Z
+Working directory: C:\workspace\Avalon\.awr\cache\independent-1794042637021\中文 空格
+Exit code: 0
+Signal: null

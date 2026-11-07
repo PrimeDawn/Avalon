@@ -1,0 +1,17 @@
+[
+  {
+    "case": "TC-002/003/007/011 — actual window, real IPC, isolation and close",
+    "method": "GET",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DTKakpnq.css"
+  },
+  {
+    "case": "TC-002/003/007/011 — actual window, real IPC, isolation and close",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DTKakpnq.css",
+    "status": 200
+  },
+  {
+    "case": "TC-002/003/007/011 — actual window, real IPC, isolation and close",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DcDGLX3i.js",
+    "status": 200
+  }
+]

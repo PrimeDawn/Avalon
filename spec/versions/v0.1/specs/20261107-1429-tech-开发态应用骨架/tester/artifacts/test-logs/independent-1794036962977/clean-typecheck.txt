@@ -1,0 +1,9 @@
+Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run typecheck
+Timestamp: 2026-11-07T07:36:09.935Z
+Working directory: C:\workspace\Avalon\.awr\cache\independent-1794036962977\中文 空格
+
+> avalon@0.1.0 typecheck
+> tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json
+
+Exit code: 0
+Signal: null

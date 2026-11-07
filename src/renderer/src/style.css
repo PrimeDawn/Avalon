@@ -1,0 +1,23 @@
+/* SPEC-001 writer/plan.html §3.5: minimal readable shell; visual design belongs to SPEC-003. */
+:root {
+  font-family: system-ui, "Microsoft YaHei", sans-serif;
+  color: #243041;
+  background: #f5f6f8;
+  line-height: 1.6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 720px; margin: 64px auto; padding: 32px; }
+h1 { margin: 0 0 16px; font-size: 32px; }
+button {
+  font: inherit;
+  color: white;
+  background: #345a80;
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+button:focus-visible { outline: 3px solid #729ecb; outline-offset: 3px; }
+button:disabled { opacity: 0.6; cursor: wait; }
+[role="status"] { min-height: 1.6em; }

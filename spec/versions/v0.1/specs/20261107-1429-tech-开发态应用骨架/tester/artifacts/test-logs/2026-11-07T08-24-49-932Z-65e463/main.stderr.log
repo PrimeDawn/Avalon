@@ -1,0 +1,18 @@
+Waiting for the debugger to disconnect...
+Debugger ending on ws://127.0.0.1:50495/48aaa1cb-dc39-4803-8215-7ec76277f587
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Error occurred in handler for 'avalon:get-app-info': [Error: No handler registered for 'avalon:get-app-info']
+Debugger ending on ws://127.0.0.1:50500/1703201d-c4c6-43f1-8c32-42952375d9ee
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Debugger ending on ws://127.0.0.1:50505/98e30fc6-d3aa-46de-81b2-3d0e63e08427
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Debugger ending on ws://127.0.0.1:50509/28197616-1860-46ba-8fc8-a6e59559f220
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Debugger ending on ws://127.0.0.1:50513/bcf71a51-4c0a-4346-b2eb-c2cb712327aa
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Error occurred in handler for 'avalon:get-app-info': Error: IPC_UNAVAILABLE
+    at [90mC:\workspace\Avalon\[39mout\main\index.cjs:26:54
+Debugger ending on ws://127.0.0.1:50517/c773dbc6-6b70-431a-b981-07ff9b3c07ac
+For help, see: https://nodejs.org/learn/getting-started/debugging
+Debugger ending on ws://127.0.0.1:50521/f26ab5ac-3027-405f-8a2f-394799f3fe99
+For help, see: https://nodejs.org/learn/getting-started/debugging

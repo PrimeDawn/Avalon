@@ -1,0 +1,18 @@
+Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run test:unit
+Timestamp: 2026-11-07T07:37:32.028Z
+Working directory: C:\workspace\Avalon\.awr\cache\independent-1794037035692\中文 空格
+
+> avalon@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v5.1.0 C:/workspace/Avalon/.awr/cache/independent-1794037035692/中文 空格
+
+
+ Test Files  3 passed (3)
+      Tests  52 passed (52)
+   Start at  15:37:32
+   Duration  346ms (tests 43%, transform 36%, import 19%, worker 3%)
+
+Exit code: 0
+Signal: null

@@ -1,0 +1,12 @@
+Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js ci
+Timestamp: 2026-11-07T08:25:15.894Z
+Working directory: C:\workspace\Avalon\.awr\cache\independent-1794039915835\中文 空格
+
+added 98 packages, and audited 99 packages in 10s
+
+17 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+Exit code: 0
+Signal: null

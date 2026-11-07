@@ -1,0 +1,52 @@
+{
+  "command": "awr work complete; awr session end; awr doctor --json; awr intake inspect --source-sha 975c33bb72c1caef77a80ef6c526726279e2a143 --json",
+  "exitCodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "timestamp": "2026-11-07T09:21:41.249346+00:00",
+  "checkpoint": "01M6TMYKYH908MV6F327WVJ0BJ",
+  "session": "01M6TMC3FP3FR87RN3ZHHNPAHX",
+  "sessionStatus": "ended",
+  "projectRevision": 93,
+  "doctorFindings": [],
+  "verifiedCompleted": 1,
+  "currentSpecBlockingGaps": 0,
+  "remainingVersionDependencies": [
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-002"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-004"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-004"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-004"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-006"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-006"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-006"
+    },
+    {
+      "code": "dependency_not_completed",
+      "target": "SPEC-006"
+    }
+  ],
+  "scopeExplanation": "Close SPEC-001 only. Future Spec dependency waits remain true; project-wide zero-gap is not claimed. No source dependencies are deleted or marked completed to silence findings."
+}

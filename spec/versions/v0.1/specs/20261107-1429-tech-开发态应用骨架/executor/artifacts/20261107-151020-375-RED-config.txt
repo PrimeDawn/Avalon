@@ -1,0 +1,89 @@
+=== RED-config Run ===
+Command: npm.cmd run test:unit -- tests/unit/ipc-policy.test.ts
+Timestamp: 2026-11-07T15:10:20.3900491+08:00
+
+> avalon@0.1.0 test:unit
+> vitest run tests/unit/ipc-policy.test.ts
+
+
+ RUN  v5.1.0 C:/workspace/Avalon
+
+ ❯ tests/unit/ipc-policy.test.ts (17 tests | 4 failed) 122ms
+   ❯ development and build configuration (4)
+     × pins the server to loopback 5178 with no silent fallback 114ms
+     × emits standalone CJS entry points for main and sandboxed preload 1ms
+     × writes the serve CSP into the resulting HTML 2ms
+     × writes the build CSP into the resulting HTML 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/ipc-policy.test.ts > development and build configuration > pins the server to loopback 5178 with no silent fallback
+AssertionError: expected undefined to match object { host: '127.0.0.1', port: 5178, …(1) }
+
+- Expected:
+{
+  "host": "127.0.0.1",
+  "port": 5178,
+  "strictPort": true,
+}
+
++ Received:
+undefined
+
+ ❯ tests/unit/ipc-policy.test.ts:49:54
+     47|   }
+     48|   it('pins the server to loopback 5178 with no silent fallback', async…
+     49|     expect((await config('serve')).renderer?.server).toMatchObject({ h…
+       |                                                      ^
+     50|   });
+     51|   it('emits standalone CJS entry points for main and sandboxed preload…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/unit/ipc-policy.test.ts > development and build configuration > emits standalone CJS entry points for main and sandboxed preload
+AssertionError: expected undefined to match object { format: 'cjs', …(2) }
+
+- Expected:
+{
+  "codeSplitting": false,
+  "entryFileNames": "index.cjs",
+  "format": "cjs",
+}
+
++ Received:
+undefined
+
+ ❯ tests/unit/ipc-policy.test.ts:54:54
+     52|     const options = await config('build');
+     53|     for (const target of [options.main, options.preload]) {
+     54|       expect(target?.build?.rolldownOptions?.output).toMatchObject({ f…
+       |                                                      ^
+     55|     }
+     56|     expect(options.preload?.build?.externalizeDeps).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/unit/ipc-policy.test.ts > development and build configuration > writes the serve CSP into the resulting HTML
+ FAIL  tests/unit/ipc-policy.test.ts > development and build configuration > writes the build CSP into the resulting HTML
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tests/unit/ipc-policy.test.ts:61:18
+     59|     const plugins = (await config(command)).renderer?.plugins?.flat() …
+     60|     const hook = plugins?.find((plugin) => plugin && plugin.name === '…
+     61|     expect(hook).toBeTypeOf('function');
+       |                  ^
+     62|     const transform = hook as (html: string) => string;
+     63|     const html = transform('<meta http-equiv="Content-Security-Policy"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 13 passed (17)
+   Start at  15:10:21
+   Duration  317ms (tests 71%, transform 16%, import 9%, worker 4%)
+
+Exit code: 1

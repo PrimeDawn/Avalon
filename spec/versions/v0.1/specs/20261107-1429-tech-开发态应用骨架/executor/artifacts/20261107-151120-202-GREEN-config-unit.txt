@@ -1,0 +1,17 @@
+=== GREEN-config-unit Run ===
+Command: npm.cmd run test:unit
+Timestamp: 2026-11-07T15:11:20.2175311+08:00
+
+> avalon@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v5.1.0 C:/workspace/Avalon
+
+
+ Test Files  3 passed (3)
+      Tests  52 passed (52)
+   Start at  15:11:20
+   Duration  381ms (tests 63%, import 21%, transform 12%, worker 4%)
+
+Exit code: 0

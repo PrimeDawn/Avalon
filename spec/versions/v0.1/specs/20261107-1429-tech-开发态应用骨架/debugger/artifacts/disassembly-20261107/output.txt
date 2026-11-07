@@ -1,0 +1,206 @@
+
+RVA 0x348e98a nearest export (55109888, '?IsLoadBrowserProcessSpecificV8SnapshotEnabled@fuses@electron@@YA_NXZ')
+0x348e944 call 0x34918b0 
+0x348e949 test al, al 
+0x348e94b je 0x348e98d 
+0x348e94d lea rdx, [rip + 0xa6062b4]  b'no-sandbox'
+0x348e954 mov rcx, rdi 
+0x348e957 call 0x2aa0770 
+0x348e95c mov dil, 1 
+0x348e95f test al, al 
+0x348e961 jne 0x348e981 
+0x348e963 mov rax, qword ptr [rsi] 
+0x348e966 mov rax, qword ptr [rax + 0x10] 
+0x348e96a mov rcx, rsi 
+0x348e96d mov edx, 2 
+0x348e972 call qword ptr [rip + 0xb178d80]  b'`\x1f\x1eC\x01'
+0x348e978 test eax, eax 
+0x348e97a je 0x348e981 
+0x348e97c jmp 0x348e98a 
+0x348e97e mov dil, 1 
+0x348e981 mov eax, edi 
+0x348e983 add rsp, 0x28 
+0x348e987 pop rdi 
+0x348e988 pop rsi 
+0x348e989 ret  
+0x348e98a int3  
+0x348e98b ud2  
+0x348e98d xor edi, edi 
+0x348e98f jmp 0x348e981 
+0x348e991 int3  
+0x348e992 int3  
+0x348e993 int3  
+0x348e994 int3  
+0x348e995 int3  
+0x348e996 int3  
+0x348e997 int3  
+0x348e998 int3  
+0x348e999 int3  
+0x348e99a int3  
+0x348e99b int3  
+0x348e99c int3  
+0x348e99d int3  
+0x348e99e int3  
+0x348e99f int3  
+0x348e9a0 sub rsp, 0x28 
+0x348e9a4 mov rax, qword ptr [rcx] 
+
+RVA 0x348e497 nearest export (55045952, '?ResourceName@ScriptOrigin@v8@@QEBA?AV?$Local@VValue@v8@@@2@XZ')
+0x348e451 fcmovne st(0), st(0) 
+0x348e453 add byte ptr [r8 - 0x77], cl 
+0x348e457 shr eax, 0x33 
+0x348e45a pop rsp 
+0x348e45b cmp edi, edi 
+0x348e45d mov rcx, r14 
+0x348e460 call 0x348e840 
+0x348e465 mov rcx, qword ptr [rdi + 0x90] 
+0x348e46c call 0x348fa50 
+0x348e471 cmp byte ptr [rdi + 0xd0], 0 
+0x348e478 je 0x348e524 
+0x348e47e mov r14, qword ptr [rdi + 0xb0] 
+0x348e485 mov rcx, rbx 
+0x348e488 call 0x8db0d0 
+0x348e48d mov ecx, eax 
+0x348e48f mov rdx, r14 
+0x348e492 call 0x348e910 
+0x348e497 test al, al 
+0x348e499 je 0x348e53c 
+0x348e49f mov rcx, qword ptr [rdi + 0x90] 
+0x348e4a6 lea rdx, [rsp + 0x80] 
+0x348e4ae call 0x348e6d0 
+
+RVA 0x330b450 nearest export (53268816, '?CreateCodeCacheForFunction@ScriptCompiler@v8@@SAPEAUCachedData@12@V?$Local@VFunction@v8@@@2@@Z')
+0x330b40a shr eax, 0x20 
+0x330b40d add al, 0 
+0x330b40f add al, ch 
+0x330b411 pop rbx 
+0x330b412 add al, 0 
+0x330b414 add byte ptr [rdi], cl 
+0x330b416 adc byte ptr [rsi], al 
+0x330b418 mov qword ptr [rsi], rbx 
+0x330b41b lea rdx, [rsp + 0xa0] 
+0x330b423 movaps xmmword ptr [rdx], xmm0 
+0x330b426 movups xmm0, xmmword ptr [rsi + 0x10] 
+0x330b42a mov qword ptr [rsi + 0x10], rbx 
+0x330b42e movaps xmmword ptr [rdx + 0x10], xmm0 
+0x330b432 mov qword ptr [rsi + 0x18], rbx 
+0x330b436 mov rax, qword ptr [rsi + 0x20] 
+0x330b43a mov qword ptr [rdx + 0x20], rax 
+0x330b43e mov qword ptr [rsi + 0x20], rbx 
+0x330b442 mov al, byte ptr [rsi + 0x28] 
+0x330b445 mov byte ptr [rdx + 0x28], al 
+0x330b448 mov rcx, rdi 
+0x330b44b call 0x348e060 
+0x330b450 test eax, eax 
+0x330b452 jns 0x330b725 
+0x330b458 call 0x29b9f00 
+0x330b45d mov rbx, rax 
+0x330b460 lea r14, [rip + 0x8b19bf1]  b'enable-logging'
+0x330b467 mov rcx, rax 
+0x330b46a mov rdx, r14 
+
+RVA 0x330a902 nearest export (53268816, '?CreateCodeCacheForFunction@ScriptCompiler@v8@@SAPEAUCachedData@12@V?$Local@VFunction@v8@@@2@@Z')
+0x330a8bc mov qword ptr [rbx], r14 
+0x330a8bf test rcx, rcx 
+0x330a8c2 jne 0x330a8d8 
+0x330a8c4 mov rcx, rsi 
+0x330a8c7 call 0x8dba10 
+0x330a8cc mov eax, edi 
+0x330a8ce add rsp, 0x68 
+0x330a8d2 pop rbx 
+0x330a8d3 pop rdi 
+0x330a8d4 pop rsi 
+0x330a8d5 pop r14 
+0x330a8d7 ret  
+0x330a8d8 mov edx, 1 
+0x330a8dd call 0x385db90 
+0x330a8e2 jmp 0x330a8c4 
+0x330a8e4 int3  
+0x330a8e5 int3  
+0x330a8e6 int3  
+0x330a8e7 int3  
+0x330a8e8 int3  
+0x330a8e9 int3  
+0x330a8ea int3  
+0x330a8eb int3  
+0x330a8ec int3  
+0x330a8ed int3  
+0x330a8ee int3  
+0x330a8ef int3  
+0x330a8f0 push rsi 
+0x330a8f1 sub rsp, 0x20 
+0x330a8f5 mov rsi, rcx 
+0x330a8f8 mov ecx, 0xf8 
+0x330a8fd call 0x317abf0 
+0x330a902 lea rcx, [rip + 0x883f847]  b'\x90\xdb\x85C\x01'
+0x330a909 mov qword ptr [rax], rcx 
+0x330a90c xor ecx, ecx 
+0x330a90e mov byte ptr [rax + 8], cl 
+0x330a911 mov byte ptr [rax + 0x10], cl 
+0x330a914 mov byte ptr [rax + 0x60], cl 
+0x330a917 mov byte ptr [rax + 0xd0], cl 
+
+RVA 0x330a8b7 nearest export (53268816, '?CreateCodeCacheForFunction@ScriptCompiler@v8@@SAPEAUCachedData@12@V?$Local@VFunction@v8@@@2@@Z')
+0x330a871 pop rsp 
+0x330a872 and al, 0x28 
+0x330a874 mov qword ptr [rbx], r14 
+0x330a877 mov rcx, rbx 
+0x330a87a call 0x330a8f0 
+0x330a87f mov rdx, qword ptr [rbx] 
+0x330a882 movups xmm0, xmmword ptr [rsi] 
+0x330a885 mov qword ptr [rsi], r14 
+0x330a888 lea rcx, [rsp + 0x30] 
+0x330a88d movaps xmmword ptr [rcx], xmm0 
+0x330a890 movups xmm0, xmmword ptr [rsi + 0x10] 
+0x330a894 mov qword ptr [rsi + 0x10], r14 
+0x330a898 movaps xmmword ptr [rcx + 0x10], xmm0 
+0x330a89c mov qword ptr [rsi + 0x18], r14 
+0x330a8a0 mov rax, qword ptr [rsi + 0x20] 
+0x330a8a4 mov qword ptr [rcx + 0x20], rax 
+0x330a8a8 mov qword ptr [rsi + 0x20], r14 
+0x330a8ac mov al, byte ptr [rsi + 0x28] 
+0x330a8af mov byte ptr [rcx + 0x28], al 
+0x330a8b2 call 0x330b3b0 
+0x330a8b7 mov edi, eax 
+0x330a8b9 mov rcx, qword ptr [rbx] 
+0x330a8bc mov qword ptr [rbx], r14 
+0x330a8bf test rcx, rcx 
+0x330a8c2 jne 0x330a8d8 
+0x330a8c4 mov rcx, rsi 
+0x330a8c7 call 0x8dba10 
+0x330a8cc mov eax, edi 
+0x330a8ce add rsp, 0x68 
+0x330a8d2 pop rbx 
+0x330a8d3 pop rdi 
+0x330a8d4 pop rsi 
+
+RVA 0x330a28d nearest export (53268816, '?CreateCodeCacheForFunction@ScriptCompiler@v8@@SAPEAUCachedData@12@V?$Local@VFunction@v8@@@2@@Z')
+0x330a247 cmp eax, 0xf0b3f25 
+0x330a24c test byte ptr [rcx + rax], ch 
+0x330a24f add byte ptr [rax], al 
+0x330a251 mov rcx, qword ptr [rsp + 0xa0] 
+0x330a259 mov rax, rcx 
+0x330a25c and rax, r12 
+0x330a25f cmp rax, qword ptr [rip + 0xb3f2522]  b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+0x330a266 je 0x330a362 
+0x330a26c lea rdx, [rsp + 0x90] 
+0x330a274 mov qword ptr [rdx + 0x10], rbx 
+0x330a278 lea rdi, [rsp + 0x60] 
+0x330a27d mov rcx, rdi 
+0x330a280 call 0xea2b30 
+0x330a285 mov rcx, rdi 
+0x330a288 call 0x330a860 
+0x330a28d mov edi, eax 
+0x330a28f movzx eax, byte ptr [rsp + 0x160] 
+0x330a297 test al, 1 
+0x330a299 jne 0x330a2a1 
+0x330a29b mov ecx, eax 
+0x330a29d shr ecx, 1 
+0x330a29f jmp 0x330a2a9 
+0x330a2a1 mov rcx, qword ptr [rsp + 0x168] 
+
+RVA 0x578c38 nearest export (5690880, '?RemoveBeforeCallEnteredCallback@Isolate@v8@@QEAAXP6AXPEAV12@@Z@Z')
+0x578bf2 cmp al, ch 
+0x578bf4 cmp byte ptr [rbp - 0x6f], cl 
+0x578bf7 add ecx, ebp 
+0x578bf9 add al, 0xff 

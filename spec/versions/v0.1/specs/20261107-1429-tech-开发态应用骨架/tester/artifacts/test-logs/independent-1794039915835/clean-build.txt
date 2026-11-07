@@ -1,0 +1,32 @@
+Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run build
+Timestamp: 2026-11-07T08:25:27.970Z
+Working directory: C:\workspace\Avalon\.awr\cache\independent-1794039915835\中文 空格
+
+> avalon@0.1.0 build
+> electron-vite build
+
+vite v8.3.6 building ssr environment for production...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+out/main/index.cjs  3.44 kB
+
+✓ built in 25ms
+vite v8.3.6 building ssr environment for production...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.64 kB
+
+✓ built in 15ms
+vite v8.3.6 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+out/renderer/index.html                   0.64 kB
+out/renderer/assets/index-DTKakpnq.css    0.68 kB
+out/renderer/assets/index-DcDGLX3i.js   566.96 kB
+
+✓ built in 86ms
+Exit code: 0
+Signal: null

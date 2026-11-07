@@ -1,0 +1,11 @@
+=== install Run ===
+Command: npm.cmd install
+Timestamp: 2026-11-07T15:03:22.1770366+08:00
+
+added 98 packages, and audited 99 packages in 4m
+
+17 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+Exit code: 0
