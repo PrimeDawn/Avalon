@@ -1,0 +1,15 @@
+{
+  "command": "python .awr/cache/precommit-closeout.py",
+  "exitCode": 0,
+  "timestamp": "2026-11-07T09:22:38.264194+00:00",
+  "stagedFiles": 401,
+  "stagedBytes": 2543519,
+  "credentialPatternMatches": 0,
+  "testedFileFingerprintsUnchanged": 21,
+  "stagedTestedFilesMatchWorkingTreeIgnoringCRLF": true,
+  "branch": "tech/spec-20261107-1429-dev-shell",
+  "remotes": [],
+  "doctorFindings": [],
+  "whitespaceCheck": "Authored files pass with blank-at-eof disabled for existing final newlines. Original runner artifact whitespace is preserved, not rewritten.",
+  "gitCommit": "next step, no push/merge"
+}

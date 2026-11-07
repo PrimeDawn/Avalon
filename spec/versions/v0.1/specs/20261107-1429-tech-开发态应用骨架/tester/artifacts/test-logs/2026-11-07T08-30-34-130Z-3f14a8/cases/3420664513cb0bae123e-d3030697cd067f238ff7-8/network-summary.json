@@ -1,0 +1,12 @@
+[
+  {
+    "case": "TC-014 — built app starts from Chinese and space-containing path",
+    "url": "file:///C:/workspace/Avalon/.awr/cache/2026-11-07T08-30-34-130Z-3f14a8/%E4%B8%AD%E6%96%87%20%E7%A9%BA%E6%A0%BC%20%E5%89%AF%E6%9C%AC/out/renderer/assets/index-DTKakpnq.css",
+    "status": 200
+  },
+  {
+    "case": "TC-014 — built app starts from Chinese and space-containing path",
+    "url": "file:///C:/workspace/Avalon/.awr/cache/2026-11-07T08-30-34-130Z-3f14a8/%E4%B8%AD%E6%96%87%20%E7%A9%BA%E6%A0%BC%20%E5%89%AF%E6%9C%AC/out/renderer/assets/index-DcDGLX3i.js",
+    "status": 200
+  }
+]

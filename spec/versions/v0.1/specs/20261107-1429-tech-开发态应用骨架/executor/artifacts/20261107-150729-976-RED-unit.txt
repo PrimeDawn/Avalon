@@ -1,0 +1,487 @@
+=== RED-unit Run ===
+Command: npm.cmd run test:unit
+Timestamp: 2026-11-07T15:07:29.9924156+08:00
+
+> avalon@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v5.1.0 C:/workspace/Avalon
+
+ ❯ tests/unit/ipc-policy.test.ts (13 tests | 2 failed) 9ms
+   ❯ isTrustedCaller (13)
+     × accepts only the expected main-frame document in the expected window 6ms
+     × accepts the exact built document URL with Chinese and spaces 1ms
+(node:30280) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 40)
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ❯ tests/unit/connection.test.ts (13 tests | 13 failed) 23ms
+   × renders a readable idle shell with a connection button before any IPC 7ms
+   ❯ checkConnection (12)
+     × returns valid application information and clears its timeout 3ms
+     × rejects a missing bridge with a safe, retryable message 3ms
+     × conceals IPC error details and allows a later retry 3ms
+     × handles synchronous bridge failure 1ms
+     × rejects malformed response null 0ms
+     × rejects malformed response undefined 0ms
+     × rejects malformed response {} 0ms
+     × rejects malformed response {"name":"Other","version":"1"} 0ms
+     × rejects malformed response {"name":"Avalon","version":""} 0ms
+     × rejects malformed response {"name":"Avalon","version":1} 0ms
+     × times out at 3000 ms, then handles a late rejection without leaking a timer 1ms
+     × supports an explicit timeout for focused callers 2ms
+ ❯ tests/unit/ipc.test.ts (20 tests | 20 failed) 2073ms
+   ❯ registerAppIpc (8)
+     × returns application info for the trusted main frame and unregisters on disposal 5ms
+     × rejects extra argument without returning app info 1ms
+     × rejects different window without returning app info 0ms
+     × rejects child frame without returning app info 0ms
+     × rejects external URL without returning app info 0ms
+     × rejects missing frame without returning app info 0ms
+     × rejects destroyed window without returning app info 1ms
+     × rejects while no window is available 0ms
+   ❯ preload bridge (6)
+     × exposes only the no-argument application info call 18ms
+     × sanitizes invalid response null 1ms
+     × sanitizes invalid response {} 0ms
+     × sanitizes invalid response {"name":"Other","version":"1"} 0ms
+     × sanitizes invalid response {"name":"Avalon","version":""} 0ms
+     × sanitizes native IPC errors 0ms
+   ❯ createMainWindow (4)
+     × creates the sandboxed window, loads the fixed dev URL and blocks navigation/permissions 7ms
+     × uses a local built file when no development server is present 1ms
+     × ignores the development URL in packaged mode 1ms
+     × rejects an unexpected dev server address before loading it 3ms
+   ❯ bootstrap lifecycle (2)
+     × registers IPC before creating one window, quits on Windows close, and reopens on activate 1021ms
+     × reports readiness failure and exits nonzero 1009ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 35 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/connection.test.ts > renders a readable idle shell with a connection button before any IPC
+AssertionError: expected '' to contain 'Avalon'
+
+- Expected
++ Received
+
+- Avalon
+
+ ❯ tests/unit/connection.test.ts:16:16
+     14| it('renders a readable idle shell with a connection button before any …
+     15|   const html = renderToStaticMarkup(createElement(App));
+     16|   expect(html).toContain('Avalon');
+       |                ^
+     17|   expect(html).toContain('工作台已启动');
+     18|   expect(html).toMatch(/<button[^>]*>检查连接<\/button>/);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > returns valid application information and clears its timeout
+AssertionError: promise rejected "Error: NOT_IMPLEMENTED" instead of resolving
+ ❯ tests/unit/connection.test.ts:26:68
+     24|   it('returns valid application information and clears its timeout', a…
+     25|     vi.useFakeTimers();
+     26|     await expect(checkConnection({ getAppInfo: async () => info })).re…
+       |                                                                    ^
+     27|     expect(vi.getTimerCount()).toBe(0);
+     28|   });
+
+Caused by: Error: NOT_IMPLEMENTED
+ ❯ checkConnection src/renderer/src/connection.ts:5:9
+ ❯ tests/unit/connection.test.ts:26:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects a missing bridge with a safe, retryable message
+AssertionError: expected [Function] to throw error including '连接失败，请重试' but got 'NOT_IMPLEMENTED'
+
+Expected: "连接失败，请重试"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/unit/connection.test.ts:31:45
+     29|
+     30|   it('rejects a missing bridge with a safe, retryable message', async …
+     31|     await expect(checkConnection(undefined)).rejects.toThrow(message);
+       |                                             ^
+     32|   });
+     33|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > conceals IPC error details and allows a later retry
+AssertionError: expected a thrown error to be Error: 连接失败，请重试
+
+- Expected
++ Received
+
+  Error {
+-   "message": "连接失败，请重试",
++   "message": "NOT_IMPLEMENTED",
+  }
+
+ ❯ tests/unit/connection.test.ts:37:39
+     35|     vi.useFakeTimers();
+     36|     const api = { getAppInfo: vi.fn().mockRejectedValueOnce(new Error(…
+     37|     await expect(checkConnection(api)).rejects.toThrow(new Error(messa…
+       |                                       ^
+     38|     expect(vi.getTimerCount()).toBe(0);
+     39|     await expect(checkConnection(api)).resolves.toEqual(info);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > handles synchronous bridge failure
+AssertionError: expected [Function] to throw error including '连接失败，请重试' but got 'NOT_IMPLEMENTED'
+
+Expected: "连接失败，请重试"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/unit/connection.test.ts:43:89
+     41|
+     42|   it('handles synchronous bridge failure', async () => {
+     43|     await expect(checkConnection({ getAppInfo: () => { throw new Error…
+       |                                                                                         ^
+     44|   });
+     45|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects malformed response null
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects malformed response undefined
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects malformed response {}
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects malformed response {"name":"Other","version":"1"}
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects malformed response {"name":"Avalon","version":""}
+ FAIL  tests/unit/connection.test.ts > checkConnection > rejects malformed response {"name":"Avalon","version":1}
+AssertionError: expected [Function] to throw error including '连接失败，请重试' but got 'NOT_IMPLEMENTED'
+
+Expected: "连接失败，请重试"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/unit/connection.test.ts:48:39
+     46|   it.each([null, undefined, {}, { name: 'Other', version: '1' }, { nam…
+     47|     const api = { getAppInfo: async () => value } as AvalonApi;
+     48|     await expect(checkConnection(api)).rejects.toThrow(message);
+       |                                       ^
+     49|   });
+     50|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > times out at 3000 ms, then handles a late rejection without leaking a timer
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/unit/connection.test.ts:59:21
+     57|     void result.catch(() => { settled = true; });
+     58|     await vi.advanceTimersByTimeAsync(2999);
+     59|     expect(settled).toBe(false);
+       |                     ^
+     60|     await vi.advanceTimersByTimeAsync(1);
+     61|     await rejected;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > times out at 3000 ms, then handles a late rejection without leaking a timer
+Error: Promise returned by `expect(actual).rejects.toThrow(expected)` was not awaited. This assertion is asynchronous and must be awaited; otherwise, it is not guaranteed to complete before the test finishes:
+
+await expect(actual).rejects.toThrow(expected)
+
+ ❯ tests/unit/connection.test.ts:55:36
+     53|     let fail!: (error: Error) => void;
+     54|     const result = checkConnection({ getAppInfo: () => new Promise((_,…
+     55|     const rejected = expect(result).rejects.toThrow(message);
+       |                                    ^
+     56|     let settled = false;
+     57|     void result.catch(() => { settled = true; });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/36]⎯
+
+ FAIL  tests/unit/connection.test.ts > checkConnection > supports an explicit timeout for focused callers
+AssertionError: expected [Function] to throw error including '连接失败，请重试' but got 'NOT_IMPLEMENTED'
+
+Expected: "连接失败，请重试"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/unit/connection.test.ts:70:36
+     68|     vi.useFakeTimers();
+     69|     const result = checkConnection({ getAppInfo: () => new Promise(() …
+     70|     const rejected = expect(result).rejects.toThrow(message);
+       |                                    ^
+     71|     await vi.advanceTimersByTimeAsync(10);
+     72|     await rejected;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/36]⎯
+
+ FAIL  tests/unit/ipc-policy.test.ts > isTrustedCaller > accepts only the expected main-frame document in the expected window
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/ipc-policy.test.ts:11:48
+      9| describe('isTrustedCaller', () => {
+     10|   it('accepts only the expected main-frame document in the expected wi…
+     11|     expect(isTrustedCaller(caller, 7, devUrl)).toBe(true);
+       |                                                ^
+     12|   });
+     13|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/36]⎯
+
+ FAIL  tests/unit/ipc-policy.test.ts > isTrustedCaller > accepts the exact built document URL with Chinese and spaces
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/unit/ipc-policy.test.ts:16:75
+     14|   it('accepts the exact built document URL with Chinese and spaces', (…
+     15|     const fileUrl = pathToFileURL('C:/小说 工作台/out/renderer/index.html')…
+     16|     expect(isTrustedCaller({ ...caller, frameUrl: fileUrl }, 7, fileUr…
+       |                                                                           ^
+     17|   });
+     18|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > returns application info for the trusted main frame and unregisters on disposal
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ fixture tests/unit/ipc.test.ts:68:35
+     66|     const window = new native.Window({});
+     67|     const dispose = registerAppIpc(() => window as unknown as BrowserW…
+     68|     expect(native.ipcMain.handle).toHaveBeenCalledTimes(1);
+       |                                   ^
+     69|     const [channel, handle] = native.ipcMain.handle.mock.calls[0]!;
+     70|     expect(channel).toBe('avalon:get-app-info');
+ ❯ tests/unit/ipc.test.ts:75:40
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects extra argument without returning app info
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects different window without returning app info
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects child frame without returning app info
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects external URL without returning app info
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects missing frame without returning app info
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects destroyed window without returning app info
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ fixture tests/unit/ipc.test.ts:68:35
+     66|     const window = new native.Window({});
+     67|     const dispose = registerAppIpc(() => window as unknown as BrowserW…
+     68|     expect(native.ipcMain.handle).toHaveBeenCalledTimes(1);
+       |                                   ^
+     69|     const [channel, handle] = native.ipcMain.handle.mock.calls[0]!;
+     70|     expect(channel).toBe('avalon:get-app-info');
+ ❯ tests/unit/ipc.test.ts:81:39
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > registerAppIpc > rejects while no window is available
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ tests/unit/ipc.test.ts:94:35
+     92|   it('rejects while no window is available', async () => {
+     93|     registerAppIpc(() => null, () => url);
+     94|     expect(native.ipcMain.handle).toHaveBeenCalledTimes(1);
+       |                                   ^
+     95|     const handle = native.ipcMain.handle.mock.calls[0]![1];
+     96|     await expect(Promise.resolve().then(() => handle({}))).rejects.toT…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > preload bridge > exposes only the no-argument application info call
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ api tests/unit/ipc.test.ts:103:52
+    101|   async function api() {
+    102|     await import('../../src/preload/index');
+    103|     expect(native.contextBridge.exposeInMainWorld).toHaveBeenCalledTim…
+       |                                                    ^
+    104|     const [name, exposed] = native.contextBridge.exposeInMainWorld.moc…
+    105|     expect(name).toBe('avalon');
+ ❯ tests/unit/ipc.test.ts:110:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > preload bridge > sanitizes invalid response null
+ FAIL  tests/unit/ipc.test.ts > preload bridge > sanitizes invalid response {}
+ FAIL  tests/unit/ipc.test.ts > preload bridge > sanitizes invalid response {"name":"Other","version":"1"}
+ FAIL  tests/unit/ipc.test.ts > preload bridge > sanitizes invalid response {"name":"Avalon","version":""}
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ api tests/unit/ipc.test.ts:103:52
+    101|   async function api() {
+    102|     await import('../../src/preload/index');
+    103|     expect(native.contextBridge.exposeInMainWorld).toHaveBeenCalledTim…
+       |                                                    ^
+    104|     const [name, exposed] = native.contextBridge.exposeInMainWorld.moc…
+    105|     expect(name).toBe('avalon');
+ ❯ tests/unit/ipc.test.ts:116:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > preload bridge > sanitizes native IPC errors
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ api tests/unit/ipc.test.ts:103:52
+    101|   async function api() {
+    102|     await import('../../src/preload/index');
+    103|     expect(native.contextBridge.exposeInMainWorld).toHaveBeenCalledTim…
+       |                                                    ^
+    104|     const [name, exposed] = native.contextBridge.exposeInMainWorld.moc…
+    105|     expect(name).toBe('avalon');
+ ❯ tests/unit/ipc.test.ts:121:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > createMainWindow > creates the sandboxed window, loads the fixed dev URL and blocks navigation/permissions
+Error: NOT_IMPLEMENTED
+ ❯ createMainWindow src/main/window.ts:4:9
+      2| // RED stub: SPEC-001 writer/plan.html §3.4.
+      3| export async function createMainWindow(): Promise<BrowserWindow> {
+      4|   throw new Error('NOT_IMPLEMENTED');
+       |         ^
+      5| }
+      6|
+ ❯ tests/unit/ipc.test.ts:131:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > createMainWindow > uses a local built file when no development server is present
+Error: NOT_IMPLEMENTED
+ ❯ createMainWindow src/main/window.ts:4:9
+      2| // RED stub: SPEC-001 writer/plan.html §3.4.
+      3| export async function createMainWindow(): Promise<BrowserWindow> {
+      4|   throw new Error('NOT_IMPLEMENTED');
+       |         ^
+      5| }
+      6|
+ ❯ tests/unit/ipc.test.ts:151:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > createMainWindow > ignores the development URL in packaged mode
+Error: NOT_IMPLEMENTED
+ ❯ createMainWindow src/main/window.ts:4:9
+      2| // RED stub: SPEC-001 writer/plan.html §3.4.
+      3| export async function createMainWindow(): Promise<BrowserWindow> {
+      4|   throw new Error('NOT_IMPLEMENTED');
+       |         ^
+      5| }
+      6|
+ ❯ tests/unit/ipc.test.ts:159:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > createMainWindow > rejects an unexpected dev server address before loading it
+AssertionError: expected [Function] to throw error including 'INVALID_DEV_URL' but got 'NOT_IMPLEMENTED'
+
+Expected: "INVALID_DEV_URL"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ tests/unit/ipc.test.ts:166:37
+    164|     vi.stubEnv('ELECTRON_RENDERER_URL', 'http://127.0.0.1:5179/');
+    165|     const { createMainWindow } = await import('../../src/main/window');
+    166|     await expect(createMainWindow()).rejects.toThrow('INVALID_DEV_URL'…
+       |                                     ^
+    167|   });
+    168| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > bootstrap lifecycle > registers IPC before creating one window, quits on Windows close, and reopens on activate
+AssertionError: expected [] to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/unit/ipc.test.ts:174:51
+    172|     vi.stubEnv('ELECTRON_RENDERER_URL', 'http://127.0.0.1:5178/');
+    173|     await import('../../src/main/index');
+    174|     await vi.waitFor(() => expect(native.windows).toHaveLength(1));
+       |                                                   ^
+    175|     expect(native.ipcMain.handle).toHaveBeenCalledTimes(1);
+    176|     expect(native.ipcMain.handle.mock.invocationCallOrder[0]).toBeLess…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/36]⎯
+
+ FAIL  tests/unit/ipc.test.ts > bootstrap lifecycle > reports readiness failure and exits nonzero
+AssertionError: expected "vi.fn()" to be called with arguments: [ 1 ]
+
+Number of calls: 0
+
+ ❯ tests/unit/ipc.test.ts:193:52
+    191|     native.app.whenReady.mockRejectedValue(new Error('readiness failed…
+    192|     await import('../../src/main/index');
+    193|     await vi.waitFor(() => expect(native.app.exit).toHaveBeenCalledWit…
+       |                                                    ^
+    194|     expect(log).toHaveBeenCalledWith(expect.objectContaining({ event: …
+    195|     expect(native.windows).toHaveLength(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/36]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 2 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+AssertionError: expected [Function] to throw error including '连接失败，请重试' but got 'NOT_IMPLEMENTED'
+ ❯ _Assertion.__VITEST_REJECTS__ node_modules/vitest/dist/chunks/index.CZzC1gGg.js:2178:33
+ ❯ _Assertion.propertyGetter node_modules/chai/index.js:1607:27
+ ❯ Object.proxyGetter [as get] node_modules/chai/index.js:1696:22
+ ❯ tests/unit/connection.test.ts:55:36
+     53|     let fail!: (error: Error) => void;
+     54|     const result = checkConnection({ getAppInfo: () => new Promise((_,…
+     55|     const rejected = expect(result).rejects.toThrow(message);
+       |                                    ^
+     56|     let settled = false;
+     57|     void result.catch(() => { settled = true; });
+ ❯ node_modules/vitest/dist/chunks/run.CjdgFZiW.js:1632:35
+ ❯ node_modules/vitest/dist/chunks/run.CjdgFZiW.js:2801:26
+ ❯ node_modules/vitest/dist/chunks/run.CjdgFZiW.js:3338:20
+ ❯ runWithCancel node_modules/vitest/dist/chunks/run.CjdgFZiW.js:3333:10
+
+This error originated in "tests/unit/connection.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "times out at 3000 ms, then handles a late rejection without leaking a timer". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+AssertionError: expected [Function] to throw error including '连接失败，请重试' but got 'NOT_IMPLEMENTED'
+ ❯ _Assertion.__VITEST_REJECTS__ node_modules/vitest/dist/chunks/index.CZzC1gGg.js:2178:33
+ ❯ _Assertion.propertyGetter node_modules/chai/index.js:1607:27
+ ❯ Object.proxyGetter [as get] node_modules/chai/index.js:1696:22
+ ❯ tests/unit/connection.test.ts:70:36
+     68|     vi.useFakeTimers();
+     69|     const result = checkConnection({ getAppInfo: () => new Promise(() …
+     70|     const rejected = expect(result).rejects.toThrow(message);
+       |                                    ^
+     71|     await vi.advanceTimersByTimeAsync(10);
+     72|     await rejected;
+ ❯ node_modules/vitest/dist/chunks/run.CjdgFZiW.js:1632:35
+ ❯ node_modules/vitest/dist/chunks/run.CjdgFZiW.js:2801:26
+ ❯ node_modules/vitest/dist/chunks/run.CjdgFZiW.js:3338:20
+ ❯ runWithCancel node_modules/vitest/dist/chunks/run.CjdgFZiW.js:3333:10
+
+This error originated in "tests/unit/connection.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "supports an explicit timeout for focused callers". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  3 failed (3)
+      Tests  35 failed | 11 passed (46)
+     Errors  2 errors
+   Start at  15:07:32
+   Duration  2.28s (tests 90%, transform 6%, import 3%)
+
+Exit code: 1

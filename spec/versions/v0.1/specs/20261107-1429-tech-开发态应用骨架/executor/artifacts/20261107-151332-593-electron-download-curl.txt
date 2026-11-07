@@ -1,0 +1,14 @@
+=== electron-download-curl Run ===
+Command: node .awr/cache/download-electron.mjs
+Timestamp: 2026-11-07T15:13:32.6080763+08:00
+file:///C:/workspace/Avalon/.awr/cache/download-electron.mjs:12
+      child.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`curl exited ${code}`)));
+                                                                 ^
+
+Error: curl exited 4294967295
+    at ChildProcess.<anonymous> (file:///C:/workspace/Avalon/.awr/cache/download-electron.mjs:12:66)
+    at ChildProcess.emit (node:events:509:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:295:12)
+
+Node.js v24.18.0
+Exit code: 1

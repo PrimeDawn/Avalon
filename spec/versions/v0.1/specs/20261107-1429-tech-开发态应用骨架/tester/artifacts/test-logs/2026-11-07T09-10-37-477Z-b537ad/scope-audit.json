@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-11-07T09:17:06.166121+00:00",
+  "unchangedSourceAndUnitFiles": [
+    "src\\main\\index.ts",
+    "src\\main\\ipc-policy.ts",
+    "src\\main\\ipc.ts",
+    "src\\main\\window.ts",
+    "src\\preload\\index.ts",
+    "src\\renderer\\index.html",
+    "src\\shared\\contracts.ts",
+    "src\\renderer\\src\\App.tsx",
+    "src\\renderer\\src\\connection.ts",
+    "src\\renderer\\src\\env.d.ts",
+    "src\\renderer\\src\\main.tsx",
+    "src\\renderer\\src\\style.css",
+    "tests\\unit\\connection.test.ts",
+    "tests\\unit\\ipc-policy.test.ts",
+    "tests\\unit\\ipc.test.ts"
+  ],
+  "lockfileUnchanged": true,
+  "devUnexpectedErrors": 0,
+  "devRequestsLocalOnly": true,
+  "sourceShaIsBaseCommitNotDirtyTree": true
+}

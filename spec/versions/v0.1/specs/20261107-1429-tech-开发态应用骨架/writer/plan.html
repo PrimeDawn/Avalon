@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>实现方案：开发态应用骨架</title>
+<meta name="rk:title" content="实现方案：开发态应用骨架">
+<meta name="rk:type" content="plan">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架">
+<meta name="rk:role" content="spec-writer">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已确认">
+<meta name="rk:created" content="2026-11-07">
+<meta name="rk:updated" content="2026-11-07">
+<meta name="rk:revision" content="6">
+<meta name="rk:git-branch" content="tech/spec-20261107-1429-dev-shell">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,plan">
+<meta name="rk:priority" content="高">
+<meta name="rk:execution-mode" content="single-agent">
+<link rel="rk-exploration" href="../explorer/exploration-report.html">
+<link rel="rk-test-plan" href="../tester/test-plan.html">
+<link rel="rk-ledger" href="../lead/team-context.md">
+<link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css"><script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head><body><nav class="rk-nav"></nav><header class="rk-head"><h1>实现方案：开发态应用骨架</h1><div class="rk-meta"><span><b>title</b> 实现方案：开发态应用骨架</span><span><b>type</b> plan</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架</span><span><b>role</b> spec-writer</span><span><b>mode</b> gated</span><span><b>status</b> 已确认</span><span><b>created</b> 2026-11-07</span><span><b>updated</b> 2026-11-07</span><span><b>revision</b> 6</span><span><b>git-branch</b> tech/spec-20261107-1429-dev-shell</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,plan</span><span><b>priority</b> 高</span><span><b>execution-mode</b> single-agent</span></div></header><nav class="rk-revbar"></nav><h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-07</td><td>spec-writer</td><td>初版</td><td>按运行账本 D-001 / D-002</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-07</td><td>spec-writer</td><td>明确 CSP 与可信 URL、补处理器适配测试</td><td>按 D-003 与 tester 边界核对</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-07</td><td>spec-writer</td><td>开发端口改为 5178，同步地址、安全策略及端口冲突验收</td><td>按运行账本 D-005，用户指定开发端口</td></tr><tr class="rk-added" data-rev="4"><td>r4</td><td>2026-11-07</td><td>TeamLead</td><td>登记用户批准进入实现</td><td>用户明确调用 spec-execute，见 gate-2</td></tr><tr class="rk-added" data-rev="5"><td>r5</td><td>2026-11-07</td><td>TeamLead / spec-tester</td><td>增加测试报告反链</td><td>本轮测试执行与证据登记，不改变确认的验收标准</td></tr><tr class="rk-added" data-rev="6"><td>r6</td><td>2026-11-07</td><td>TeamLead / spec-ender</td><td>登记收尾确认与归档关联</td><td>用户本轮测试确认与收尾授权；见账本 D-009</td></tr></tbody></table>
+<p class="rk-added" data-rev="4">用户已确认本方案并要求按 plan 执行实现。开发端口为 5178。executor 负责实现与单元 / 聚焦测试；E2E、真实桌面更新与最终结论在实现报告确认后交 tester，以下原始阶段说明保留作历史。</p><section class="rk-verdict"><div class="rk-verdict-label"><del class="rk-del" data-rev="4">待确认方案</del><ins class="rk-ins" data-rev="4">已确认方案</ins></div><p>用 npm + electron-vite 建立可启动、可更新、可测试的 Electron / React / TypeScript 开发工程。页面只呈现启动与连接检查，不包含小说业务、最终外观或 exe 打包。本文件与测试计划经用户确认后才写实现代码。</p></section>
+<h2>1. 概述</h2><p>仓库无应用代码。SPEC-001 为 v0.1 技术底座，交付开发态窗口、React 页面、最小受控 IPC、更新验证及正常退出。SPEC-007 承担 Windows 分发包，SPEC-003 承担视觉设计。</p>
+<h2>2. 需求分析</h2><table><thead><tr><th>编号</th><th>输入 / 操作</th><th>可观察结果</th></tr></thead><tbody>
+<tr><td>FR-001</td><td>按 README 安装并运行 npm run dev</td><td>只出现一个 Avalon 窗口，页面显示“工作台已启动”，无未处理异常</td></tr>
+<tr><td>FR-002</td><td>修改 renderer / main / preload 源码</td><td>renderer 更新可见；main 重启；preload 重载后窄 API 仍可用</td></tr>
+<tr><td>FR-003</td><td>点击“检查连接”</td><td>idle → checking → ready，显示“连接正常”与应用版本；失败或 3 秒无响应转 error，可重试</td></tr>
+<tr><td>FR-004</td><td>关闭窗口 / 终止开发命令</td><td>Windows 最后窗口关闭时应用退出；开发命令可显式结束，无本次 Electron 子进程残留</td></tr>
+<tr><td>FR-005</td><td>运行类型检查、单测、构建与桌面 E2E</td><td>真实验证可复现，失败返回非零，证据落当前 Spec 目录</td></tr>
+</tbody></table><p>验收平台为当前 Windows x64 开发机；不声称已验证其他平台。业务不依赖网络；首次安装依赖允许联网，开发服务仅回环访问。README 必须说明开发态窗口关闭后若 Vite watcher 留驻，使用 Ctrl+C 结束整个开发命令。</p>
+<h2>3. 设计方案</h2>
+<h3>3.1 工程与依赖</h3><p>单 package 工程，使用 npm 11 / Node 24；记录 packageManager 与 engines（Node &gt;=24.0.0 &lt;25），仅提交 package-lock.json，后续用 npm ci。候选精确版本：Electron 45.2.3、electron-vite 6.0.0、Vite 8.3.6、React / React DOM 19.3.1、TypeScript 7.0.2、@vitejs/plugin-react 6.2.1、Vitest 5.1.0、@playwright/test 1.65.0。types 包选择匹配主版本并锁入 lockfile。正式版本已从 registry 核验，组合未运行；如安装存在 peer 冲突，先报告具体冲突，不使用 --force 或 --legacy-peer-deps 掩盖。</p>
+<p>main、preload 输出分别固定为 <code>out/main/index.cjs</code>、<code>out/preload/index.cjs</code>；renderer 输出 <code>out/renderer/index.html</code>。package.json main 指向 main/index.cjs。preload 合成单个 CJS 文件，只外置 Electron API。构建用于静态校验和桌面测试，不包含分发打包配置。</p>
+<h3>3.2 启动与权限边界</h3><p>app.whenReady 后注册 IPC，再创建窗口。初始 1000×700、最小 640×480，仅为技术测试默认值。保留原生标题栏；contextIsolation=true、sandbox=true、nodeIntegration=false。渲染端不导入 Electron 或 Node。阻止新窗口和离开应用文档的导航，拒绝权限请求。</p>
+<p class="rk-removed" data-rev="2">开发模式只接受由 electron-vite 提供的 http://127.0.0.1:5173 文档地址；服务 host=127.0.0.1、port=5173、strictPort=true。端口冲突明确报错，不静默跳端口。build 后 loadFile 加载输出 HTML；地址与 preload 路径由输出文件位置解析，不固定本机绝对路径。开发 CSP 仅为本地脚本 / HMR websocket 开口，构建态禁止远程连接；具体 CSP 文本随类型检查与真实启动验证。</p>
+<p class="rk-added" data-rev="2">开发地址为 http://127.0.0.1:<del class="rk-del" data-rev="3">5173</del><ins class="rk-ins" data-rev="3">5178</ins>/，server host=127.0.0.1、port=<del class="rk-del" data-rev="3">5173</del><ins class="rk-ins" data-rev="3">5178</ins>、strictPort=true；端口冲突明确失败。build 后 loadFile 加载输出 HTML，URL 用 pathToFileURL 生成，与 IPC 可信文档 URL 同源。preload 与资源路径相对输出目录解析。开发 CSP：default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' ws://127.0.0.1:<del class="rk-del" data-rev="3">5173</del><ins class="rk-ins" data-rev="3">5178</ins>; object-src 'none'; base-uri 'none'。构建 CSP：default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'。配置文件按 command 通过 HTML 转换写入对应策略，不扩大其他来源。</p>
+<p>Windows / Linux 在 window-all-closed 时 quit；macOS 保留标准 activate 重开逻辑，当前只作结构兼容、不计跨平台验收。加载失败或主进程启动异常记录错误并非零退出，不留下空白窗口假装启动成功。</p>
+<h3>3.3 数据结构</h3><table><thead><tr><th>结构 / 字段</th><th>类型 / 空值 / 默认值</th><th>语义</th></tr></thead><tbody>
+<tr><td>AppInfo.name</td><td>字面量 'Avalon'；不可空；固定值</td><td>应用标识</td></tr>
+<tr><td>AppInfo.version</td><td>string；不可空；无默认</td><td>主进程 app.getVersion()，package 初始 0.1.0</td></tr>
+<tr><td>AvalonApi.getAppInfo</td><td>() =&gt; Promise&lt;AppInfo&gt;；不可空</td><td>唯一页面桥接方法</td></tr>
+<tr><td>ConnectionState</td><td>判别联合，默认 {status:'idle'}</td><td>idle / checking 无附加字段；ready 带 info:AppInfo；error 带 message:string，均非空</td></tr>
+<tr><td>IpcCaller</td><td>webContentsId:number、frameUrl:string、isMainFrame:boolean；均非空、无默认</td><td>只用于来源校验，不接受页面自报这些字段</td></tr>
+</tbody></table>
+<h3>3.4 接口签名与行为</h3><pre><code>type AppInfo = { name: 'Avalon'; version: string };
+interface AvalonApi { getAppInfo(): Promise&lt;AppInfo&gt; }
+type ConnectionState =
+  | { status: 'idle' | 'checking' }
+  | { status: 'ready'; info: AppInfo }
+  | { status: 'error'; message: string };
+type IpcCaller = { webContentsId: number; frameUrl: string; isMainFrame: boolean };
+
+isTrustedCaller(caller: IpcCaller, expectedId: number, expectedUrl: string): boolean
+registerAppIpc(getWindow: () =&gt; BrowserWindow | null,
+               getDocumentUrl: () =&gt; string): () =&gt; void
+createMainWindow(): Promise&lt;BrowserWindow&gt;
+bootstrap(): Promise&lt;void&gt;
+getAppInfo(): Promise&lt;AppInfo&gt;  // preload 唯一公开方法
+checkConnection(api: AvalonApi | undefined, timeoutMs?: number): Promise&lt;AppInfo&gt;
+App(): React.JSX.Element</code></pre>
+<p><code>isTrustedCaller</code> 为纯函数，校验调用者窗口 ID、主 frame 和精确文档 URL；非法 URL 返回 false，不抛异常。<code>registerAppIpc</code> 使用固定通道 <code>avalon:get-app-info</code>，无请求参数；额外参数、子 frame、外部页面或未知窗口分别拒绝，不返回敏感详情；返回取消注册函数。getWindow/getDocumentUrl 来自主进程闭包，启动时未就绪也拒绝。注册一次，主进程重启由新进程重新注册。</p>
+<p><code>createMainWindow</code> 异步等待文档加载，加载失败 reject Error；<code>bootstrap</code> 捕获初始化错误并输出结构化 console 事件后退出码 1。窗口对象在 closed 时清空，activate 时仅在无窗口时重建。</p>
+<p>preload 通过 contextBridge.exposeInMainWorld('avalon', api) 暴露对象，不暴露通道名参数、ipcRenderer、event、fs 或 shell。调用拒绝统一变为 Error('IPC_UNAVAILABLE')；成功对象检查 name/version 类型后返回。<code>checkConnection</code> 默认 timeoutMs=3000；API 缺失、请求拒绝、结构错误和超时转为可展示错误，清理 timer，不输出内部栈到页面。页面 pending 时按钮禁用，失败后恢复可点击。</p>
+<h3>3.5 文件清单</h3><table><thead><tr><th>文件（均新增，除注明者）</th><th>职责</th></tr></thead><tbody>
+<tr><td>package.json、package-lock.json</td><td>版本、脚本、依赖锁定</td></tr>
+<tr><td>electron.vite.config.ts</td><td>三入口、CJS 输出、开发 server / watch、React 插件</td></tr>
+<tr><td>tsconfig.json、tsconfig.node.json、tsconfig.web.json</td><td>strict 配置与 Node / 浏览器类型边界</td></tr>
+<tr><td>vitest.config.ts、playwright.config.ts</td><td>unit / desktop E2E 范围；E2E 单 worker、retries=0</td></tr>
+<tr><td>src/shared/contracts.ts</td><td>AppInfo / AvalonApi / 固定通道常量</td></tr>
+<tr><td>src/main/index.ts、src/main/window.ts</td><td>bootstrap、createMainWindow、生命周期及加载错误</td></tr>
+<tr><td>src/main/ipc.ts、src/main/ipc-policy.ts</td><td>registerAppIpc、isTrustedCaller</td></tr>
+<tr><td>src/preload/index.ts</td><td>窄桥接与响应结构检查</td></tr>
+<tr><td>src/renderer/index.html、src/renderer/src/main.tsx</td><td>CSP / 根节点、React 挂载</td></tr>
+<tr><td>src/renderer/src/App.tsx、src/renderer/src/connection.ts、src/renderer/src/style.css、src/renderer/src/env.d.ts</td><td>基础页面、连接状态、最小可读样式、Window.avalon 类型</td></tr>
+<tr><td>tests/unit/ipc-policy.test.ts、tests/unit/connection.test.ts<ins class="rk-ins" data-rev="2">、tests/unit/ipc.test.ts</ins></td><td>来源拒绝与连接错误 / 超时测试<ins class="rk-ins" data-rev="2">，以及处理器拒绝额外参数的适配验证</ins>，executor 负责</td></tr>
+<tr><td>tests/e2e/shell.spec.ts、scripts/run-e2e.mjs</td><td>真实桌面启动、点击检查、权限隔离、退出；运行时自动归档证据，tester 负责</td></tr>
+<tr><td>README.md、CODEMAP.md</td><td>安装、启动、构建、验证、退出说明和源码地图</td></tr>
+<tr><td>.gitignore（修改）</td><td>仅补测试临时目录，保留现有忽略；不得忽略应提交的测试脚本 / Spec 报告</td></tr>
+</tbody></table>
+<p>测试运行目录自动生成，不手写测试证据；源码清单不包含书库、编辑器或持久化模型。现有脚本 scripts/rk-awr-checkpoint.* 不作业务修改。</p>
+<h3>3.6 命令约定</h3><table><thead><tr><th>npm script</th><th>执行内容</th></tr></thead><tbody>
+<tr><td>dev</td><td>electron-vite dev --watch</td></tr><tr><td>build</td><td>electron-vite build</td></tr><tr><td>preview</td><td>electron-vite preview</td></tr>
+<tr><td>typecheck</td><td>tsc --noEmit -p tsconfig.node.json &amp;&amp; tsc --noEmit -p tsconfig.web.json</td></tr><tr><td>test:unit</td><td>vitest run</td></tr><tr><td>test:e2e</td><td>node scripts/run-e2e.mjs</td></tr></tbody></table>
+<p>run-e2e.mjs 通过 Node child_process 启动本项目 Playwright CLI，不拼接 shell 命令；以参数数组传递含中文路径。继承环境但删除 ELECTRON_RUN_AS_NODE，只作用于测试子进程；输出 run-id 到控制台，并在 tester/artifacts/test-logs 下生成本次日志 / JSON / 截图。断言失败或超时返回非零，finally 清理本次启动的 Electron。Playwright 使用项目 Electron，无需下载浏览器代替它。</p>
+<h2>4. 执行模式</h2><p>实现为 single-agent；工作流为 gated + serial，同一 Agent 分阶段承担角色。测试先行：先建立最小工具配置与失败的行为测试，再补使其通过的实现。没有用户对本方案及测试计划的确认，不创建业务源码。</p>
+<h2>5. 实现步骤</h2><table><thead><tr><th>任务</th><th>触点与顺序</th><th>验证命令 / 预期</th></tr></thead><tbody>
+<tr><td>T1 工程工具与首个 RED</td><td>package、tsconfig、Vitest、ipc-policy.test.ts；先安装锁定，再编写来源断言</td><td>npm install → 0；npm run test:unit -- tests/unit/ipc-policy.test.ts → 缺实现时非零，保存 RED 原始输出</td></tr>
+<tr><td>T2 来源规则与连接状态</td><td>ipc-policy、contracts、connection 和<del class="rk-del" data-rev="2">两组</del><ins class="rk-ins" data-rev="2">三组（含 IPC 处理器适配）</ins> unit；补合法 / 非法来源、非法参数、拒绝、超时断言后实现</td><td>npm run test:unit → <del class="rk-del" data-rev="2">两组</del><ins class="rk-ins" data-rev="2">三组</ins>通过；npm run typecheck 在完整入口补齐后通过</td></tr>
+<tr><td>T3 真实桌面与桥接</td><td>先写 shell.spec.ts 启动 / 窄桥接失败用例；再补 main/window/ipc/preload、构建配置和 renderer</td><td>npm run build → 0；npm run test:e2e → 真实 Electron 标题、桥接、权限与退出断言通过；保留实现前失败记录</td></tr>
+<tr><td>T4 开发态更新和异常</td><td>dev server、watch、加载失败、连接重试；按 tester 手动 / 自动场景验证并修复</td><td>npm run dev → 持续运行；分别修改并还原 renderer / main / preload，观察预期更新，Ctrl+C 后清理完成</td></tr>
+<tr><td>T5 文档与复现</td><td>README、CODEMAP、锁文件，核对文件清单</td><td>在临时副本 npm ci、npm run typecheck、npm run test:unit、npm run build、npm run test:e2e 均退出 0；npm run dev 目视验收后手动结束</td></tr>
+</tbody></table><p>以上是实现阶段将创建的命令；当前仓库尚无 package.json，未声称命令已运行。首个测试缺模块失败只建立 RED 起点，GREEN 必须执行真实断言，不能把测试缺失或跳过视为通过。</p>
+<h2>6. 风险和依赖</h2><ul><li>锁文件与候选依赖运行兼容性由真实安装 / 构建验证；上游安装问题单独记录。</li><li>Playwright Electron API 实验性；若受限，报告工具问题并保留真实桌面人工证据，不降级为只验浏览器网页。</li><li>当前无 remote，不能推送或开 PR；本轮授权只有 dev 规划提交和工作分支创建。</li><li>不调整全局环境、安装全局依赖、关闭 Electron 沙箱或扩充本 Spec 业务范围。</li></ul>
+<h2>7. 关联产物</h2><ul class="rk-links"><li><a href="../explorer/exploration-report.html" data-rk-link="exploration">探索报告</a></li><li><a href="../tester/test-plan.html" data-rk-link="test-plan">测试计划</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li></ul><ul class="rk-backlinks"><li class="rk-added" data-rev="5"><a href="../tester/test-report.html" data-rk-backlink="test-report">首次测试报告（原生启动受阻）</a></li><li><a href="../executor/summary.html" data-rk-backlink="summary">实现总结</a></li><li><a href="../../../plan.html" data-rk-backlink="version-plan">v0.1 版本规划</a></li><li><a href="../tester/test-plan.html" data-rk-backlink="test-plan">测试计划</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li></ul>
+<section class="rk-added" data-rev="6"><h2>收尾确认与归档关联</h2><p>2026-11-07 用户确认“测试就通过了，你执行收尾吧”，并要求不推送。原阶段正文保留为历史；当前完成状态及新鲜验证以收尾报告为准。本次只登记确认和反链，不改已确认方案或验收标准。</p><ul class="rk-backlinks"><li><a href="../ender/end-report.html" data-rk-backlink="end-report">SPEC-001 收尾报告</a></li></ul></section></body></html>
+

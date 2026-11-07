@@ -1,0 +1,16 @@
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+Audit UTC: 2026-11-07T08:38:13.886971+00:00
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\explorer\exploration-report.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\writer\plan.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\test-plan.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\tester\test-report.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\executor\summary.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\debugger\debug-001.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\specs\20261107-1429-tech-开发态应用骨架\debugger\debug-001-fix.html
+PASS HTML tags, metadata, links: spec\versions\v0.1\plan.html
+PASS manifest 8 entries
+PASS final source and test fingerprints unchanged since test aggregation
+PASS credential-pattern scan: 33 text evidence files; local paths retained
+PASS captured built-app network summaries contain local file resources only
+PASS git diff --check
+PASS evidence not ignored; no Git commit, no work complete

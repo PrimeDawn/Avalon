@@ -1,0 +1,17 @@
+=== clean-unit Run ===
+Command: npm.cmd run test:unit
+Timestamp: 2026-11-07T15:12:29.1470742+08:00
+
+> avalon@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v5.1.0 C:/workspace/Avalon/.awr/cache/spec001-复现 空格
+
+
+ Test Files  3 passed (3)
+      Tests  52 passed (52)
+   Start at  15:12:30
+   Duration  430ms (transform 43%, tests 39%, import 16%, worker 3%)
+
+Exit code: 0

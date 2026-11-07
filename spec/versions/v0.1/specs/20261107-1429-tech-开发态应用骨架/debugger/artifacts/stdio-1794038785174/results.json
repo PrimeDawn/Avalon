@@ -1,0 +1,74 @@
+[
+  {
+    "name": "baseline-1",
+    "command": [
+      "C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe",
+      "--version"
+    ],
+    "time": "2026-11-07T08:06:25.206Z",
+    "pid": 32868,
+    "code": 2147483651,
+    "signal": null,
+    "output": "\r\n"
+  },
+  {
+    "name": "baseline-2",
+    "command": [
+      "C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe",
+      "--version"
+    ],
+    "time": "2026-11-07T08:06:25.236Z",
+    "pid": 28056,
+    "code": 2147483651,
+    "signal": null,
+    "output": "\r\n"
+  },
+  {
+    "name": "minimal-env",
+    "command": [
+      "C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe",
+      "--version"
+    ],
+    "time": "2026-11-07T08:06:25.266Z",
+    "pid": 14000,
+    "code": 2147483651,
+    "signal": null,
+    "output": "\r\n"
+  },
+  {
+    "name": "file-stdio",
+    "command": [
+      "C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe",
+      "--version"
+    ],
+    "time": "2026-11-07T08:06:25.296Z",
+    "pid": 33724,
+    "code": 2147483651,
+    "signal": null,
+    "output": "\r\n"
+  },
+  {
+    "name": "ignore-stdio",
+    "command": [
+      "C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe",
+      "--version"
+    ],
+    "time": "2026-11-07T08:06:25.325Z",
+    "pid": 33496,
+    "code": 2147483651,
+    "signal": null,
+    "output": ""
+  },
+  {
+    "name": "inherit-stdio",
+    "command": [
+      "C:\\workspace\\Avalon\\node_modules\\electron\\dist\\electron.exe",
+      "--version"
+    ],
+    "time": "2026-11-07T08:06:25.353Z",
+    "pid": 22296,
+    "code": 2147483651,
+    "signal": null,
+    "output": ""
+  }
+]

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>探索报告：开发态应用骨架</title>
+<meta name="rk:title" content="探索报告：开发态应用骨架">
+<meta name="rk:type" content="exploration-report">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架">
+<meta name="rk:role" content="spec-explorer">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="未确认">
+<meta name="rk:created" content="2026-11-07">
+<meta name="rk:updated" content="2026-11-07">
+<meta name="rk:revision" content="3">
+<meta name="rk:git-branch" content="tech/spec-20261107-1429-dev-shell">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,exploration-report">
+<link rel="rk-ledger" href="../lead/team-context.md">
+<link rel="rk-plan" href="../writer/plan.html">
+<link rel="rk-test-plan" href="../tester/test-plan.html">
+<link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css"><script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head><body><nav class="rk-nav"></nav><header class="rk-head"><h1>探索报告：开发态应用骨架</h1><div class="rk-meta"><span><b>title</b> 探索报告：开发态应用骨架</span><span><b>type</b> exploration-report</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架</span><span><b>role</b> spec-explorer</span><span><b>mode</b> gated</span><span><b>status</b> 未确认</span><span><b>created</b> 2026-11-07</span><span><b>updated</b> 2026-11-07</span><span><b>revision</b> 3</span><span><b>git-branch</b> tech/spec-20261107-1429-dev-shell</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,exploration-report</span></div></header><nav class="rk-revbar"></nav><h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-07</td><td>spec-explorer</td><td>初版</td><td>按运行账本 D-001 / D-002</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-07</td><td>TeamLead</td><td>补齐下游报告反链</td><td>方案与测试计划已产出</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-07</td><td>TeamLead / spec-ender</td><td>登记收尾确认与归档关联</td><td>用户本轮测试确认与收尾授权；见账本 D-009</td></tr></tbody></table>
+<section class="rk-verdict"><div class="rk-verdict-label">探索结论</div><p>已有材料足以编写方案和测试计划。仓库尚无应用代码，建议建立 npm + electron-vite 的最小桌面开发工程；具体依赖组合仍须实现期真实安装、编译和启动验证。</p></section>
+<h2>1. 历史经验检索</h2><p>按 exp-search 搜索 Electron / Vite / IPC / 骨架，spec/context 中无命中详情。知识与经验索引仅有占位行，不将其当作已有技术验证。</p>
+<h2>2. 项目现状</h2><p>基线提交 <code>975c33bb72c1caef77a80ef6c526726279e2a143</code>，dev 清洁后创建当前分支；无 Git remote，无法执行远端拉取，不影响本地规划。现有内容为 DESIGN.md、规则、工作账本与报告资源；无 package.json、src 或应用测试。</p><p>本机查询：Node 24.18.0、npm 11.16.0、pnpm 12.6.0、AWR 0.6.0。选 npm 可以直接使用现有 Node 安装，项目只维护 package-lock.json。版本已确认仅做开发态启动、React 更新、最小 IPC、退出；打包、视觉、编辑、存储分属后续 Spec。</p>
+<h2>3. 外部知识与适用边界</h2><ul>
+<li><a href="https://electron-vite.org/guide/">electron-vite 官方指南</a>提供 main / preload / renderer 三入口统一构建。采用显式入口和输出格式，避免依赖隐式目录猜测。</li>
+<li><a href="https://electron-vite.org/guide/hmr-and-hot-reloading">更新机制</a>区分 renderer HMR、main 重启与 preload 触发页面重载；使用 dev --watch，不能把任一页面刷新当作全部更新路径已验证。</li>
+<li><a href="https://www.electronjs.org/docs/latest/tutorial/context-isolation">Electron 上下文隔离</a>要求经 contextBridge 暴露窄方法，不暴露 ipcRenderer 或通用通道调用；preload 不是第三个独立进程。</li>
+<li><a href="https://www.electronjs.org/docs/latest/tutorial/security">Electron 安全建议</a>支持保留 contextIsolation / sandbox、关闭 nodeIntegration，并校验 IPC 来源。开发服务只监听回环地址。</li>
+<li><a href="https://electron-vite.org/guide/troubleshooting">沙箱 preload 限制</a>意味着本例应输出单个 CJS preload 文件；只依赖 Electron 允许的 API，项目常量随文件打入，不通过关闭沙箱解决加载问题。</li>
+<li><a href="https://playwright.dev/docs/api/class-electron">Playwright Electron 支持</a>仍标为实验性。自动化必须启动实际 Electron，另保留人工窗口关闭与开发命令退出检查，不能只用网页代替桌面验收。</li></ul>
+<h3>依赖候选快照</h3><p>2026-11-07 从 npm 官方 registry 查询：Electron 45.2.3，electron-vite 6.0.0，Vite 8.3.6，React / React DOM 19.3.1，TypeScript 7.0.2，React 插件 6.2.1，Vitest 5.1.0，Playwright Test 1.65.0。Node 24.18.0 满足查询到的工具 engines；React 插件声明 Vite 8 peer。网页指南仍显示 electron-vite 5，具体配置必须以安装版本类型及构建结果复核。这些是发布元数据，不是组合运行通过的证据。</p>
+<h2>4. 对下游的建议</h2><p>通过一个只读 getAppInfo() 测试端到端通信，不提前搭模块注册框架。应用呈现 Avalon 标题、启动状态和连接检查按钮，最终外观由 SPEC-003 决定。显式生成 main/index.cjs、preload/index.cjs 与 renderer HTML；构建用于校验及 E2E，不代表完成 Windows 打包。</p>
+<h2>5. 风险与边界</h2>
+<div class="rk-cal risk"><div class="t">首次依赖下载</div><p>npm 包与 Electron 二进制下载都可能受网络影响；实现前记录 registry、锁文件、安装退出码。不得将下载失败改写为应用测试通过。</p></div>
+<div class="rk-cal risk"><div class="t">开发服务与退出</div><p>端口冲突、HMR websocket、Electron 子进程退出须独立观测。测试只清理自身启动的进程，不能按进程名关闭其他 Electron 应用。</p></div>
+<div class="rk-cal warn"><div class="t">验收不能越界</div><p>本轮无 exe 安装包、小说编辑与读写；窗口尺寸只是技术默认值。未运行安装、编译或 E2E，目前只完成调研。</p></div>
+<h2>6. 反思分流</h2><p>exp-reflect 识别到可复用的“开发态、构建态、打包态验收边界”知识，但其在本项目尚无运行证据。先保留在本探索报告，收尾取得真实证据后再整理知识记忆；本轮不重复写索引或修改规则。</p>
+<h2>7. 关联产物</h2><ul class="rk-links"><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li></ul><ul class="rk-backlinks"><li><a href="../writer/plan.html" data-rk-backlink="plan">实现方案<del class="rk-del" data-rev="2">（计划产出）</del><ins class="rk-ins" data-rev="2">（已产出）</ins></a></li><li><a href="../tester/test-plan.html" data-rk-backlink="test-plan">测试计划<del class="rk-del" data-rev="2">（计划产出）</del><ins class="rk-ins" data-rev="2">（已产出）</ins></a></li></ul>
+<section class="rk-added" data-rev="3"><h2>收尾确认与归档关联</h2><p>2026-11-07 用户确认“测试就通过了，你执行收尾吧”，并要求不推送。原阶段正文保留为历史；当前完成状态及新鲜验证以收尾报告为准。本次只登记确认和反链，不改已确认方案或验收标准。</p><ul class="rk-backlinks"><li><a href="../ender/end-report.html" data-rk-backlink="end-report">SPEC-001 收尾报告</a></li></ul></section></body></html>
+

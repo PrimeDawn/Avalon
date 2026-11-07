@@ -1,0 +1,30 @@
+Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run build
+Timestamp: 2026-11-07T07:27:40.757Z
+
+> avalon@0.1.0 build
+> electron-vite build
+
+vite v8.3.6 building ssr environment for production...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+out/main/index.cjs  3.44 kB
+
+✓ built in 23ms
+vite v8.3.6 building ssr environment for production...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.64 kB
+
+✓ built in 15ms
+vite v8.3.6 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+out/renderer/index.html                   0.64 kB
+out/renderer/assets/index-DTKakpnq.css    0.68 kB
+out/renderer/assets/index-DcDGLX3i.js   566.96 kB
+
+✓ built in 77ms
+Exit code: 0

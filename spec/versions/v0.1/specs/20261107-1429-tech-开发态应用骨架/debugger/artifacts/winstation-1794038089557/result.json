@@ -1,0 +1,28 @@
+{
+  "timestamp": 1794038089.550955,
+  "station": "WinSta0",
+  "desktop": "Default",
+  "attempts": [
+    {
+      "access": "0x80000008",
+      "success": true,
+      "error": 0,
+      "message": "系统找不到指定的路径。",
+      "name": "Service-0x0-1043fd$"
+    },
+    {
+      "access": "0xa",
+      "success": true,
+      "error": 0,
+      "message": "系统找不到指定的路径。",
+      "name": "Service-0x0-1043fd$"
+    }
+  ],
+  "read_station_dacl": true,
+  "dacl": {
+    "sha256": "6d34a49e1bab542cf6fc1f40b6875e05873bd4b353fa14712661341febf8f534",
+    "size": 436,
+    "aces": 17
+  },
+  "descriptor": "absolute, copied DACL only (Chromium ToAbsolute shape)"
+}

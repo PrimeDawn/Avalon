@@ -2,13 +2,14 @@
 milestones:
   - id: v0.1
     title: Avalon v0.1 本地小说编辑器
-    status: planned
-    summary: 六项范围已确认，版本规划中；具体 Spec 仍须阶段门禁。
+    status: in_progress
+    summary: 六项范围已确认；SPEC-001 用户验收通过并完成收尾，其余五项待启动。
     scope: [SPEC-001, SPEC-007, SPEC-003, SPEC-002, SPEC-004, SPEC-006]
     acceptance:
       - 目标 Windows 机器无需开发工具即可运行最终交付包。
       - 新建一本书、三章中文稿件，保存、切章与退出重启后内容一致，可继续修改。
       - 保存失败保留编辑内容，未保存离开有保护，最终界面符合确认稿。
+      - 发版前完成产品 README 与开发文档分离，CODEMAP 维护源码地图；使用说明、开发命令和链接核验通过，在发布报告记录；CONTRIBUTING 按需创建（版本账本 D-004）。
 work_items:
   - id: INTAKE-001
     kind: intake
@@ -25,7 +26,20 @@ work_items:
   - id: SPEC-001
     kind: spec
     title: 开发态应用骨架
-    status: ready
+    paths:
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/lead/team-context.md
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/writer/plan.html
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/test-plan.html
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/executor/summary.html
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/test-report.html
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/debugger/debug-001.html
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/debugger/debug-001-fix.html
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/ender/end-report.html
+    evidence:
+      - locator: spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/test-report.html
+        summary: 用户确认测试；收尾新鲜回归通过，机器证据另行绑定
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/artifacts/test-logs/2026-11-07T09-10-37-477Z-b537ad/completion-report.json
+    status: completed
     milestone: v0.1
     goal: "goal#intake-goal"
     tags: [v0.1, tech]
@@ -35,8 +49,10 @@ work_items:
     acceptance:
       - 按说明从干净依赖安装启动 Electron 窗口，React 页面与开发态更新可验证。
       - 主进程、preload、渲染端职责清晰，最小受控 IPC 往返和窗口退出正常。
-    next_action: 以 dev 为集成基线完成需求对齐、分支准备及探索，方案与测试计划经用户确认后实现。
-    summary: 原骨架与构建管线拆分，打包归 SPEC-007，视觉归 SPEC-003。
+    next_action: 已交付并原位归档；本地提交，不推送；后续 Spec 启动及分支合并另走门禁
+    summary: 已交付开发态骨架并完成用户验收；新鲜回归、经验沉淀及原位归档完成
+    verification:
+      evidence_level: locally_verified
   - id: SPEC-007
     kind: spec
     title: Windows 打包与运行路径

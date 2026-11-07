@@ -1,0 +1,146 @@
+
+> avalon@0.1.0 dev
+> electron-vite dev --watch --remoteDebuggingPort 9237 --clearScreen false -- --user-data-dir=C:\workspace\Avalon\.awr\cache\independent-1794039915835\dev-profile
+
+vite v8.3.6 building ssr environment for development...
+
+watching for file changes...
+
+build started...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+out/main/index.cjs  3.44 kB
+
+built in 21ms.
+
+electron main process built successfully
+
+-----
+
+vite v8.3.6 building ssr environment for development...
+
+watching for file changes...
+
+build started...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.64 kB
+
+built in 12ms.
+
+electron preload scripts built successfully
+
+-----
+
+dev server running for the electron renderer process at:
+
+  ➜  Local:   http://127.0.0.1:5178/
+
+starting electron app...
+
+
+
+DevTools listening on ws://127.0.0.1:9237/devtools/browser/326799a1-cf22-4407-9dd2-358311a18353
+16:29:20 [vite] (client) hmr update /src/App.tsx
+16:29:20 [vite] (client) hmr update /src/App.tsx
+
+build started...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.66 kB
+
+built in 8ms.
+
+electron preload scripts rebuilt successfully
+
+reloading electron renderer...
+
+
+build started...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.64 kB
+
+built in 7ms.
+
+electron preload scripts rebuilt successfully
+
+reloading electron renderer...
+
+16:30:04 [vite] (client) hmr update /src/App.tsx
+16:30:04 [vite] (client) hmr update /src/App.tsx
+
+build started...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.66 kB
+
+built in 7ms.
+
+electron preload scripts rebuilt successfully
+
+reloading electron renderer...
+
+
+build started...
+transforming...
+✓ 3 modules transformed.
+rendering chunks...
+out/preload/index.cjs  0.64 kB
+
+built in 7ms.
+
+electron preload scripts rebuilt successfully
+
+reloading electron renderer...
+
+
+build started...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+out/main/index.cjs  3.48 kB
+
+built in 13ms.
+
+electron main process rebuilt successfully
+
+restarting electron app...
+
+
+build started...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+out/main/index.cjs  3.48 kB
+
+built in 21ms.
+
+electron main process rebuilt successfully
+
+restarting electron app...
+
+
+
+DevTools listening on ws://127.0.0.1:9237/devtools/browser/c4dee8d7-4ef6-4324-90ae-9842eb3feb7b
+
+build started...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+out/main/index.cjs  3.44 kB
+
+built in 8ms.
+
+electron main process rebuilt successfully
+
+restarting electron app...
+
+
+
+DevTools listening on ws://127.0.0.1:9237/devtools/browser/82a5767b-b004-4a7e-bf75-2f63d8c0911f

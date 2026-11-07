@@ -1,0 +1,22 @@
+[
+  {
+    "case": "TC-004 — a real foreign window cannot invoke the app handler",
+    "method": "GET",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DcDGLX3i.js"
+  },
+  {
+    "case": "TC-004 — a real foreign window cannot invoke the app handler",
+    "method": "GET",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DTKakpnq.css"
+  },
+  {
+    "case": "TC-004 — a real foreign window cannot invoke the app handler",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DTKakpnq.css",
+    "status": 200
+  },
+  {
+    "case": "TC-004 — a real foreign window cannot invoke the app handler",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-DcDGLX3i.js",
+    "status": 200
+  }
+]

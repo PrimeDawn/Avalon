@@ -1,0 +1,28 @@
+{"timestamp":"2026-11-07T09:10:41.680Z","event":{"case":"TC-002/003/007/011 — actual window, real IPC, isolation and close","action":"launched","pid":24768}}
+{"timestamp":"2026-11-07T09:10:41.865Z","event":{"case":"TC-002/003/007/011 — actual window, real IPC, isolation and close","renderer":{"pid":29792,"sandboxed":true,"type":"Tab"},"isolatedContextObserved":true}}
+{"timestamp":"2026-11-07T09:10:42.224Z","event":{"case":"TC-002/003/007/011 — actual window, real IPC, isolation and close","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:42.234Z","event":{"case":"TC-002/003/007/011 — actual window, real IPC, isolation and close","action":"process-exited","pid":24768,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:42.778Z","event":{"case":"TC-003/006 — pending, real IPC timeout and retry","action":"launched","pid":30244}}
+{"timestamp":"2026-11-07T09:10:46.488Z","event":{"case":"TC-003/006 — pending, real IPC timeout and retry","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:46.801Z","event":{"case":"TC-003/006 — pending, real IPC timeout and retry","action":"process-exited","pid":30244,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:47.296Z","event":{"case":"TC-005 — missing native handler produces a retryable failure","action":"launched","pid":11676}}
+{"timestamp":"2026-11-07T09:10:47.559Z","event":{"case":"TC-005 — missing native handler produces a retryable failure","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:47.871Z","event":{"case":"TC-005 — missing native handler produces a retryable failure","action":"process-exited","pid":11676,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:48.320Z","event":{"case":"TC-005 — missing native handler produces a retryable failure","action":"launched","pid":4828}}
+{"timestamp":"2026-11-07T09:10:48.542Z","event":{"case":"TC-005 — missing native handler produces a retryable failure","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:48.805Z","event":{"case":"TC-005 — missing native handler produces a retryable failure","action":"process-exited","pid":4828,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:49.235Z","event":{"case":"TC-006 — malformed native response never displays success","action":"launched","pid":29060}}
+{"timestamp":"2026-11-07T09:10:49.452Z","event":{"case":"TC-006 — malformed native response never displays success","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:49.728Z","event":{"case":"TC-006 — malformed native response never displays success","action":"process-exited","pid":29060,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:50.142Z","event":{"case":"TC-008 — new windows and navigation away are denied","action":"launched","pid":10116}}
+{"timestamp":"2026-11-07T09:10:50.285Z","event":{"case":"TC-008 — new windows and navigation away are denied","navigationPrevented":true,"document":{"url":"file:///C:/workspace/Avalon/out/renderer/index.html","text":"Avalon\n\n工作台已启动\n\n检查连接"}}}
+{"timestamp":"2026-11-07T09:10:50.291Z","event":{"case":"TC-008 — new windows and navigation away are denied","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:50.585Z","event":{"case":"TC-008 — new windows and navigation away are denied","action":"process-exited","pid":10116,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:51.000Z","event":{"case":"TC-004 — a real foreign window cannot invoke the app handler","action":"launched","pid":14012}}
+{"timestamp":"2026-11-07T09:10:51.189Z","event":{"case":"TC-004 — a real foreign window cannot invoke the app handler","nativeRejection":"Error invoking remote method 'avalon:get-app-info': Error: IPC_UNAVAILABLE"}}
+{"timestamp":"2026-11-07T09:10:51.190Z","event":{"case":"TC-004 — a real foreign window cannot invoke the app handler","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:51.552Z","event":{"case":"TC-004 — a real foreign window cannot invoke the app handler","action":"process-exited","pid":14012,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:51.945Z","event":{"case":"TC-014 — built app starts from Chinese and space-containing path","action":"launched","pid":31304}}
+{"timestamp":"2026-11-07T09:10:52.134Z","event":{"case":"TC-014 — built app starts from Chinese and space-containing path","action":"assertions-passed"}}
+{"timestamp":"2026-11-07T09:10:52.423Z","event":{"case":"TC-014 — built app starts from Chinese and space-containing path","action":"process-exited","pid":31304,"code":0,"signal":null}}
+{"timestamp":"2026-11-07T09:10:53.091Z","event":{"case":"TC-012 — missing renderer file logs a load error and exits nonzero","pid":32648,"code":1,"signal":null,"timedOut":false}}
