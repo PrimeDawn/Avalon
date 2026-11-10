@@ -1,0 +1,302 @@
+{
+  "blocked_count": 2,
+  "branch_id": null,
+  "counts": {
+    "cancelled": 2,
+    "completed": 2,
+    "ready": 4
+  },
+  "current": [],
+  "current_total": 0,
+  "freshness_basis": "source_refresh",
+  "next_action": "打包运行路径约定明确后启动存储设计与验证。",
+  "ok": true,
+  "organization": {
+    "actions": [
+      {
+        "done_when": "The selected work has no unresolved required prerequisite or active blocker.",
+        "id": "dependencies",
+        "instruction": "Inspect cited required dependencies and blockers. Repair missing links/cycles and declare actual prerequisites; do not mark prerequisites completed just to unlock work.",
+        "required_fields": [
+          "depends_on",
+          "blocker",
+          "next_action"
+        ]
+      },
+      {
+        "done_when": "Each criterion is covered by a current, hash-verified report at the required evidence level; no business or release gate is inferred.",
+        "id": "evidence",
+        "instruction": "Review the original completion claim and its actual reports. Bind every acceptance criterion to a passing report for the intended source SHA; source status and evidence level alone do not prove completion. Recheck with an explicit source SHA.",
+        "required_fields": [
+          "work_item",
+          "source_sha",
+          "command",
+          "scope",
+          "verified_at",
+          "checks[].criteria",
+          "report digest"
+        ]
+      },
+      {
+        "done_when": "The fresh diagnosis resolves the selected work's structural gaps. Semantic uncertainties are resolved or explicitly deferred to unaffected work.",
+        "id": "recheck",
+        "instruction": "Run awr intake inspect --json after source edits. Follow remaining actions until the intended work appears in executable_work; review its context before claiming it. Do not treat draft generation as completion.",
+        "required_fields": []
+      }
+    ],
+    "business_checked_completed": 0,
+    "business_execution_ready": true,
+    "completion_basis": "Source status only; completion reports have not been verified for an explicit source SHA. This is not a release or business-acceptance decision.",
+    "completion_check_blocked": 0,
+    "completion_not_checked": 2,
+    "completion_verification_failed": 0,
+    "context_profile": "minimal",
+    "executable_work": [
+      "SPEC-002",
+      "SPEC-003"
+    ],
+    "executable_work_total": 2,
+    "gap_total": 7,
+    "gaps": [
+      {
+        "action": "dependencies",
+        "code": "dependency_not_completed",
+        "detail": "required dependency has source status ready",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/5",
+            "section_fingerprint": "sha256:a1ef5db2a4f350c03002507bb617bd73032d216a216a7c14a5c922d628d5a5fb",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-004"
+      },
+      {
+        "action": "dependencies",
+        "code": "dependency_not_completed",
+        "detail": "required dependency has source status ready",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/5",
+            "section_fingerprint": "sha256:a1ef5db2a4f350c03002507bb617bd73032d216a216a7c14a5c922d628d5a5fb",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-004"
+      },
+      {
+        "action": "dependencies",
+        "code": "dependency_not_completed",
+        "detail": "required dependency has source status ready",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/6",
+            "section_fingerprint": "sha256:46012bd9eb17e692a1c943100317a9df804f2343027ea3d1fdc9a0c62c1308c1",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-006"
+      },
+      {
+        "action": "dependencies",
+        "code": "dependency_not_completed",
+        "detail": "required dependency has source status ready",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/6",
+            "section_fingerprint": "sha256:46012bd9eb17e692a1c943100317a9df804f2343027ea3d1fdc9a0c62c1308c1",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-006"
+      },
+      {
+        "action": "dependencies",
+        "code": "dependency_not_completed",
+        "detail": "required dependency has source status ready",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/6",
+            "section_fingerprint": "sha256:46012bd9eb17e692a1c943100317a9df804f2343027ea3d1fdc9a0c62c1308c1",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-006"
+      },
+      {
+        "action": "evidence",
+        "code": "completion_not_checked",
+        "detail": "Not checked in this query: no explicit source SHA was supplied. This is neither a verification failure nor proof of completion. Inspect the original report and its recorded source version; never fill historical evidence with current HEAD.",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/1",
+            "section_fingerprint": "sha256:90b75a502e6a45dfcf464c85a8af959a78e880494068caadf8cd736aa2301172",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-001"
+      },
+      {
+        "action": "evidence",
+        "code": "completion_not_checked",
+        "detail": "Not checked in this query: no explicit source SHA was supplied. This is neither a verification failure nor proof of completion. Inspect the original report and its recorded source version; never fill historical evidence with current HEAD.",
+        "source_refs": [
+          {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/2",
+            "section_fingerprint": "sha256:9b29e186c91bd4e90639ccefd8f064a47c06692ca9b056832f76045aa216cccf",
+            "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 35,
+            "start_line": null
+          }
+        ],
+        "target": "SPEC-007"
+      }
+    ],
+    "goal_total": 1,
+    "goals": [
+      {
+        "confirmation_basis": "source assertion; semantic judgment belongs to the Agent/user",
+        "key": "goal#intake-goal",
+        "source_declared": true,
+        "source_ref": {
+          "end_line": 20,
+          "locator": "file:///C:/workspace/Avalon/GOALS.md",
+          "pointer": "#intake-goal",
+          "section_fingerprint": "sha256:0deff8e28da384ffce05bb266023aa45a0dbeff423aca29b8218c72e84db9429",
+          "source_fingerprint": "sha256:54f80f9cc08933b783a9f937e4f49262e1c569dd5c8a24e4db98e86fdec633b4",
+          "source_id": "01M6MVWFAJ5KQHA7RHQN5QCR1F",
+          "source_revision": 3,
+          "start_line": 8
+        },
+        "status": "active",
+        "title": "Avalon v0.1 本地小说编辑器"
+      }
+    ],
+    "historical_gap_total": 2,
+    "minimal_structure": "Reuse authoritative material. A small project needs one source-declared goal and work items with id, title, status, goal, acceptance and next_action. Goals and work_items may share one YAML ledger. Add plans/milestones only when needed; do not create separate plan/rule files just to satisfy intake.",
+    "next_action": "Select an executable_work item, inspect its work context and claim ownership before execution. Findings on other items remain open.",
+    "ordinary_work_policies": [],
+    "project_revision": 226,
+    "recheck": [
+      "awr",
+      "intake",
+      "inspect",
+      "--json",
+      "--branch",
+      "main"
+    ],
+    "schema_version": 1,
+    "semantic_review": "AWR checks declared structure, references and evidence bindings. The Coding Agent must compare user intent, README, implementation and development history, record its reasoning and sources, and keep uncertain goals as draft/candidate/needs_confirmation. Ask the user only for intent that cannot be established. An active/confirmed goal is a source assertion, not proof that AWR understood or approved the business intent.",
+    "source_archived": 0,
+    "source_cancelled": 2,
+    "source_completed": 2,
+    "source_sha": null,
+    "sources": [
+      {
+        "domain": "goal",
+        "freshness": "fresh",
+        "locator": "file:///C:/workspace/Avalon/GOALS.md",
+        "revision": 3,
+        "role": "primary"
+      },
+      {
+        "domain": "ledger",
+        "freshness": "fresh",
+        "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+        "revision": 35,
+        "role": "primary"
+      },
+      {
+        "domain": "rules",
+        "freshness": "fresh",
+        "locator": "file:///C:/workspace/Avalon/.agents/rules/spec-workflow.md",
+        "revision": 1,
+        "role": "primary"
+      }
+    ],
+    "state": "ready",
+    "truncated": false,
+    "user_confirmed_completed": 0,
+    "verified_completed": 0
+  },
+  "project": "Avalon",
+  "project_id": "01M6MVWFAHMB85F27TXE9TV94T",
+  "project_revision": 226,
+  "read_only": false,
+  "ready_count": 2,
+  "snapshot": {
+    "coherent": true,
+    "project_revision": 226,
+    "source_currentness_verified": true,
+    "source_refresh_revision": 226,
+    "source_state_fingerprint": "sha256:5b79f5725e0fa6ba2602b604dd5faafe433b81db82c22be2fb3bde6c04e8666e",
+    "storage": "private_memory",
+    "version": 1
+  },
+  "source_issues": [],
+  "source_refresh_performed": true,
+  "source_warnings": 0,
+  "suggested_work": {
+    "archived": false,
+    "blocker": null,
+    "external_key": "SPEC-002",
+    "freshness": "fresh",
+    "id": "01M6MXJ340QB4NX4KBEVVZ8515",
+    "milestone": "v0.1",
+    "next_action": "打包运行路径约定明确后启动存储设计与验证。",
+    "ordinary_completion": null,
+    "ordinary_work_policy": null,
+    "owner": null,
+    "priority": "P0",
+    "raw_status": "ready",
+    "revision": 2,
+    "source_ref": {
+      "end_line": null,
+      "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+      "pointer": "/work_items/4",
+      "section_fingerprint": "sha256:d8eb5ed9eeffad4154903e129359f27a2cf72ef912c51e733c7c9a4e69de8205",
+      "source_fingerprint": "sha256:b15be63bae14f3998f8bf9e698606c01edc2cba110d5c139083ce87114511cf4",
+      "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+      "source_revision": 35,
+      "start_line": null
+    },
+    "source_revision": 35,
+    "status": "ready",
+    "summary": "手动保存基线；不纳入自动保存、AI 索引缓存与未来业务注册体系。",
+    "title": "本地书与章节存储"
+  },
+  "total": 8
+}

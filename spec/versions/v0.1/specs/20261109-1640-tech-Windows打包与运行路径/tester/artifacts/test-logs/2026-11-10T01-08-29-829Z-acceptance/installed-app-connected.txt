@@ -1,0 +1,34 @@
+Window: "Avalon", App: Avalon.exe.
+	0 窗口 Avalon Secondary Actions: Raise
+		1 窗格 (disabled)
+		2 区域 Avalon
+			3 区域
+				4 区域
+					5 区域
+						6 区域
+							7 菜单栏
+								8 按钮 File
+								9 按钮 Edit ID: view_1
+								10 按钮 View ID: view_2
+								11 按钮 Window ID: view_3
+							12 区域
+								13 区域
+									14 文档 Avalon Value: file:///C:/Users/35692/.avalon-package-test/%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85%20%E7%A9%BA%E6%A0%BC/Avalon/resources/app.asar/out/renderer/index.html ID: RootWebArea
+										15 组 ID: root
+											16 主要
+												17 标题 Avalon
+												18 文本 工作台已启动
+												19 按钮 检查连接
+												20 状态
+													22 文本 连接正常 ·
+													23 文本 Avalon
+													24 文本 
+													25 文本 0.1.0
+								21 区域
+
+Document text: ```
+Avalon
+工作台已启动
+检查连接
+连接正常 · Avalon 0.1.0
+```

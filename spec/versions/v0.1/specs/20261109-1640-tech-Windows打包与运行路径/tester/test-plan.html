@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>测试计划 · SPEC-007</title>
+<meta name="rk:title" content="测试计划：Windows 打包与运行路径">
+<meta name="rk:type" content="test-plan">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径">
+<meta name="rk:role" content="spec-tester">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已确认">
+<meta name="rk:created" content="2026-11-09">
+<meta name="rk:updated" content="2026-11-10">
+<meta name="rk:revision" content="5">
+<meta name="rk:git-branch" content="tech/spec-20261109-1640-windows-packaging">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,test-plan">
+<link rel="rk-ledger" href="../lead/team-context.md"><link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css">
+<script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head>
+<body><nav class="rk-nav"></nav><header class="rk-head"><h1>测试计划 · SPEC-007</h1><div class="rk-meta"><span><b>title</b> 测试计划：Windows 打包与运行路径</span><span><b>type</b> test-plan</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径</span><span><b>role</b> spec-tester</span><span><b>mode</b> gated</span><span><b>status</b> 已确认</span><span><b>created</b> 2026-11-09</span><span><b>updated</b> 2026-11-10</span><span><b>revision</b> 5</span><span><b>git-branch</b> tech/spec-20261109-1640-windows-packaging</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,test-plan</span></div></header><nav class="rk-revbar"></nav>
+<section class="rk-verdict"><div class="rk-verdict-label">结论</div><p><del data-rev="4">15 项用例已定义，尚未执行。干净机环境仍需落实；SAC 开启态与可信签名按用户决定暂不验收。</del><ins data-rev="4">15 项用例进入执行；按 D-011，P06 改为本机独立安装验证，不再要求额外干净机器。SAC 开启态仍不在本次验收范围。</ins></p></section>
+<h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-09</td><td>spec-tester</td><td>首次形成文档</td><td>D-004～D-007：中文安装向导、Win11 x64、自用未签名包与 AWR 恢复</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-09</td><td>TeamLead</td><td>登记用户确认，技术范围不变</td><td>D-009：用户授权继续实现</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-09</td><td>TeamLead</td><td>关联实现报告，不修改原方案 / 测试标准</td><td>实现阶段交接</td></tr><tr class="rk-added" data-rev="4"><td>r4</td><td>2026-11-10</td><td>TeamLead / spec-tester</td><td>P06 改为本机独立安装验证；解除 I-002 环境阻塞</td><td>D-010 / D-011</td></tr><tr class="rk-added" data-rev="5"><td>r5</td><td>2026-11-10</td><td>TeamLead / spec-ender</td><td>补收尾报告反链；原阶段结论保留为历史</td><td>D-014 收尾导航</td></tr></tbody></table>
+<section class="rk-added" data-rev="2"><p>2026-11-09 用户确认：“可以，继续吧”。方案及测试计划通过门禁，进入实现；r1 保留其编写时状态，测试尚未执行。</p></section><main class="rk-added" data-rev="1">
+<h2>1. 验收口径与环境</h2><p>测试对象为同一工作树生成、记录 SHA256 的 Windows 11 x64 未签名离线 Setup.exe；build 工程通过不能替代安装验收。模式 gated / serial。当前只写计划，所有用例均未执行。</p>
+<table><thead><tr><th>环境</th><th>用途 / 限制</th></tr></thead><tbody><tr><td>开发机 Windows 11 x64，Node24 / npm11</td><td>类型、单元、包检查和自动化；SAC 已由用户关闭，不能证明开启时兼容</td></tr><tr><td>普通 Windows 用户 / 专用测试用户</td><td>原生向导、真实桌面与开始菜单、卸载；保护已有快捷入口</td></tr><tr><td><del data-rev="4">干净 Windows 11 x64 VM 或实体机</del><ins data-rev="4">本机 Windows 11 x64 的独立安装目录</ins></td><td><del data-rev="4">无源码 / Node / npm / Git；运行前记录已装软件、命令可用性与系统版本。此环境尚未提供，不以伪装 PATH 替代</del><ins data-rev="4">检查内置运行时、资源白名单、真实安装入口、本地 file URL、IPC 和无应用监听端口；机器本身保留开发工具，不伪装跨机器验证</ins></td></tr></tbody></table>
+<p><del data-rev="4">离线仅在专用测试 VM / 机器上断开网络或使用该环境的网络隔离；不擅自断开用户主机网络。</del><ins data-rev="4">本轮不要求断网实测；通过完整离线安装包、本地资源和无外部网络依赖检查验证独立运行，不断开用户主机网络。</ins>SAC 开启态与签名验证根据 D-007 退出本项完成条件，报告明确标记未覆盖。</p>
+<h2>2. 用例与需求覆盖</h2><table><thead><tr><th>编号 / 需求</th><th>输入与操作</th><th>预期 / 证据</th></tr></thead><tbody>
+<tr><td>P01 / R1</td><td>npm ci；typecheck；全部 unit；build；dist:win</td><td>全部退出 0；记录锁文件 / 安装包哈希、Git SHA、dirty 状态与构建日志</td></tr>
+<tr><td>P02 / R1 R3</td><td>检查 win-unpacked、app.asar 内容和构建配置</td><td>main/preload/renderer、运行时和许可证齐备；无 spec/.awr/.git/测试数据；无开发机器绝对路径</td></tr>
+<tr><td>P03 / R2</td><td>普通用户双击 Setup，观察欢迎页、目录页、进度页、完成页</td><td>中文、可选择可写目录、无全用户安装选择；安装成功；截图保留关键页</td></tr>
+<tr><td>P04 / R2 R3</td><td>安装到专用路径“测试安装 空格/Avalon”</td><td>资源与 preload 正常，显示现有骨架及应用信息；安装路径与注册项一致</td></tr>
+<tr><td>P05 / R2</td><td>完成页启动；正常关闭后，从真实桌面快捷方式双击，再用开始菜单重开</td><td>三条入口均正常，目标为安装 exe；正常关闭无错误框，5 秒内本次进程树退出</td></tr>
+<tr><td>P06 / R1</td><td><del data-rev="4">干净机复制同哈希安装包，记录环境后离线安装、启动、关闭、重开</del><ins data-rev="4">将同哈希安装包复制到仓库外，从资源管理器安装并运行；结合 P02 / P05 / P07 检查内置运行时与本地加载</ins></td><td><del data-rev="4">无需开发工具 / 仓库 / 网络。环境未落实时标 blocked，不使用 P05 顶替</del><ins data-rev="4">包内包含运行时，实际加载安装目录资源，不调用外部开发工具，不启动开发服务器；没有额外机器不再是阻塞</ins></td></tr>
+<tr><td>P07 / R3</td><td>从其他 cwd 启动；注入开发 ELECTRON_RENDERER_URL 指向不存在地址</td><td>打包态仍从本地资源启动；无 5178 或其他监听端口，无 HTTP 依赖</td></tr>
+<tr><td>P08 / R3</td><td>启动前后比较安装目录文件哈希清单；检查 AppData</td><td>应用启动不更改安装资源；userdata/session/logs 在指定用户目录；启动快照 app-ready</td></tr>
+<tr><td>P09 / R4</td><td>窗口刚出现时点击关闭，随后正常重开并关闭</td><td>关闭取消不弹启动失败；无残留。仅此用例要求额外启动，记录窗口出现 / 关闭时间</td></tr>
+<tr><td>P10 / R4</td><td>对独立打包副本破坏 renderer 文件，或以测试夹具制造路径为文件而非目录</td><td>真实错误提示、退出 1；可写日志时有失败快照；不可写时有 stderr；不污染正式安装</td></tr>
+<tr><td>P11 / R2</td><td>开始安装后在可取消页面取消；选择当前用户无权写入目录</td><td>明确取消 / 失败，不显示成功，不残留可误用快捷方式；不改系统 ACL 或自动提权</td></tr>
+<tr><td>P12 / R5</td><td>外部书库写三章中文夹具，userdata 写独立 sentinel；关闭程序后从 Windows 应用列表卸载</td><td>安装程序和自建快捷方式移除；书库与 sentinel 哈希不变；应用列表项移除；不传删除数据参数</td></tr>
+<tr><td>P13 / R5</td><td>同版本重新安装到同一测试目录，保留数据夹具；关闭后再次卸载</td><td>没有重复应用项，快捷入口正确，用户数据不丢失；仅验证同版本重装，不宣称自动升级能力</td></tr>
+<tr><td>P14 / R3 R4</td><td>新鲜运行现有开发态 8 组桌面用例与新 unit</td><td>IPC、预加载、隔离、导航限制和开发态启动无回归；新证据全部归 SPEC-007</td></tr>
+<tr><td>P15 / R6</td><td>检查说明、安装包和 exe Authenticode 状态</td><td>如实记录未签名和可能被拦截；不将未签名当签名失败 bug；SAC 开启态记未覆盖（用户接受）</td></tr>
+</tbody></table>
+<h2>3. 自动化入口与数据</h2><p>测试阶段由 tester 修改 scripts/run-e2e.mjs，仅增加当前 Spec 路由；新增独立 packaged config 与 tests/packaged/packaged-shell.spec.ts。自动化使用完整打包 exe，验证 app.isPackaged 为 true、页面内容、原有 getAppInfo、file URL、进程退出、控制台与请求记录。保留 Electron sandbox，不使用 --no-sandbox。</p>
+<pre><code>$env:AVALON_TEST_SPEC_DIR = 'spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径'
+npm run test:e2e
+$env:AVALON_PACKAGED_EXE = (Resolve-Path 'release/win-unpacked/Avalon.exe').Path
+npm run test:e2e -- --config playwright.packaged.config.ts
+Get-FileHash 'release/Avalon-0.1.0-x64-Setup.exe' -Algorithm SHA256
+Get-AuthenticodeSignature 'release/Avalon-0.1.0-x64-Setup.exe'</code></pre>
+<p>上面命令在测试脚本实现后执行；本轮不执行。生产 app 忽略 --user-data-dir 覆盖，新打包测试应使用专用用户，或在无现有正式 userdata 时创建并清理仅本次测试目录；若已有数据先保护，不覆盖。路径单元测试使用临时目录和文件夹具，不更改真实 AppData。</p>
+<p>测试小说仅为外部目录中的三个 UTF-8 文本夹具，固定中文 / 标点 / 换行内容，测试前后由脚本计算 SHA256；不是已实现小说存储功能。权限错误优先用“目标应为目录却是文件”注入，不重复改用户权限。</p>
+<h2>4. 日志审计与证据</h2><p>每次运行独立保存到 tester/artifacts/test-logs/&lt;run-id&gt;。自动化记录命令、开始结束时间、退出码、OS/build、版本、Git SHA、工作区状态、锁文件和安装包 SHA256。Playwright 保留截图、trace、console/pageerror、请求失败及 stdout/stderr；网络为空也由实际观测记录。原生安装过程由实际屏幕捕获与步骤记录证明，另导出快捷方式目标、卸载项、PID 树、安装目录清单和夹具哈希。</p>
+<p>失败时关联同一 run-id 的 CodeIntegrity / Application 事件；若安全策略拦截，记录原始原因，不改策略后偷偷算通过。原始机器证据由命令和捕获工具生成，不手写通过 JSON。个人路径在对外文档中脱敏，日志不收集正文或凭据。</p>
+<h2>5. 测试节奏与失败处理</h2><p>先跑单元 / 构建 / 静态包检查，再集中进行一轮窗口会话和必要的关闭重开；无新改动、无失败时不重复启动。普通功能共用会话；极早关闭、失败副本、快捷入口分别启动。用例开始前说明目的，完成后仅结束本次 PID。当前无需打开任何应用。</p>
+<p><del data-rev="4">全部必需用例真实通过才建议确认测试；P06 缺环境时保持 blocked。</del><ins data-rev="4">全部修订后必需用例真实通过才建议确认测试；P06 以本机综合证据判断，缺少第二台机器不再标 blocked。</ins>缺陷交 spec-debugger，本阶段不直接修产品；修复循环预算在首次需要修复前依账本确认。SAC 开启态不再是必需用例，但报告必须保留覆盖限制。</p>
+</main>
+<h2>关联产物</h2><ul class="rk-links"><li><a href="../reviewer/update-001-review.html" data-rk-link="review">验收调整审查</a></li><li><a href="../updater/update-001-summary.html" data-rk-link="update-summary">验收调整总结</a></li><li><a href="../updater/update-001.html" data-rk-link="update">验收环境调整</a></li><li><a href="../tester/test-report.html" data-rk-link="test-report">测试报告</a></li><li class="rk-added" data-rev="3"><a href="../executor/summary.html" data-rk-link="summary">实现报告</a></li><li><a href="../explorer/exploration-report.html" data-rk-link="exploration-report">探索报告</a></li><li><a href="../writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="../debugger/debug-001.html" data-rk-link="debug">AWR 应用控制诊断</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li><li><a href="../../../plan.html" data-rk-link="version-plan">版本规划</a></li></ul>
+<h3>引用本报告</h3><ul class="rk-backlinks"><li class="rk-added" data-rev="5"><a href="../ender/end-report.html" data-rk-backlink="end-report">收尾报告</a></li><li><a href="../reviewer/update-001-review.html" data-rk-backlink="review">验收调整审查</a></li><li><a href="../updater/update-001-summary.html" data-rk-backlink="update-summary">验收调整总结</a></li><li><a href="../updater/update-001.html" data-rk-backlink="update">验收环境调整</a></li><li><a href="../tester/test-report.html" data-rk-backlink="test-report">测试报告</a></li><li class="rk-added" data-rev="3"><a href="../executor/summary.html" data-rk-backlink="summary">实现报告</a></li><li><a href="../explorer/exploration-report.html" data-rk-backlink="exploration-report">探索报告</a></li><li><a href="../writer/plan.html" data-rk-backlink="plan">实现方案</a></li><li><a href="../debugger/debug-001.html" data-rk-backlink="debug">AWR 应用控制诊断</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li></ul></body></html>

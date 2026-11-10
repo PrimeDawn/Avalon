@@ -1,0 +1,13 @@
+{
+  "started": "2026-11-10T01:20:32.468Z",
+  "finished": "2026-11-10T01:21:06.078Z",
+  "fixture": "C:\\workspace\\Avalon\\.awr\\cache\\spec007-corrupt-package",
+  "exitCode": 1,
+  "diagnostic": {
+    "event": "app-start-failed",
+    "timestamp": "2026-11-10T01:20:33.380Z",
+    "version": "0.1.0",
+    "isPackaged": true,
+    "message": "ERR_FILE_NOT_FOUND (-6) loading 'file:///C:/workspace/Avalon/.awr/cache/spec007-corrupt-package/resources/app.asar/out/renderer/index.html'"
+  }
+}

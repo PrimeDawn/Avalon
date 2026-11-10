@@ -1,4 +1,7 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron';
 import type { AvalonApi } from '../../src/shared/contracts';
 import { registerAppIpc } from '../../src/main/ipc';
@@ -9,7 +12,7 @@ const native = vi.hoisted(() => {
   const listeners = new Map<string, (...args: any[]) => void>();
   const windows: any[] = [];
   const permission = { setPermissionRequestHandler: vi.fn(), setPermissionCheckHandler: vi.fn() };
-  const loading = { error: null as Error | null };
+  const loading = { error: null as Error | null, close: false, closing: false };
   class Window {
     static getAllWindows() { return windows.filter((w) => !w.destroyed); }
     destroyed = false;
@@ -21,8 +24,16 @@ const native = vi.hoisted(() => {
       setWindowOpenHandler: vi.fn(),
       on: vi.fn((name, fn) => { this.listeners.set(name, fn); }),
     };
-    loadURL = vi.fn(async (_url: string) => { if (loading.error) throw loading.error; });
-    loadFile = vi.fn(async (_path: string) => { if (loading.error) throw loading.error; });
+    loadURL = vi.fn(async (_url: string) => {
+      if (loading.closing) this.listeners.get('close')?.();
+      if (loading.close) this.destroyed = true;
+      if (loading.error) throw loading.error;
+    });
+    loadFile = vi.fn(async (_path: string) => {
+      if (loading.closing) this.listeners.get('close')?.();
+      if (loading.close) this.destroyed = true;
+      if (loading.error) throw loading.error;
+    });
     on = vi.fn((name, fn) => { this.listeners.set(name, fn); return this; });
     once = this.on;
     isDestroyed() { return this.destroyed; }
@@ -34,30 +45,44 @@ const native = vi.hoisted(() => {
       isPackaged: false,
       whenReady: vi.fn(async () => {}),
       getVersion: vi.fn(() => '0.1.0'),
+      getPath: vi.fn(), setPath: vi.fn(), setAppLogsPath: vi.fn(), setAppUserModelId: vi.fn(),
+      commandLine: { getSwitchValue: vi.fn(() => '') },
       on: vi.fn((name, fn) => { listeners.set(name, fn); }),
       quit: vi.fn(), exit: vi.fn(),
     },
     ipcMain: { handle: vi.fn(), removeHandler: vi.fn() },
     contextBridge: { exposeInMainWorld: vi.fn() },
     ipcRenderer: { invoke: vi.fn() },
+    dialog: { showErrorBox: vi.fn() },
   };
 });
 vi.mock('electron', () => ({
   app: native.app, BrowserWindow: native.Window, ipcMain: native.ipcMain,
   contextBridge: native.contextBridge, ipcRenderer: native.ipcRenderer,
+  dialog: native.dialog,
 }));
 
+let dataFixture: string;
 beforeEach(() => {
+  dataFixture = mkdtempSync(join(tmpdir(), 'avalon-lifecycle-'));
   vi.resetModules();
   vi.clearAllMocks();
   vi.unstubAllEnvs();
   native.windows.length = 0;
   native.listeners.clear();
   native.loading.error = null;
+  native.loading.close = false;
+  native.loading.closing = false;
   native.app.isPackaged = false;
   native.app.whenReady.mockResolvedValue(undefined);
   native.app.getVersion.mockReturnValue('0.1.0');
+  native.app.getPath.mockReset().mockReturnValue(dataFixture);
+  native.app.commandLine.getSwitchValue.mockReturnValue('');
   native.ipcRenderer.invoke.mockReset();
+});
+afterEach(() => {
+  if (!resolve(dataFixture).startsWith(join(tmpdir(), 'avalon-lifecycle-'))) throw new Error('Unexpected fixture path');
+  rmSync(dataFixture, { recursive: true, force: true });
 });
 
 describe('registerAppIpc', () => {
@@ -125,6 +150,20 @@ describe('preload bridge', () => {
 });
 
 describe('createMainWindow', () => {
+  it.each(['file', 'dev'])('cancels %s loading after close but before destruction', async (mode) => {
+    vi.stubEnv('ELECTRON_RENDERER_URL', mode === 'dev' ? 'http://127.0.0.1:5178/' : '');
+    native.loading.closing = true;
+    native.loading.error = new Error('ERR_FAILED: load cancelled');
+    const { createMainWindow } = await import('../../src/main/window');
+    await expect(createMainWindow()).resolves.toBeNull();
+    expect(native.windows[0].isDestroyed()).toBe(false);
+  });
+  it.each([null, new Error('ERR_FAILED: load cancelled')])('returns null if the window closes during loading (%s)', async (error) => {
+    native.loading.close = true;
+    native.loading.error = error;
+    const { createMainWindow } = await import('../../src/main/window');
+    await expect(createMainWindow()).resolves.toBeNull();
+  });
   it('creates the sandboxed window, loads the fixed dev URL and blocks navigation/permissions', async () => {
     vi.stubEnv('ELECTRON_RENDERER_URL', 'http://127.0.0.1:5178');
     const { createMainWindow } = await import('../../src/main/window');
@@ -173,6 +212,49 @@ describe('createMainWindow', () => {
 });
 
 describe('bootstrap lifecycle', () => {
+  it('sets real profile directories before ready and writes a successful launch snapshot', async () => {
+    native.app.isPackaged = true;
+    await import('../../src/main/index');
+    await vi.waitFor(() => expect(native.windows).toHaveLength(1));
+    expect(native.app.setPath).toHaveBeenCalledWith('userData', join(dataFixture, 'Avalon'));
+    expect(native.app.setPath.mock.invocationCallOrder[0]).toBeLessThan(native.app.whenReady.mock.invocationCallOrder[0]!);
+    if (process.platform === 'win32') expect(native.app.setAppUserModelId).toHaveBeenCalledWith('io.github.primedawn.avalon');
+    const snapshot = JSON.parse(readFileSync(join(dataFixture, 'Avalon/logs/startup.json'), 'utf8'));
+    expect(snapshot).toEqual({ event: 'app-ready', timestamp: expect.any(String), version: '0.1.0', isPackaged: true, message: null });
+    expect(Number.isNaN(Date.parse(snapshot.timestamp))).toBe(false);
+  });
+  it('does not register a closed window or report cancellation as startup failure', async () => {
+    native.loading.close = true;
+    native.loading.error = new Error('ERR_FAILED: cancelled');
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    await import('../../src/main/index');
+    await vi.waitFor(() => expect(native.windows).toHaveLength(1));
+    expect(native.app.exit).not.toHaveBeenCalled();
+    expect(native.dialog.showErrorBox).not.toHaveBeenCalled();
+    expect(native.windows[0].listeners.has('closed')).toBe(false);
+    expect(log).not.toHaveBeenCalled();
+    expect(existsSync(join(dataFixture, 'Avalon-dev/logs/startup.json'))).toBe(false);
+  });
+  it('reports a path initialization failure without pretending a log file exists', async () => {
+    writeFileSync(join(dataFixture, 'Avalon-dev'), 'file blocks directory');
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    await import('../../src/main/index');
+    await vi.waitFor(() => expect(native.app.exit).toHaveBeenCalledWith(1));
+    expect(native.app.whenReady).not.toHaveBeenCalled();
+    expect(native.windows).toHaveLength(0);
+    expect(native.dialog.showErrorBox).toHaveBeenCalledWith('Avalon 启动失败', expect.stringContaining('日志目录未能初始化'));
+  });
+  it('keeps a working window open when writing its success diagnostic fails', async () => {
+    native.app.whenReady.mockImplementationOnce(async () => {
+      mkdirSync(join(dataFixture, 'Avalon-dev/logs/startup.json'), { recursive: true });
+    });
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    await import('../../src/main/index');
+    await vi.waitFor(() => expect(native.windows).toHaveLength(1));
+    expect(log).toHaveBeenCalledWith(expect.objectContaining({ event: 'diagnostic-write-failed' }));
+    expect(native.app.exit).not.toHaveBeenCalled();
+    expect(native.dialog.showErrorBox).not.toHaveBeenCalled();
+  });
   it('registers IPC before creating one window, quits on Windows close, and reopens on activate', async () => {
     vi.stubEnv('ELECTRON_RENDERER_URL', 'http://127.0.0.1:5178/');
     await import('../../src/main/index');
@@ -204,5 +286,8 @@ describe('bootstrap lifecycle', () => {
     native.loading.error = new Error('document missing');
     await import('../../src/main/index');
     await vi.waitFor(() => expect(native.app.exit).toHaveBeenCalledWith(1));
+    expect(native.dialog.showErrorBox).toHaveBeenCalledWith('Avalon 启动失败', expect.stringContaining('startup.json'));
+    const snapshot = JSON.parse(readFileSync(join(dataFixture, 'Avalon-dev/logs/startup.json'), 'utf8'));
+    expect(snapshot).toMatchObject({ event: 'app-start-failed', message: 'document missing', isPackaged: false });
   });
 });

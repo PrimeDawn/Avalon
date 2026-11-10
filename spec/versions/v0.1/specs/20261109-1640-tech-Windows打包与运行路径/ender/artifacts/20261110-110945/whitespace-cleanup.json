@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-11-10T03:26:57.412Z",
+  "results": [
+    {
+      "file": "build/install-directory.nsh",
+      "beforeSha256": "d02942f01190968850bc482cb4bfefa46001c40c1f882611022c8085e45307c2",
+      "afterSha256": "d9974ff7b41d479cd9564a11414389a611a00657830f0f22e0821a7c0acd1680",
+      "onlyTrailingBlankLinesRemoved": true
+    },
+    {
+      "file": "spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/debugger/probes/check-preflight.cjs",
+      "beforeSha256": "692e605bb13da2bbcfe9b03fe61188489d855b83762d292d01490684d2478bcc",
+      "afterSha256": "f72ea93eff3cb8f50f55378b54b87d8ba0f22d50c73f4b7492225129ef27aa1e",
+      "onlyTrailingBlankLinesRemoved": true
+    },
+    {
+      "file": "spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/check-closeout.cjs",
+      "beforeSha256": "3541bf6da7a45a11cb54755dc8b0751ae6128c549fbec09e7d34a3ac7fa7c185",
+      "afterSha256": "719d9970f1bd2262d581e42692e05340ee8c18968f51e2d4ca7fe88bcb1f2bd9",
+      "onlyTrailingBlankLinesRemoved": true
+    }
+  ],
+  "note": "Native transcript and test-output whitespace is retained unchanged as original evidence."
+}

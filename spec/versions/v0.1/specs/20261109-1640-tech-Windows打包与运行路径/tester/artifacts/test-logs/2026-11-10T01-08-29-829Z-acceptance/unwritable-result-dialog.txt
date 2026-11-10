@@ -1,0 +1,41 @@
+Window: "Avalon 安装", App: Avalon-0.1.0-x64-Setup.exe.
+	0 对话框 (disabled) Avalon 安装 Secondary Actions: Raise
+		30 对话框 Avalon 安装 Secondary Actions: Raise
+			31 按钮 重试(R) ID: 4
+			32 按钮 取消 ID: 2
+			33 图像 ID: 20
+			34 文本 Avalon 无法关闭。 请手动关闭它，然后单击重试以继续。 ID: 65535
+			35 标题栏 (settable, string) Value: Avalon 安装
+				36 菜单栏 系统 ID: MenuBar
+					37 菜单项 系统
+				38 按钮 关闭
+		15 按钮 (disabled) < 上一步(P) ID: 3
+		1 按钮 (disabled) 下一步(N) > ID: 1
+		2 按钮 (disabled) 取消(C) ID: 2
+		16 图像 ID: 1035
+		3 图像 ID: 1036
+		17 文本 Avalon 0.1.0 ID: 1256
+		18 文本 Avalon 0.1.0 ID: 1028
+		5 文本 Avalon 0.1.0 ID: 1034
+		19 文本 正在安装 ID: 1037
+		20 文本 Avalon 正在安装，请等候。 ID: 1038
+		21 图像 Avalon 正在安装，请等候。 ID: 1039
+		28 进度栏 Value: 21325 ID: 1004
+		29 文本 ID: 1006
+		9 标题栏 (settable, string) Value: Avalon 安装
+			10 菜单栏 系统 ID: MenuBar
+				11 菜单项 系统
+			12 按钮 最小化
+			13 按钮 (disabled) 最大化
+			14 按钮 (disabled) 关闭
+		30 对话框 Avalon 安装 Secondary Actions: Raise
+			31 按钮 重试(R) ID: 4
+			32 按钮 取消 ID: 2
+			33 图像 ID: 20
+			34 文本 Avalon 无法关闭。 请手动关闭它，然后单击重试以继续。 ID: 65535
+			35 标题栏 (settable, string) Value: Avalon 安装
+				36 菜单栏 系统 ID: MenuBar
+					37 菜单项 系统
+				38 按钮 关闭
+
+The focused UI element is 30 对话框 Avalon 安装 Secondary Actions: Raise.

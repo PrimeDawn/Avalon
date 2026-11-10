@@ -1,0 +1,7 @@
+
+(node:33932) electron: Failed to load URL: file:///C:/workspace/Avalon/.awr/cache/spec007-debug-2026-11-10T02-02-44-408Z/runtime/resources/app.asar/out/renderer/index.html.missing with error: ERR_FILE_NOT_FOUND
+(Use `Avalon --trace-warnings ...` to show where the warning was created)
+{
+  event: 'app-start-failed',
+  message: "ERR_FILE_NOT_FOUND (-6) loading 'file:///C:/workspace/Avalon/.awr/cache/spec007-debug-2026-11-10T02-02-44-408Z/runtime/resources/app.asar/out/renderer/index.html.missing'"
+}

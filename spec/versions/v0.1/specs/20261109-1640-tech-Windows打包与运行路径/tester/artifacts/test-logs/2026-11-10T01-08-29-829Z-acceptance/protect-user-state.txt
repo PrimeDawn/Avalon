@@ -1,0 +1,6 @@
+Command: C:/Program Files/PowerShell/7/pwsh.exe -NoProfile -File .awr/cache/spec007-protect.ps1
+Timestamp: 2026-11-10T01:10:44.647Z
+Error: spawn C:/Program Files/PowerShell/7/pwsh.exe ENOENT
+
+Exit code: -4058
+Finished: 2026-11-10T01:10:44.652Z

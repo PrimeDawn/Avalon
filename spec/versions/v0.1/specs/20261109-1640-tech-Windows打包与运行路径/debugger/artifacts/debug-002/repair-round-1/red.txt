@@ -1,0 +1,32 @@
+
+ RUN  v5.1.0 C:/workspace/Avalon
+
+ ❯ tests/unit/ipc.test.ts (30 tests | 2 failed) 74ms
+   ❯ createMainWindow (9)
+     × cancels file loading after close but before destruction 8ms
+     × cancels dev loading after close but before destruction 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/unit/ipc.test.ts > createMainWindow > cancels file loading after close but before destruction
+ FAIL  tests/unit/ipc.test.ts > createMainWindow > cancels dev loading after close but before destruction
+AssertionError: promise rejected "Error: ERR_FAILED: load cancelled" instead of resolving
+ ❯ tests/unit/ipc.test.ts:158:37
+    156|     native.loading.error = new Error('ERR_FAILED: load cancelled');
+    157|     const { createMainWindow } = await import('../../src/main/window');
+    158|     await expect(createMainWindow()).resolves.toBeNull();
+       |                                     ^
+    159|     expect(native.windows[0].isDestroyed()).toBe(false);
+    160|   });
+
+Caused by: Error: ERR_FAILED: load cancelled
+ ❯ tests/unit/ipc.test.ts:156:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 28 passed (30)
+   Start at  10:00:04
+   Duration  318ms (tests 47%, transform 36%, import 13%, worker 4%, environment 1%)
+

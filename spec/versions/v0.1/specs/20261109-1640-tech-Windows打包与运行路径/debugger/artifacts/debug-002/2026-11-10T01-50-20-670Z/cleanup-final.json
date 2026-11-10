@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-11-10T09:54:22.6404815+08:00",
+  "fixtures": [
+    {
+      "fixture": "denied-1",
+      "explicitTestDenyRules": 0,
+      "inheritedDenyRulesPreserved": 1
+    },
+    {
+      "fixture": "denied-2",
+      "explicitTestDenyRules": 0,
+      "inheritedDenyRulesPreserved": 1
+    }
+  ],
+  "note": "Earlier total-deny checks included inherited DeleteSubdirectoriesAndFiles restrictions. These existing inherited rules are preserved; test-added explicit Write denies are removed.",
+  "avalonProcesses": 0,
+  "desktopHash": "E89ACD079E6AAB2B6CA7DB8D2739AC6A0B36D798040DE5934084CFDC8842D3A4"
+}

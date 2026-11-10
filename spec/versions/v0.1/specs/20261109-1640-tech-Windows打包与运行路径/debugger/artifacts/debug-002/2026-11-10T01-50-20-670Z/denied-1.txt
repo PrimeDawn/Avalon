@@ -1,0 +1,1 @@
+copy-failed;message=appCannotBeClosed;attempt=5

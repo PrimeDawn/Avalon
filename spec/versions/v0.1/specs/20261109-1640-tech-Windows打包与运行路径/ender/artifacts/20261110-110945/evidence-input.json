@@ -1,0 +1,15 @@
+{
+  "work_item_key": "SPEC-007",
+  "external_key": "SPEC007-CLOSEOUT-20261110-110945",
+  "evidence_type": "verification_report",
+  "summary": "用户已确认测试；本轮全量自动回归通过，实际工作树与已验收安装包指纹绑定",
+  "locator": "spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/artifacts/20261110-110945/completion-report.json",
+  "level": "locally_verified",
+  "sha256": "07aaa7b8130fcf906321a74620fe8bc0139fe6d0d155d3959dc7a935f9bffdc4",
+  "source_sha": "e02680d6054e14a50a50ff51446c6910b67433c9",
+  "command": "npm run test:e2e; npm run test:e2e -- --config playwright.packaged.config.ts; node debugger/probes/check-preflight.cjs",
+  "scope": [
+    "SPEC-007"
+  ],
+  "verified_at": 1794280715757
+}

@@ -1,0 +1,101 @@
+{
+  "ok": true,
+  "application_id": 1096241713,
+  "schema_version": 14,
+  "sqlite_version": "3.53.2",
+  "journal_mode": "wal",
+  "foreign_keys": true,
+  "busy_timeout_ms": 5000,
+  "migrations": [
+    {
+      "version": 1,
+      "name": "catalog",
+      "applied_at": 1793849179459
+    },
+    {
+      "version": 2,
+      "name": "domain",
+      "applied_at": 1793849179461
+    },
+    {
+      "version": 3,
+      "name": "search",
+      "applied_at": 1793849179461
+    },
+    {
+      "version": 4,
+      "name": "draft_work",
+      "applied_at": 1793849179464
+    },
+    {
+      "version": 5,
+      "name": "workstreams",
+      "applied_at": 1793849179464
+    },
+    {
+      "version": 6,
+      "name": "workstream_sessions",
+      "applied_at": 1793849179465
+    },
+    {
+      "version": 7,
+      "name": "content_reviews",
+      "applied_at": 1793849179465
+    },
+    {
+      "version": 8,
+      "name": "responsibility",
+      "applied_at": 1793849179465
+    },
+    {
+      "version": 9,
+      "name": "operation_readset_receipts",
+      "applied_at": 1793849179465
+    },
+    {
+      "version": 10,
+      "name": "agent_authorization",
+      "applied_at": 1793849179465
+    },
+    {
+      "version": 11,
+      "name": "team_handoff",
+      "applied_at": 1793849179466
+    },
+    {
+      "version": 12,
+      "name": "delivery_deps",
+      "applied_at": 1793849179466
+    },
+    {
+      "version": 13,
+      "name": "usage_time",
+      "applied_at": 1793849179466
+    },
+    {
+      "version": 14,
+      "name": "eta_checkpoints",
+      "applied_at": 1793849179467
+    }
+  ],
+  "integrity": [
+    "ok"
+  ],
+  "foreign_key_violations": 0,
+  "schema_issues": [],
+  "database_ok": true,
+  "read_only": true,
+  "source_refresh_performed": false,
+  "project_id": "01M6MVWFAHMB85F27TXE9TV94T",
+  "project_revision": 226,
+  "observed_final_revision": 226,
+  "checked_at": 1794281299518,
+  "findings": [],
+  "sources_checked": 3,
+  "artifacts_checked": 0,
+  "limitations": [
+    "Active status and age do not prove process liveness; explicit interruption requires selecting a session.",
+    "Pending operations and unregistered artifact files may belong to a live writer. Diagnosis does not complete, delete or repair them.",
+    "Source reads are capped at 16 MiB each. Registered artifact content is hashed within the requested cap and never emitted."
+  ]
+}

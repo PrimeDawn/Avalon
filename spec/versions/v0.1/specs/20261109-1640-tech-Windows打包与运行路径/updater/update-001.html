@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>验收环境调整 · SPEC-007</title>
+<meta name="rk:title" content="验收环境调整">
+<meta name="rk:type" content="update">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径">
+<meta name="rk:role" content="spec-update">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已确认">
+<meta name="rk:created" content="2026-11-10">
+<meta name="rk:updated" content="2026-11-10">
+<meta name="rk:revision" content="2">
+<meta name="rk:git-branch" content="tech/spec-20261109-1640-windows-packaging">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,update">
+<meta name="rk:update-number" content="001">
+<meta name="rk:update-type" content="documentation">
+<link rel="rk-plan" href="../writer/plan.html"><link rel="rk-test-plan" href="../tester/test-plan.html"><link rel="rk-ledger" href="../lead/team-context.md"><link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css"><script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head>
+<body><nav class="rk-nav"></nav><header class="rk-head"><h1>验收环境调整 · SPEC-007</h1><div class="rk-meta"><span><b>title</b> 验收环境调整</span><span><b>type</b> update</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径</span><span><b>role</b> spec-update</span><span><b>mode</b> gated</span><span><b>status</b> 已确认</span><span><b>created</b> 2026-11-10</span><span><b>updated</b> 2026-11-10</span><span><b>revision</b> 2</span><span><b>git-branch</b> tech/spec-20261109-1640-windows-packaging</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,update</span><span><b>update-number</b> 001</span><span><b>update-type</b> documentation</span></div></header><nav class="rk-revbar"></nav><section class="rk-verdict"><div class="rk-verdict-label">结论</div><p>仅调整验收环境与报告口径，按用户明确决定执行。</p></section>
+<h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-10</td><td>spec-update</td><td>首次形成报告</td><td>D-010 / D-011：进入测试及用户调整验收环境要求</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-10</td><td>TeamLead / spec-ender</td><td>补收尾报告反链；原阶段结论保留为历史</td><td>D-014 收尾导航</td></tr></tbody></table><main class="rk-added" data-rev="1"><h2>用户决定与范围</h2><p>用户明确没有另一台电脑或虚拟机，认为额外干净机器条件不现实。D-011 取消独立干净 Windows 验收门槛，不继续保留为阻塞或必须补做的债务。用户已授权本调整，不重复请求同一授权。</p><h2>具体变更</h2><ol><li>P06 改为本机独立安装目录、同哈希安装包、内置 Electron 运行时与本地资源、实际连接功能、无外部 Node/npm/Git 调用及无应用监听端口的综合检查。</li><li>不卸载本机开发工具、不伪装 PATH、不切断用户主机网络；不声称完成另一台机器或断网实测。</li><li>同步实现方案、测试计划、开发说明、版本进展和账本；产品代码、依赖与安装配置不变。</li></ol><h2>执行与验收</h2><p>顺序：登记 D-011 → 修订相关验收文本 → 完成本机测试 → 文档一致性检查及更新审查。测试证据归 tester/artifacts，本次更新本身无需重复运行未变化的产品测试。</p></main>
+<h2>关联产物</h2><h3>本报告引用</h3><ul class="rk-links"><li><a href="../reviewer/update-001-review.html" data-rk-link="review">验收调整审查</a></li><li><a href="../updater/update-001-summary.html" data-rk-link="update-summary">验收调整总结</a></li><li><a href="../tester/test-report.html" data-rk-link="test-report">测试报告</a></li><li><a href="../writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-link="test-plan">测试计划</a></li><li><a href="../executor/summary.html" data-rk-link="summary">实现报告</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li></ul><h3>引用本报告</h3><ul class="rk-backlinks"><li class="rk-added" data-rev="2"><a href="../ender/end-report.html" data-rk-backlink="end-report">收尾报告</a></li><li><a href="../reviewer/update-001-review.html" data-rk-backlink="review">验收调整审查</a></li><li><a href="../updater/update-001-summary.html" data-rk-backlink="update-summary">验收调整总结</a></li><li><a href="../tester/test-report.html" data-rk-backlink="test-report">测试报告</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li></ul></body></html>

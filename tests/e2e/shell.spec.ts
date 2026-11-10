@@ -197,6 +197,8 @@ test('TC-014 — built app starts from Chinese and space-containing path', async
 });
 
 test('TC-012 — missing renderer file logs a load error and exits nonzero', async ({}, info) => {
+  // SPEC-007 adds a native error dialog: allow the tester to inspect and dismiss it.
+  test.setTimeout(90_000);
   const replica = join(root, '.awr/cache', process.env.AVALON_TEST_RUN_ID!, 'missing-renderer');
   await mkdir(replica, { recursive: true });
   for (const directory of ['main', 'preload']) {
@@ -211,7 +213,7 @@ test('TC-012 — missing renderer file logs a load error and exits nonzero', asy
     output += data.toString(); appendFileSync(join(evidence, 'missing-renderer.log'), data);
   });
   let timedOut = false;
-  const timer = setTimeout(() => { timedOut = true; child.kill(); }, 8_000);
+  const timer = setTimeout(() => { timedOut = true; child.kill(); }, 60_000);
   const [code, signal] = await once(child, 'close');
   clearTimeout(timer);
   log('audit.log', { case: info.title, pid: child.pid, code, signal, timedOut });
