@@ -1,5 +1,7 @@
 # Spec 工作流规范
 
+测试与归档的材料留存以 [test-artifact-lifecycle.md](test-artifact-lifecycle.md) 为准：归档后删除原始证据与测试缓存，只长期保留报告、账本和源码；此项目约定覆盖通用 Skill 的长期留存要求。
+
 ## 基本约定
 
 - 本项目采用 R&K Flow / Spec 驱动式开发，遵循「项目 → Version → Spec」三级架构

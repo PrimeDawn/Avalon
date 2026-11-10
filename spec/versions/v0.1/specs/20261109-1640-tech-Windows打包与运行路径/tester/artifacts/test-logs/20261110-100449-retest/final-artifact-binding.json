@@ -1,9 +1,0 @@
-{
-  "timestamp": "2026-11-10T02:11:17.278Z",
-  "e2eRun": "2026-11-10T02-04-50-418Z-f1e2c8",
-  "allPackagedFilesEqualToTestedBuild": true,
-  "files": 73,
-  "asarSha256": "de46cf182ef0e0377192141a573ff3e193a0332955d81d1093085f04a12db78b",
-  "setupSha256": "7cb52dc42974aa8729dfca86b147b437c7906d176de1839056d375cae63b664c",
-  "differences": []
-}

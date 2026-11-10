@@ -1,4 +1,0 @@
-=== electron-runtime-install Run ===
-Command: node node_modules/electron/install.js
-Timestamp: 2026-11-07T15:10:10.1737590+08:00
-Exit code: -1

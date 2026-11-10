@@ -1,1 +1,0 @@
-{"timestamp":"2026-11-10T01:11:28.997Z","event":{"case":"TC-012 — missing renderer file logs a load error and exits nonzero","pid":12056,"code":1,"signal":null,"timedOut":false}}

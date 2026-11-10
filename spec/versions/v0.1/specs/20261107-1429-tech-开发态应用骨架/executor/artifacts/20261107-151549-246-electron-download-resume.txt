@@ -1,5 +1,0 @@
-=== electron-download-resume Run ===
-Command: node .awr/cache/download-electron.mjs
-Timestamp: 2026-11-07T15:15:49.2622729+08:00
-Official Electron 45.2.3 archive downloaded and SHA-256 verified by @electron/get: C:\Users\35692\AppData\Local\electron\Cache\8f3ac71e340a9b80141ce76e61a0af56be8beee5aed0cf501a00bd07792a0295\electron-v45.2.3-win32-x64.zip
-Exit code: 0

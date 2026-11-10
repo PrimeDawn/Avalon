@@ -1,5 +1,0 @@
-Command: C:\workspace\Avalon\node_modules\electron\dist\electron.exe C:\workspace\Avalon --enable-logging=stderr
-Timestamp: 2026-11-07T07:29:57.662Z
-
-Exit code: 2147483651
-Signal: null

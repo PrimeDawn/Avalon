@@ -1,8 +1,0 @@
-
-(node:33936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
-(Use `electron --trace-warnings ...` to show where the warning was created)
-(node:33936) electron: Failed to load URL: file:///C:/workspace/Avalon/.awr/cache/2026-11-10T03-09-45-826Z-3c9cb1/missing-renderer/out/renderer/index.html with error: ERR_FILE_NOT_FOUND
-{
-  event: [32m'app-start-failed'[39m,
-  message: [32m"ERR_FILE_NOT_FOUND (-6) loading 'file:///C:/workspace/Avalon/.awr/cache/2026-11-10T03-09-45-826Z-3c9cb1/missing-renderer/out/renderer/index.html'"[39m
-}
