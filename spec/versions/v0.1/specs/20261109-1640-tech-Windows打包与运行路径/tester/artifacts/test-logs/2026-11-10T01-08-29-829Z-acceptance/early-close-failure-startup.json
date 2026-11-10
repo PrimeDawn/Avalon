@@ -1,7 +1,0 @@
-{
-  "event": "app-start-failed",
-  "timestamp": "2026-11-10T01:36:12.764Z",
-  "version": "0.1.0",
-  "isPackaged": true,
-  "message": "ERR_FAILED (-2) loading 'file:///C:\\workspace\\Avalon\\release\\win-unpacked\\resources\\app.asar\\out\\renderer\\index.html'"
-}

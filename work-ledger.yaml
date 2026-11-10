@@ -37,8 +37,8 @@ work_items:
       - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/ender/end-report.html
     evidence:
       - locator: spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/test-report.html
-        summary: 用户确认测试；收尾新鲜回归通过，机器证据另行绑定
-      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/tester/artifacts/test-logs/2026-11-07T09-10-37-477Z-b537ad/completion-report.json
+        summary: 用户确认测试；收尾新鲜回归通过；原始运行材料已按归档策略清理，文件复核完成
+      - spec/versions/v0.1/specs/20261107-1429-tech-开发态应用骨架/ender/end-report.html
     status: completed
     milestone: v0.1
     goal: "goal#intake-goal"
@@ -80,10 +80,10 @@ work_items:
     acceptance:
       - 确定 Windows 11 x64 离线安装形态；按 D-011 通过本机独立安装、内置运行时与本地资源验证基础窗口，无需另备干净机器。
       - 资源、中文与空格路径、用户数据目录可用且不写死开发机器目录。
-    next_action: 已交付并原位归档；PR https://github.com/PrimeDawn/Avalon/pull/1 面向 dev 等待合并，合并与删分支另需授权。
+    next_action: 已交付并原位归档；PR https://github.com/PrimeDawn/Avalon/pull/1 已合并到 dev，远端原工作分支已删除；归档材料清理另由维护分支提交。
     summary: 用户确认全部交付；新鲜回归与逐项机器核验通过，EXP-004/005 已入库，原位归档完成。
     evidence:
-      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/artifacts/20261110-110945/completion-report.json
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/end-report.html
     verification:
       evidence_level: locally_verified
   - id: SPEC-003

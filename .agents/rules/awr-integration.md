@@ -1,5 +1,7 @@
 # AWR 运行时接入规范（v0.5.0 L0 官方正统生命周期规范）
 
+> 测试材料留存遵循 [test-artifact-lifecycle.md](test-artifact-lifecycle.md)：下述 JSON 是核验期间的临时输入，完成核验并归档后清理，不要求永久保存或提交 Git；长期产物引用最终报告。
+
 ## 一、定位与权威边界
 
 AWR（Agent Work Runtime）是 R&K Flow 的底层运行状态机与上下文编译器，不替代 R&K Flow 的流程治理：

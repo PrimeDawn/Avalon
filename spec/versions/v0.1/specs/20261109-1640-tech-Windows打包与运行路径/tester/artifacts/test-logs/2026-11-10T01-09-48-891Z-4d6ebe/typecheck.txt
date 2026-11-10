@@ -1,8 +1,0 @@
-Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run typecheck
-Timestamp: 2026-11-10T01:09:49.101Z
-
-> avalon@0.1.0 typecheck
-> tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json
-
-tests/packaged/packaged-shell.spec.ts(11,87): error TS2790: The operand of a 'delete' operator must be optional.
-Exit code: 1

@@ -1,7 +1,0 @@
-
-(node:32100) electron: Failed to load URL: file:///C:/workspace/Avalon/.awr/cache/spec007-corrupt-package/resources/app.asar/out/renderer/index.html with error: ERR_FILE_NOT_FOUND
-(Use `Avalon --trace-warnings ...` to show where the warning was created)
-{
-  event: 'app-start-failed',
-  message: "ERR_FILE_NOT_FOUND (-6) loading 'file:///C:/workspace/Avalon/.awr/cache/spec007-corrupt-package/resources/app.asar/out/renderer/index.html'"
-}

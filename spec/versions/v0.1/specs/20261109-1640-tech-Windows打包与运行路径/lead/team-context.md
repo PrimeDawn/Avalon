@@ -241,3 +241,10 @@ AWR work complete 成功，SPEC-007 为 completed / locally_verified；证据与
 单次提交 feat: add Windows installer and runtime paths 已推送，PR #1：https://github.com/PrimeDawn/Avalon/pull/1，源分支 tech/spec-20261109-1640-windows-packaging，目标 dev，OPEN。PR URL 与本节通过 amend 并入同一次 Spec 提交，随后 force-with-lease 更新自己刚推送的分支；不合并、不删分支。连接器通信失败后 gh 查重为空再创建成功。
 
 AWR completed / locally_verified，session ended，doctor 0 findings；spec-ender=done。最终提交号以本报告所在 Git 提交和远程 PR head 为准，避免在自身提交中硬编码循环引用。
+
+
+## D-016：归档后清理测试材料（2026-11-10）
+
+用户明确要求 Spec 归档后清理全部原始证据，本地也不长期留存。按 `.agents/rules/test-artifact-lifecycle.md` 清理本 Spec artifacts 与已完成测试的副本/profile/缓存。自动审批拒绝工具直接删除后，由用户运行修正编码的清理脚本；用户报告完成，本轮已核实两个 Spec 的 artifacts 与旧 .awr/cache 均不存在。报告保留既有结论并注明材料已清理。历史路径仅记录当时的操作，不代表文件继续存在。本次不重跑应用测试，不改验收结论，不提交或推送。
+
+清理复核：本项目约 4.17 GB 运行材料已释放；源码、测试源码、报告、开发依赖、release 产物及 AWR 状态库保留。此记录不代表应用测试再次执行。

@@ -37,7 +37,7 @@ html-report
 .claude/
 .codex/
 
-# ===== 测试临时目录（Spec 证据使用 .txt / .json 保留） =====
+# ===== 测试临时材料（归档后清理，本地也不长期保留） =====
 test-results/
 playwright-report/
-!spec/versions/**/tester/artifacts/test-logs/**/*.log
+spec/versions/**/artifacts/

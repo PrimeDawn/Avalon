@@ -1,1 +1,0 @@
-const {contextBridge,ipcRenderer}=require('electron');contextBridge.exposeInMainWorld('probe',{run:()=>ipcRenderer.invoke('avalon:get-app-info').then(()=> 'UNEXPECTED_SUCCESS',e=>String(e.message))});

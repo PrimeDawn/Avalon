@@ -1,5 +1,0 @@
-Command: Python zip CRC comparison against installed Electron dist
-Timestamp: 2026-11-07T15:30:32.482566+08:00
-Entries checked: 73
-Mismatches: []
-Exit code: 0

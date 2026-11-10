@@ -316,3 +316,10 @@ exp-search：项目 experience / knowledge 索引只有占位条目，未命中 
 - tech/spec-20261107-1429-dev-shell（bac6918）无冲突合入 dev；保留源分支，不推送。
 - 在实际合并结果 1d3735f9034c476a01a723393c49f637ca72b405 上运行 npm run test:e2e：typecheck / build、52 单元、8 桌面组全部通过，退出 0。证据 [merge-verification.json](../tester/artifacts/test-logs/2026-11-07T09-27-49-300Z-610fff/merge-verification.json)。
 - 仅将验证记录和证据并入本地合并提交，不改应用代码；当前检出 dev。Spec 保持 archived / completed，未重启 AWR 角色会话。
+
+
+## D-011：归档后清理测试材料（2026-11-10）
+
+用户明确要求 Spec 归档后清理全部原始证据，本地也不长期留存。按 `.agents/rules/test-artifact-lifecycle.md` 清理本 Spec artifacts 与已完成测试的副本/profile/缓存。自动审批拒绝工具直接删除后，由用户运行修正编码的清理脚本；用户报告完成，本轮已核实两个 Spec 的 artifacts 与旧 .awr/cache 均不存在。报告保留既有结论并注明材料已清理。历史路径仅记录当时的操作，不代表文件继续存在。本次不重跑应用测试，不改验收结论，不提交或推送。
+
+清理复核：本项目约 4.17 GB 运行材料已释放；源码、测试源码、报告、开发依赖、release 产物及 AWR 状态库保留。此记录不代表应用测试再次执行。

@@ -1,9 +1,0 @@
-{"at":"381839111300100","event":"probe-start","mode":"early","isPackaged":true}
-{"at":"381839356064800","event":"window-created"}
-{"at":"381839359150400","event":"loadFile-called"}
-{"at":"381839376097400","event":"close-request","trigger":"did-start-loading","destroyed":false}
-{"at":"381839376790800","event":"close-event","destroyed":false}
-{"at":"381839379352000","event":"load-rejected","message":"ERR_FAILED (-2) loading 'file:///C:\\workspace\\Avalon\\.awr\\cache\\spec007-debug-2026-11-10T01-48-37-647Z\\runtime\\resources\\app.asar\\out\\renderer\\index.html'","destroyed":false}
-{"at":"381839379897800","event":"isDestroyed","value":false}
-{"at":"381839383447500","event":"error-box","title":"Avalon 启动失败","content":"无法打开 Avalon。\n诊断记录：C:\\workspace\\Avalon\\.awr\\cache\\spec007-debug-2026-11-10T01-48-37-647Z\\profiles\\1\\Avalon\\logs\\startup.json"}
-{"at":"381839386310600","event":"closed-event"}
