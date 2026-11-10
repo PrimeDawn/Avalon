@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>探索报告 · SPEC-007</title>
+<meta name="rk:title" content="探索报告：Windows 打包与运行路径">
+<meta name="rk:type" content="exploration-report">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径">
+<meta name="rk:role" content="spec-explorer">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已完成">
+<meta name="rk:created" content="2026-11-09">
+<meta name="rk:updated" content="2026-11-09">
+<meta name="rk:revision" content="3">
+<meta name="rk:git-branch" content="tech/spec-20261109-1640-windows-packaging">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,exploration-report">
+<link rel="rk-ledger" href="../lead/team-context.md"><link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css">
+<script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head>
+<body><nav class="rk-nav"></nav><header class="rk-head"><h1>探索报告 · SPEC-007</h1><div class="rk-meta"><span><b>title</b> 探索报告：Windows 打包与运行路径</span><span><b>type</b> exploration-report</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径</span><span><b>role</b> spec-explorer</span><span><b>mode</b> gated</span><span><b>status</b> 已完成</span><span><b>created</b> 2026-11-09</span><span><b>updated</b> 2026-11-09</span><span><b>revision</b> 3</span><span><b>git-branch</b> tech/spec-20261109-1640-windows-packaging</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,exploration-report</span></div></header><nav class="rk-revbar"></nav>
+<section class="rk-verdict"><div class="rk-verdict-label">结论</div><p>探索完成，建议采用 electron-builder + NSIS；用户已确认 Windows 11 x64 中文离线安装版及未签名自用边界。</p></section>
+<h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-09</td><td>spec-explorer</td><td>首次形成文档</td><td>D-004～D-007：中文安装向导、Win11 x64、自用未签名包与 AWR 恢复</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-09</td><td>TeamLead</td><td>关联实现报告，不修改原方案 / 测试标准</td><td>实现阶段交接</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-10</td><td>TeamLead / spec-ender</td><td>补收尾报告反链；原阶段结论保留为历史</td><td>D-014 收尾导航</td></tr></tbody></table>
+<main class="rk-added" data-rev="1">
+<h2>1. 历史经验</h2>
+<p>检索关键词：Electron、安装、exe、中文路径、完整性标签、桌面入口。命中 EXP-002、EXP-003、KNOW-002。此前 Low 完整性标签导致 Electron 启动失败；桌面启动器曾受进程退出码与 Codex MSIX 路径视图影响。因此验收必须包含真实资源管理器和快捷方式启动，不能只依赖 Agent 子进程。</p>
+<ul><li><a href="../../../../../context/experience/exp-002-Electron启动失败与项目完整性标签.md">EXP-002：完整性标签</a></li><li><a href="../../../../../context/experience/exp-003-桌面入口路径视图与退出码.md">EXP-003：桌面入口与退出码</a></li><li><a href="../../../../../context/knowledge/know-002-开发态骨架与验证入口.md">KNOW-002：开发态骨架</a></li></ul>
+<h2>2. 项目现状</h2>
+<p>从 dev 的 e02680d 创建本分支；SPEC-001 已完成。现有 Electron 45.2.3、electron-vite 6.0.0；Node 24 / npm 11 是开发工具。build 仅生成 out/main、out/preload、out/renderer，没有分发包配置。正式包应内置 Electron 运行时，用户不安装 Node。现有桌面入口依赖本地仓库，不是分发产物。</p>
+<p><span class="rk-ref">src/main/window.ts</span> 已按构建目录定位 preload 和 renderer；生产态忽略开发 URL，以 loadFile 加载。开发端口为 5178，正式包不启动 HTTP 服务。主进程尚无显式数据目录与启动诊断约定。极早关闭窗口可能把已销毁窗口的加载取消误报为启动失败，需限定修正。</p>
+<p>现有 52 项单元、8 组桌面测试是历史基线，本轮尚未执行产品测试。<span class="rk-ref">scripts/run-e2e.mjs</span> 证据路径固定为 SPEC-001，需要可选的当前 Spec 路由，避免本项证据写入已归档目录。</p>
+<h2>3. 外部知识与选择</h2>
+<table><thead><tr><th>方案</th><th>判断</th></tr></thead><tbody><tr><td>electron-builder 26.18.0 + NSIS</td><td>保留现有 electron-vite 工程；生成离线中文安装向导，作为本项方案。</td></tr><tr><td>electron-forge / Squirrel</td><td>需要额外构建流程适配；当前没有迁移收益。</td></tr><tr><td>portable / zip / nsis-web</td><td>前两种不作为本项正式交付；Web 安装器需额外下载，不符合离线安装方向。</td></tr></tbody></table>
+<p>使用 v26 文档，避免误用网站默认的 v27 配置。NSIS 支持 assisted 模式、目录选择和中文语言；perMachine:false 本身不强制只安装当前用户，需 customInstallMode。采用小型 include，而非维护完整安装器脚本。<a href="https://www.electron.build/v26/docs/nsis/">electron-builder v26 NSIS</a></p>
+<p>只读解包 app-builder-lib@26.18.0 检查了 assistedInstaller.nsh、uninstaller.nsh：普通卸载默认不删除 AppData；显式 --delete-app-data 会触发删除。本项不传该参数、不提供删除用户数据操作；书库要求位于安装目录之外。deleteAppDataOnUninstall 的文档适用限制不能替代卸载实测。</p>
+<p>asar 默认支持内嵌应用代码；文件白名单仍会包含 package.json 与生产依赖，应检查实际包内容。<a href="https://www.electron.build/v26/docs/contents/">包内容文档</a>。Electron 的 appData / userData / sessionData 是平台路径 API；sessionData 需在 ready 前设置。<a href="https://www.electronjs.org/docs/latest/api/app/">Electron app API</a></p>
+<p>智能应用控制依赖信誉或可信签名；代码签名是正式分发的后续接入点，不能承诺所有安全策略都会放行。<a href="https://learn.microsoft.com/en-us/windows/apps/develop/smart-app-control/code-signing-for-smart-app-control">微软代码签名说明</a>。用户明确没有证书和开启该功能的测试机，同意本次先交付未签名自用包；不配置自签证书、不修改系统信任、不购买服务。</p>
+<h2>4. 下游建议与风险</h2>
+<ul><li>目标 Windows 11 x64（Intel / AMD）；不承诺 Windows 10、ARM64。未适配的平台不是本次测试通过范围。</li><li>安装文件、应用数据、未来小说书库分离；所有路径来自系统 API / 构建相对位置，不依赖 cwd。</li><li>真实安装、快捷方式启动、关闭重开、卸载保留数据是验收主线；包目录测试只能提供部分证据。</li><li>本机未发现 Windows Sandbox / 现成 VM 命令。无 Node / npm / Git 的干净 Windows 环境尚未落实，不能把临时改 PATH 当作干净机器。</li><li>AWR 故障已由用户关闭智能应用控制后解除；原 0.6.0 运行正常，无需升级。详细证据见诊断报告。</li><li>反思：现有记忆已覆盖路径视图与退出码；新打包选择尚未实现验证，先保存在本报告，收尾时再沉淀验证后的架构记忆。</li></ul>
+</main>
+<h2>关联产物</h2><ul class="rk-links"><li class="rk-added" data-rev="2"><a href="../executor/summary.html" data-rk-link="summary">实现报告</a></li><li><a href="../writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-link="test-plan">测试计划</a></li><li><a href="../debugger/debug-001.html" data-rk-link="debug">AWR 应用控制诊断</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li><li><a href="../../../plan.html" data-rk-link="version-plan">版本规划</a></li></ul>
+<h3>引用本报告</h3><ul class="rk-backlinks"><li class="rk-added" data-rev="3"><a href="../ender/end-report.html" data-rk-backlink="end-report">收尾报告</a></li><li class="rk-added" data-rev="2"><a href="../executor/summary.html" data-rk-backlink="summary">实现报告</a></li><li><a href="../writer/plan.html" data-rk-backlink="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-backlink="test-plan">测试计划</a></li><li><a href="../debugger/debug-001.html" data-rk-backlink="debug">AWR 应用控制诊断</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li></ul></body></html>

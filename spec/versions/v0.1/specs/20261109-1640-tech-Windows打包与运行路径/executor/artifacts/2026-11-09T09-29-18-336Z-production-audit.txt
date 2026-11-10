@@ -1,0 +1,28 @@
+Command: node C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js audit --omit=dev --json
+Timestamp: 2026-11-09T09:29:18.339Z
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 4,
+      "dev": 403,
+      "optional": 70,
+      "peer": 13,
+      "peerOptional": 0,
+      "total": 406
+    }
+  }
+}
+
+Exit code: 0
+Signal: none
+Finished: 2026-11-09T09:29:20.275Z

@@ -1,0 +1,12 @@
+Command: node C:\workspace\Avalon\node_modules\@playwright\test\cli.js test --config playwright.packaged.config.ts
+Timestamp: 2026-11-10T02:04:52.948Z
+
+Running 2 tests using 1 worker
+
+(node:15332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\packaged\packaged-shell.spec.ts:26:1 › P07/P08 — packaged local resources, real IPC, isolated paths, no server and normal close (2.2s)
+  ok 2 tests\packaged\packaged-shell.spec.ts:79:1 › P09 — close the first available packaged window immediately, then reopen (1.4s)
+
+  2 passed (3.9s)
+Exit code: 0

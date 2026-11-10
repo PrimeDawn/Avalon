@@ -1,0 +1,19 @@
+Command: node C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js run test:unit -- tests/unit/runtime-paths.test.ts tests/unit/startup-diagnostics.test.ts
+Timestamp: 2026-11-09T09:25:00.505Z
+
+> avalon@0.1.0 test:unit
+> vitest run tests/unit/runtime-paths.test.ts tests/unit/startup-diagnostics.test.ts
+
+
+ RUN  v5.1.0 C:/workspace/Avalon
+
+
+ Test Files  2 passed (2)
+      Tests  12 passed (12)
+   Start at  17:25:01
+   Duration  244ms (transform 41%, import 25%, tests 24%, worker 9%)
+
+
+Exit code: 0
+Signal: none
+Finished: 2026-11-09T09:25:01.448Z

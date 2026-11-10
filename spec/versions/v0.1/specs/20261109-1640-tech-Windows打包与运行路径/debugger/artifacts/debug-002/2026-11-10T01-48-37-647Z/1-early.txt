@@ -1,0 +1,5 @@
+
+{
+  event: 'app-start-failed',
+  message: "ERR_FAILED (-2) loading 'file:///C:\\workspace\\Avalon\\.awr\\cache\\spec007-debug-2026-11-10T01-48-37-647Z\\runtime\\resources\\app.asar\\out\\renderer\\index.html'"
+}

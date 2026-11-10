@@ -3,7 +3,7 @@ milestones:
   - id: v0.1
     title: Avalon v0.1 本地小说编辑器
     status: in_progress
-    summary: 六项范围已确认；SPEC-001 用户验收通过并完成收尾，其余五项待启动。
+    summary: 六项范围已确认；SPEC-001 与 SPEC-007 已完成并原位归档；其余四项待启动，v0.1 仍在执行中。
     scope: [SPEC-001, SPEC-007, SPEC-003, SPEC-002, SPEC-004, SPEC-006]
     acceptance:
       - 目标 Windows 机器无需开发工具即可运行最终交付包。
@@ -56,7 +56,21 @@ work_items:
   - id: SPEC-007
     kind: spec
     title: Windows 打包与运行路径
-    status: ready
+    paths:
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/lead/team-context.md
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/explorer/exploration-report.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/writer/plan.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/tester/test-plan.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/debugger/debug-001.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/debugger/debug-002.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/debugger/debug-002-fix.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/end-report.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/executor/summary.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/tester/test-report.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/updater/update-001.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/updater/update-001-summary.html
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/reviewer/update-001-review.html
+    status: completed
     milestone: v0.1
     goal: "goal#intake-goal"
     tags: [v0.1, tech]
@@ -64,10 +78,14 @@ work_items:
     required: true
     depends_on: [SPEC-001]
     acceptance:
-      - 确定目标 Windows、架构与交付形态，未装开发工具的机器可从 exe 离线启动基础窗口。
+      - 确定 Windows 11 x64 离线安装形态；按 D-011 通过本机独立安装、内置运行时与本地资源验证基础窗口，无需另备干净机器。
       - 资源、中文与空格路径、用户数据目录可用且不写死开发机器目录。
-    next_action: 骨架完成后验收基础窗口打包，形成存储层依赖的路径约定。
-    summary: 基础窗口打包通过不代表整版完成；最终功能包仍需整体验收。
+    next_action: 已交付并原位归档；PR https://github.com/PrimeDawn/Avalon/pull/1 面向 dev 等待合并，合并与删分支另需授权。
+    summary: 用户确认全部交付；新鲜回归与逐项机器核验通过，EXP-004/005 已入库，原位归档完成。
+    evidence:
+      - spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/artifacts/20261110-110945/completion-report.json
+    verification:
+      evidence_level: locally_verified
   - id: SPEC-003
     kind: spec
     title: 窗口视觉与工作台外壳

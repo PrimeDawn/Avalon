@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AWR 应用控制诊断 · SPEC-007</title>
+<meta name="rk:title" content="AWR 应用控制诊断：Windows 打包与运行路径">
+<meta name="rk:type" content="debug">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径">
+<meta name="rk:role" content="spec-debugger">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已恢复">
+<meta name="rk:created" content="2026-11-09">
+<meta name="rk:updated" content="2026-11-09">
+<meta name="rk:revision" content="3">
+<meta name="rk:git-branch" content="tech/spec-20261109-1640-windows-packaging">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,debug">
+<link rel="rk-ledger" href="../lead/team-context.md"><link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css">
+<script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head>
+<body><nav class="rk-nav"></nav><header class="rk-head"><h1>AWR 应用控制诊断 · SPEC-007</h1><div class="rk-meta"><span><b>title</b> AWR 应用控制诊断：Windows 打包与运行路径</span><span><b>type</b> debug</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径</span><span><b>role</b> spec-debugger</span><span><b>mode</b> gated</span><span><b>status</b> 已恢复</span><span><b>created</b> 2026-11-09</span><span><b>updated</b> 2026-11-09</span><span><b>revision</b> 3</span><span><b>git-branch</b> tech/spec-20261109-1640-windows-packaging</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,debug</span></div></header><nav class="rk-revbar"></nav>
+<section class="rk-verdict"><div class="rk-verdict-label">结论</div><p>根因已定位；用户自行关闭智能应用控制后原 AWR 0.6.0 恢复，认领与上下文准备成功。</p></section>
+<h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-09</td><td>spec-debugger</td><td>首次形成文档</td><td>D-004～D-007：中文安装向导、Win11 x64、自用未签名包与 AWR 恢复</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-09</td><td>TeamLead</td><td>关联实现报告，不修改原方案 / 测试标准</td><td>实现阶段交接</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-10</td><td>TeamLead / spec-ender</td><td>补收尾报告反链；原阶段结论保留为历史</td><td>D-014 收尾导航</td></tr></tbody></table>
+<main class="rk-added" data-rev="1">
+<h2>现象与假设</h2><div class="rk-cal risk"><p>awr status 经 Node 启动器报 spawn UNKNOWN；直接原生 awr.exe 提示应用程序控制策略阻止。假设：智能应用控制拒绝当前未签名二进制，而非 PATH、项目完整性标签或 Node 包损坏。</p></div>
+<h2>复现和证据</h2><table><thead><tr><th>观察</th><th>实际结果</th></tr></thead><tbody><tr><td>Get-AuthenticodeSignature，已安装 0.6.0</td><td>NotSigned；SHA256 BCEBFBBD8D2948317A8A5B9CC1BF76218BE78E60EB79AD5CDD5BFC13F8E0ED78</td></tr><tr><td>文件流</td><td>只有 :$DATA，无 Zone.Identifier；不是下载标记待解除</td></tr><tr><td>CodeIntegrity 3077 / 3033</td><td>明确记录阻止 awr.exe；策略 0283ac0f-fff1-49ae-ada1-8a933130cad6</td></tr><tr><td>CodeIntegrity 3099 与策略值</td><td>同 ID 名称 VerifiedAndReputableDesktop；VerifiedAndReputablePolicyState = 1</td></tr><tr><td>官方 npm 0.7.0 独立检查</td><td>NotSigned；SHA256 42125F7D617A109A73F087CB9E05F6C61DA8D02428A252DBB0B7FCF5EAAA5151；直接 --version 同样被阻止，退出 1。未替换已安装版本</td></tr></tbody></table>
+<h2>根因与处理结果</h2><div class="rk-cal key"><p>日志、签名和同一策略 ID 相互印证。用户自行关闭智能应用控制后，原安装 0.6.0 的 awr --version、awr status 立即正常（退出 0）；随后 session start --claim、work progress、work prepare 均成功。只改变策略状态便解除拦截，根因得到验证。Agent 未修改 Windows 策略、PATH、项目权限或 AWR 安装。</p></div>
+<p>这是用户主动更改本机系统设置后的恢复，不是应用签名问题已修复。用户反馈此设置在当前机器无法重新开启，尊重实际状态，不尝试注册表修改或重置系统。<a href="https://support.microsoft.com/en-us/windows/security/threat-malware-protection/smart-app-control-frequently-asked-questions">微软 SAC 说明</a>。</p>
+<h2>方案关联与后续</h2><p>无产品代码修复；不产生虚构 debug-fix 或产品测试通过记录。I-001 可关闭。打包产品另按 D-007：未签名自用包可先做，开启 SAC 的兼容与签名未验证，不能用本机运行结果外推。</p>
+</main>
+<h2>关联产物</h2><ul class="rk-links"><li class="rk-added" data-rev="2"><a href="../executor/summary.html" data-rk-link="summary">实现报告</a></li><li><a href="../explorer/exploration-report.html" data-rk-link="exploration-report">探索报告</a></li><li><a href="../writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-link="test-plan">测试计划</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li><li><a href="../../../plan.html" data-rk-link="version-plan">版本规划</a></li></ul>
+<h3>引用本报告</h3><ul class="rk-backlinks"><li class="rk-added" data-rev="3"><a href="../ender/end-report.html" data-rk-backlink="end-report">收尾报告</a></li><li class="rk-added" data-rev="2"><a href="../executor/summary.html" data-rk-backlink="summary">实现报告</a></li><li><a href="../explorer/exploration-report.html" data-rk-backlink="exploration-report">探索报告</a></li><li><a href="../writer/plan.html" data-rk-backlink="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-backlink="test-plan">测试计划</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li></ul></body></html>

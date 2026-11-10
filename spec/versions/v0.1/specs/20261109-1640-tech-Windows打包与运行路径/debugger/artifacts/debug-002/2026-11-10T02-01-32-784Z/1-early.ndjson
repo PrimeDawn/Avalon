@@ -1,0 +1,9 @@
+{"at":"382616088556000","event":"probe-start","mode":"early","isPackaged":true}
+{"at":"382616506130600","event":"window-created"}
+{"at":"382616509880400","event":"loadFile-called"}
+{"at":"382616538042800","event":"close-request","trigger":"did-start-loading","destroyed":false}
+{"at":"382616538757900","event":"close-event","destroyed":false}
+{"at":"382616540888200","event":"load-rejected","message":"ERR_FAILED (-2) loading 'file:///C:\\workspace\\Avalon\\.awr\\cache\\spec007-debug-2026-11-10T02-01-32-784Z\\runtime\\resources\\app.asar\\out\\renderer\\index.html'","destroyed":false}
+{"at":"382616549952100","event":"closed-event"}
+{"at":"382616551001100","event":"window-all-closed"}
+{"at":"382616551397000","event":"will-quit"}

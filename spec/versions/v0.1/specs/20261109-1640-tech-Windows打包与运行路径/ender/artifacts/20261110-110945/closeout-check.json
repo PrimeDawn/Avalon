@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-11-10T03:28:19.530Z",
+  "command": "node ender/check-closeout.cjs",
+  "exitCode": 0,
+  "reports": 12,
+  "manifestDocuments": 13,
+  "reportFailures": [],
+  "testRuns": [
+    {
+      "run": "2026-11-10T03-09-45-826Z-3c9cb1",
+      "startTime": "2026-11-10T03:09:49.090Z",
+      "duration": 68137.062,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    {
+      "run": "2026-11-10T03-11-18-648Z-c5eb4f",
+      "startTime": "2026-11-10T03:11:21.910Z",
+      "duration": 4107.717,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "exitCode": 0
+    }
+  ],
+  "directoryChecks": 5,
+  "awrCurrentSpecGaps": [],
+  "otherPlannedWorkGaps": [
+    {
+      "target": "SPEC-004",
+      "code": "dependency_not_completed"
+    },
+    {
+      "target": "SPEC-004",
+      "code": "dependency_not_completed"
+    },
+    {
+      "target": "SPEC-006",
+      "code": "dependency_not_completed"
+    },
+    {
+      "target": "SPEC-006",
+      "code": "dependency_not_completed"
+    },
+    {
+      "target": "SPEC-006",
+      "code": "dependency_not_completed"
+    },
+    {
+      "target": "SPEC-001",
+      "code": "completion_not_checked"
+    },
+    {
+      "target": "SPEC-007",
+      "code": "completion_not_checked"
+    }
+  ],
+  "doctorFindings": [],
+  "evidenceInterpretation": "Command/exit/time are checked against current runner bundles. Native transcripts, framework stdout and old failure attachments are not independent passing command records; no historical headers are fabricated."
+}

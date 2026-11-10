@@ -1,0 +1,20 @@
+[
+  {
+    "phase": "early-close",
+    "launchedAt": 1794280284599,
+    "availableAt": 1794280285007,
+    "closeRequestedAt": 1794280285007,
+    "exitedAt": 1794280285282,
+    "exitCode": 0,
+    "stderr": "Waiting for the debugger to disconnect...\r\n"
+  },
+  {
+    "phase": "reopen",
+    "launchedAt": 1794280285284,
+    "availableAt": 1794280285697,
+    "closeRequestedAt": 1794280285827,
+    "exitedAt": 1794280285996,
+    "exitCode": 0,
+    "stderr": "Waiting for the debugger to disconnect...\r\n"
+  }
+]

@@ -1,0 +1,11 @@
+Command: node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js run typecheck
+Timestamp: 2026-11-10T01:09:59.409Z
+
+> avalon@0.1.0 typecheck
+> tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json
+
+tests/packaged/packaged-shell.spec.ts(27,94): error TS2322: Type 'Record<string, string | undefined>' is not assignable to type '{ [key: string]: string; }'.
+  'string' index signatures are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+Exit code: 1

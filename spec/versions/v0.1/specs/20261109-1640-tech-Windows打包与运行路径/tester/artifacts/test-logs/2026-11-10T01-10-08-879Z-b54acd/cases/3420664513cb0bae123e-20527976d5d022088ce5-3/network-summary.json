@@ -1,0 +1,17 @@
+[
+  {
+    "case": "TC-005 — missing native handler produces a retryable failure",
+    "method": "GET",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-Dy_LjuAs.css"
+  },
+  {
+    "case": "TC-005 — missing native handler produces a retryable failure",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-Dy_LjuAs.css",
+    "status": 200
+  },
+  {
+    "case": "TC-005 — missing native handler produces a retryable failure",
+    "url": "file:///C:/workspace/Avalon/out/renderer/assets/index-aUW2NzIc.js",
+    "status": 200
+  }
+]

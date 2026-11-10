@@ -1,0 +1,197 @@
+{
+  "apply_attempt": {
+    "event_id": "01M71QSKKWGMFSKWJG9EXRX3SD",
+    "plan": {
+      "after_fingerprint": "sha256:9cb2e9d8ff5ea40e751e1d49217e2ea29233bee9583023361ac9f118a87f58df",
+      "after_size": 9298,
+      "before_fingerprint": "sha256:4009e2b2e3d62abc2b78b4595965cfd079e1e6d781e93c6727cd481e9c156faa",
+      "before_size": 9092,
+      "id": "01M71QSKKKC587PPHST3YYETZV",
+      "target_after_hash": "dd140c730918f4b6471594c8e4520ee15a8bedacf2783fe39ab694bac345752f"
+    },
+    "project_revision": 218,
+    "proposal_id": "01M71QSKJBD103P6H3D6RNWDBH",
+    "resolved_event_id": "01M71QSKN416S4EHNQGTBBWHKY",
+    "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4"
+  },
+  "code": "proposal_recorded",
+  "error": null,
+  "event": {
+    "branch_id": null,
+    "created_at": 1794281098916,
+    "event_type": "work.completed",
+    "id": "01M71QSKN416S4EHNQGTBBWHKY",
+    "importance": "normal",
+    "payload": {
+      "action_reason": "D-015用户确认归档，全部验收与新鲜自动回归通过，证据已完整绑定",
+      "actor": "spec-ender",
+      "after_fingerprint": "sha256:9cb2e9d8ff5ea40e751e1d49217e2ea29233bee9583023361ac9f118a87f58df",
+      "attempt_event_id": "01M71QSKKWGMFSKWJG9EXRX3SD",
+      "before_fingerprint": "sha256:4009e2b2e3d62abc2b78b4595965cfd079e1e6d781e93c6727cd481e9c156faa",
+      "creating_session_id": "01M71QQZN37YMS2WG53AHC3KXQ",
+      "proposal_id": "01M71QSKJBD103P6H3D6RNWDBH",
+      "reason": "D-015用户确认归档，全部验收与新鲜自动回归通过，证据已完整绑定",
+      "released_claim_ids": [
+        "01M71QQZN4EW6F8P48XM67THN1"
+      ],
+      "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+      "source_revision": 33,
+      "target_after_hash": "dd140c730918f4b6471594c8e4520ee15a8bedacf2783fe39ab694bac345752f",
+      "target_revision": 17,
+      "work_action": {
+        "action": "complete",
+        "completion": {
+          "acceptance": [
+            {
+              "criterion": "确定 Windows 11 x64 离线安装形态；按 D-011 通过本机独立安装、内置运行时与本地资源验证基础窗口，无需另备干净机器。",
+              "evidence": [
+                "01M71QE8P0X9S38BYPWNY9MSTX"
+              ]
+            },
+            {
+              "criterion": "资源、中文与空格路径、用户数据目录可用且不写死开发机器目录。",
+              "evidence": [
+                "01M71QE8P0X9S38BYPWNY9MSTX"
+              ]
+            }
+          ],
+          "evidence": [
+            {
+              "branch_id": null,
+              "command": "npm run test:e2e; npm run test:e2e -- --config playwright.packaged.config.ts; node debugger/probes/check-preflight.cjs",
+              "evidence_type": "verification_report",
+              "external_key": "SPEC007-CLOSEOUT-20261110-110945",
+              "id": "01M71QE8P0X9S38BYPWNY9MSTX",
+              "level": "locally_verified",
+              "locator": "spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/artifacts/20261110-110945/completion-report.json",
+              "project_id": "01M6MVWFAHMB85F27TXE9TV94T",
+              "revision": 1,
+              "scope": [
+                "SPEC-007"
+              ],
+              "sha256": "07aaa7b8130fcf906321a74620fe8bc0139fe6d0d155d3959dc7a935f9bffdc4",
+              "source_ref": null,
+              "source_sha": "e02680d6054e14a50a50ff51446c6910b67433c9",
+              "summary": "用户已确认测试；本轮全量自动回归通过，实际工作树与已验收安装包指纹绑定",
+              "verified_at": 1794280715757,
+              "work_item_id": "01M6TAKSHE3CN6AFC3XYH692GN"
+            }
+          ],
+          "minimum_level": "locally_verified",
+          "source_sha": "e02680d6054e14a50a50ff51446c6910b67433c9",
+          "version": 1
+        },
+        "from": "in_progress",
+        "to": "completed"
+      },
+      "write_plan_id": "01M71QSKKKC587PPHST3YYETZV"
+    },
+    "project_id": "01M6MVWFAHMB85F27TXE9TV94T",
+    "project_revision": 221,
+    "session_id": null,
+    "summary": "Verified source work action Complete",
+    "work_item_id": "01M6TAKSHE3CN6AFC3XYH692GN"
+  },
+  "ok": true,
+  "project_revision": 221,
+  "proposal": {
+    "base_fingerprint": "sha256:4009e2b2e3d62abc2b78b4595965cfd079e1e6d781e93c6727cd481e9c156faa",
+    "created_by_session": "01M71QQZN37YMS2WG53AHC3KXQ",
+    "expected_revision": 214,
+    "id": "01M71QSKJBD103P6H3D6RNWDBH",
+    "mutation_type": "work.complete",
+    "patch": {
+      "changes": {
+        "evidence": [
+          "spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/artifacts/20261110-110945/completion-report.json"
+        ],
+        "status": "completed",
+        "verification": {
+          "evidence_level": "locally_verified"
+        }
+      },
+      "intent": "D-015用户确认归档，全部验收与新鲜自动回归通过，证据已完整绑定",
+      "source_config": {
+        "adapter_options": {},
+        "adapter_version": 4,
+        "context_profile": "minimal",
+        "mapping_key": "ledger|work-ledger.yaml"
+      },
+      "target": {
+        "kind": "work_item",
+        "meta": {
+          "external_key": "SPEC-007",
+          "id": "01M6TAKSHE3CN6AFC3XYH692GN",
+          "revision": 16,
+          "source_ref": {
+            "end_line": null,
+            "locator": "file:///C:/workspace/Avalon/work-ledger.yaml",
+            "pointer": "/work_items/2",
+            "section_fingerprint": "sha256:9b29e186c91bd4e90639ccefd8f064a47c06692ca9b056832f76045aa216cccf",
+            "source_fingerprint": "sha256:4009e2b2e3d62abc2b78b4595965cfd079e1e6d781e93c6727cd481e9c156faa",
+            "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+            "source_revision": 32,
+            "start_line": null
+          }
+        }
+      },
+      "version": 1,
+      "work_action": {
+        "action": "complete",
+        "completion": {
+          "acceptance": [
+            {
+              "criterion": "确定 Windows 11 x64 离线安装形态；按 D-011 通过本机独立安装、内置运行时与本地资源验证基础窗口，无需另备干净机器。",
+              "evidence": [
+                "01M71QE8P0X9S38BYPWNY9MSTX"
+              ]
+            },
+            {
+              "criterion": "资源、中文与空格路径、用户数据目录可用且不写死开发机器目录。",
+              "evidence": [
+                "01M71QE8P0X9S38BYPWNY9MSTX"
+              ]
+            }
+          ],
+          "evidence": [
+            {
+              "branch_id": null,
+              "command": "npm run test:e2e; npm run test:e2e -- --config playwright.packaged.config.ts; node debugger/probes/check-preflight.cjs",
+              "evidence_type": "verification_report",
+              "external_key": "SPEC007-CLOSEOUT-20261110-110945",
+              "id": "01M71QE8P0X9S38BYPWNY9MSTX",
+              "level": "locally_verified",
+              "locator": "spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/ender/artifacts/20261110-110945/completion-report.json",
+              "project_id": "01M6MVWFAHMB85F27TXE9TV94T",
+              "revision": 1,
+              "scope": [
+                "SPEC-007"
+              ],
+              "sha256": "07aaa7b8130fcf906321a74620fe8bc0139fe6d0d155d3959dc7a935f9bffdc4",
+              "source_ref": null,
+              "source_sha": "e02680d6054e14a50a50ff51446c6910b67433c9",
+              "summary": "用户已确认测试；本轮全量自动回归通过，实际工作树与已验收安装包指纹绑定",
+              "verified_at": 1794280715757,
+              "work_item_id": "01M6TAKSHE3CN6AFC3XYH692GN"
+            }
+          ],
+          "minimum_level": "locally_verified",
+          "source_sha": "e02680d6054e14a50a50ff51446c6910b67433c9",
+          "version": 1
+        },
+        "from": "in_progress",
+        "to": "completed"
+      }
+    },
+    "project_id": "01M6MVWFAHMB85F27TXE9TV94T",
+    "revision": 5,
+    "source_id": "01M6MVWFAQ2C01GCGPJJQ6MRK4",
+    "status": "applied",
+    "work_item_id": "01M6TAKSHE3CN6AFC3XYH692GN"
+  },
+  "recovery_directory": ".awr/mutations/01M71QSKKKC587PPHST3YYETZV",
+  "source_check": null,
+  "source_refresh_performed": true,
+  "source_write_performed": true,
+  "write_outcome": "applied"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "case": "writable",
+    "exitCode": 0,
+    "payloadExists": true,
+    "output": "copy-succeeded\r\n",
+    "avalonProcesses": 0
+  },
+  {
+    "case": "denied-1",
+    "exitCode": 7,
+    "payloadExists": false,
+    "output": "copy-failed;message=appCannotBeClosed;attempt=5\r\n",
+    "avalonProcesses": 0
+  },
+  {
+    "case": "denied-2",
+    "exitCode": 7,
+    "payloadExists": false,
+    "output": "copy-failed;message=appCannotBeClosed;attempt=5\r\n",
+    "avalonProcesses": 0
+  }
+]

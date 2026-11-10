@@ -1,0 +1,23 @@
+Command: node .awr/cache/spec007-inspect-package.cjs
+Timestamp: 2026-11-09T09:29:18.339Z
+C:\workspace\Avalon\node_modules\@electron\asar\lib\filesystem.js:187
+            throw new Error(`"${p}" was not found in this archive`);
+            ^
+
+Error: "out/main/index.cjs" was not found in this archive
+    at Filesystem.getFile (C:\workspace\Avalon\node_modules\@electron\asar\lib\filesystem.js:187:19)
+    at Object.extractFile (C:\workspace\Avalon\node_modules\@electron\asar\lib\asar.js:256:33)
+    at Object.<anonymous> (C:\workspace\Avalon\.awr\cache\spec007-inspect-package.cjs:16:19)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.18.0
+
+Exit code: 1
+Signal: none
+Finished: 2026-11-09T09:29:18.534Z

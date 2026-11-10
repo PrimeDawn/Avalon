@@ -1,0 +1,34 @@
+warning 6010: install function "AvalonDirectoryPage" not referenced - zeroing code (21-55) out
+
+warning 6010: install function "AvalonDirectoryPageLeave" not referenced - zeroing code (55-60) out
+
+warning 6001: Variable "mui.Header.Text" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Header.Text.Font" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Header.SubText" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Header.Background" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Header.Image" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Branding.Text" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Branding.Background" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Line.Standard" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Line.FullWindow" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Button.Next" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Button.Cancel" not referenced or never set, wasting memory!
+warning 6001: Variable "mui.Button.Back" not referenced or never set, wasting memory!
+
+14 warnings:
+  6010: install function "AvalonDirectoryPage" not referenced - zeroing code (21-55) out
+
+  6010: install function "AvalonDirectoryPageLeave" not referenced - zeroing code (55-60) out
+
+  6001: Variable "mui.Header.Text" not referenced or never set, wasting memory!
+  6001: Variable "mui.Header.Text.Font" not referenced or never set, wasting memory!
+  6001: Variable "mui.Header.SubText" not referenced or never set, wasting memory!
+  6001: Variable "mui.Header.Background" not referenced or never set, wasting memory!
+  6001: Variable "mui.Header.Image" not referenced or never set, wasting memory!
+  6001: Variable "mui.Branding.Text" not referenced or never set, wasting memory!
+  6001: Variable "mui.Branding.Background" not referenced or never set, wasting memory!
+  6001: Variable "mui.Line.Standard" not referenced or never set, wasting memory!
+  6001: Variable "mui.Line.FullWindow" not referenced or never set, wasting memory!
+  6001: Variable "mui.Button.Next" not referenced or never set, wasting memory!
+  6001: Variable "mui.Button.Cancel" not referenced or never set, wasting memory!
+  6001: Variable "mui.Button.Back" not referenced or never set, wasting memory!

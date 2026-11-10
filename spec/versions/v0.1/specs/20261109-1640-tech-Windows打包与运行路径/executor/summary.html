@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>实现报告 · SPEC-007</title>
+<meta name="rk:title" content="实现报告：Windows 打包与运行路径">
+<meta name="rk:type" content="summary">
+<meta name="rk:version" content="v0.1">
+<meta name="rk:category" content="tech">
+<meta name="rk:spec-dir" content="spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径">
+<meta name="rk:role" content="spec-executor">
+<meta name="rk:mode" content="gated">
+<meta name="rk:status" content="已确认">
+<meta name="rk:created" content="2026-11-09">
+<meta name="rk:updated" content="2026-11-10">
+<meta name="rk:revision" content="3">
+<meta name="rk:git-branch" content="tech/spec-20261109-1640-windows-packaging">
+<meta name="rk:base-branch" content="dev">
+<meta name="rk:pr-url" content="">
+<meta name="rk:tags" content="spec,summary">
+<link rel="rk-plan" href="../writer/plan.html"><link rel="rk-ledger" href="../lead/team-context.md"><link rel="stylesheet" href="../../../../../../html-report/assets/rk-report.css">
+<script defer src="../rk-manifest.js"></script><script defer src="../../../../../../html-report/assets/rk-report.js"></script></head>
+<body><nav class="rk-nav"></nav><header class="rk-head"><h1>实现报告 · SPEC-007</h1><div class="rk-meta"><span><b>title</b> 实现报告：Windows 打包与运行路径</span><span><b>type</b> summary</span><span><b>version</b> v0.1</span><span><b>category</b> tech</span><span><b>spec-dir</b> spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径</span><span><b>role</b> spec-executor</span><span><b>mode</b> gated</span><span><b>status</b> 已确认</span><span><b>created</b> 2026-11-09</span><span><b>updated</b> 2026-11-10</span><span><b>revision</b> 3</span><span><b>git-branch</b> tech/spec-20261109-1640-windows-packaging</span><span><b>base-branch</b> dev</span><span><b>pr-url</b> —</span><span><b>tags</b> spec,summary</span></div></header><nav class="rk-revbar"></nav>
+<section class="rk-verdict is-pass"><div class="rk-verdict-label">结论</div><p>E1～E4 已实现；70 项单元、类型检查和安装包构建通过。<del data-rev="2">实现报告待确认，真实安装与运行验收尚未执行。</del><ins data-rev="2">实现报告已获用户确认，已进入独立测试；最终结果见 tester/test-report.html。</ins></p></section>
+<h2>修订历史</h2><table class="rk-revs"><thead><tr><th>修订</th><th>日期</th><th>修改人</th><th>改了什么</th><th>原因</th></tr></thead><tbody><tr><td>r1</td><td>2026-11-09</td><td>spec-executor</td><td>首次形成文档</td><td>D-009：用户确认方案后实现 E1～E4</td></tr><tr class="rk-added" data-rev="2"><td>r2</td><td>2026-11-10</td><td>TeamLead / spec-tester</td><td>登记实现报告确认与测试交接</td><td>D-010 / D-011</td></tr><tr class="rk-added" data-rev="3"><td>r3</td><td>2026-11-10</td><td>TeamLead / spec-ender</td><td>补收尾报告反链；原阶段结论保留为历史</td><td>D-014 收尾导航</td></tr></tbody></table>
+<main class="rk-added" data-rev="1"><h2>1. 完成的功能</h2><table><thead><tr><th>任务</th><th>结果</th><th>对应方案</th></tr></thead><tbody>
+<tr><td>E1 打包</td><td>生成完整 Windows x64 程序目录与 NSIS 离线安装包；安装器已成功编译，中文界面仍需真人 / 原生 UI 验收</td><td>§3.1</td></tr>
+<tr><td>E2 路径与诊断</td><td>安装版 Avalon / 开发态 Avalon-dev 数据分离；会话、日志独立；启动快照和失败传播实现</td><td>§3.2–3.3</td></tr>
+<tr><td>E3 生命周期</td><td>已销毁窗口的加载取消不误报；真正失败写诊断并提示；保留 IPC 与沙箱边界</td><td>§3.3</td></tr>
+<tr><td>E4 产物与说明</td><td>包资源检查通过，使用 / 开发说明及源码地图已更新</td><td>§3.4、§5</td></tr></tbody></table>
+<h2>2. 文件变更</h2><table><thead><tr><th>文件</th><th>动作</th><th>内容</th></tr></thead><tbody><tr><td><span class="rk-ref">package.json / package-lock.json</span></td><td>修改</td><td>三个打包命令与固定 electron-builder 26.18.0；未变更任何已存在锁定包的版本</td></tr><tr><td><span class="rk-ref">electron-builder.config.cjs / build/installer.nsh</span></td><td>新增</td><td>x64、离线、中文、当前用户安装、目录和快捷方式</td></tr><tr><td><span class="rk-ref">src/main/runtime-paths.ts</span></td><td>新增</td><td>用户、会话和日志路径，开发与生产分离</td></tr><tr><td><span class="rk-ref">src/main/startup-diagnostics.ts</span></td><td>新增</td><td>覆盖式启动快照</td></tr><tr><td><span class="rk-ref">src/main/index.ts / src/main/window.ts</span></td><td>修改</td><td>ready 前路径初始化；启动提示；关闭取消处理</td></tr><tr><td><span class="rk-ref">tests/unit/runtime-paths.test.ts / tests/unit/startup-diagnostics.test.ts</span></td><td>新增</td><td>12 项真实文件系统与路径边界测试</td></tr><tr><td><span class="rk-ref">tests/unit/ipc.test.ts</span></td><td>修改</td><td>新增 6 项关闭 / 路径 / 诊断场景，更新原加载失败测试</td></tr><tr><td><span class="rk-ref">docs/windows-packaging.md / CODEMAP.md</span></td><td>新增 / 修改</td><td>构建、安装、路径、限制与源码入口</td></tr></tbody></table>
+<p>另更新本 Spec 账本、报告关联与版本进度。tester 所有的 E2E 路由和打包端侧测试尚未编写，留待测试阶段；没有跨角色改动。</p>
+<h2>3. 实现阶段验证</h2><p>全部证据由命令运行自动采集，日志带命令、时间和退出码。单元测试使用真实临时文件系统，Electron 原生接口使用 mock；原生行为不以这些 mock 结果替代最终测试。</p>
+<table><thead><tr><th>验证</th><th>结果</th><th>原始证据</th></tr></thead><tbody>
+<tr><td>E1 打包入口</td><td>原命令缺失退出 1 → 配置后完整目录构建退出 0</td><td><a href="artifacts/2026-11-09T09-22-33-316Z-e1-red.txt">基线失败</a> / <a href="artifacts/2026-11-09T09-23-24-894Z-e1-pack.txt">首次构建</a></td></tr>
+<tr><td>E2 路径与诊断</td><td>12 个空桩行为断言失败 → 12 / 12 通过</td><td><a href="artifacts/2026-11-09T09-24-40-607Z-e2-red.txt">RED</a> / <a href="artifacts/2026-11-09T09-25-00-503Z-e2-green.txt">GREEN</a></td></tr>
+<tr><td>E3 生命周期</td><td>7 个失败断言 → 28 / 28 聚焦测试通过（含原有用例）</td><td><a href="artifacts/2026-11-09T09-25-46-315Z-e3-red.txt">RED</a> / <a href="artifacts/2026-11-09T09-26-23-812Z-e3-green.txt">GREEN</a></td></tr>
+<tr><td>完整单元集</td><td>5 文件 / 70 项通过，退出 0；原基线 52 项，本项新增 18 项</td><td><a href="artifacts/2026-11-09T09-27-41-264Z-final-unit.txt">全部单元测试</a></td></tr>
+<tr><td>类型检查</td><td>node / renderer TypeScript 均通过，退出 0</td><td><a href="artifacts/2026-11-09T09-26-25-307Z-typecheck.txt">类型检查</a></td></tr>
+<tr><td>完整安装包</td><td>NSIS 编译成功，退出 0；最终构建包含导入排序整理</td><td><a href="artifacts/2026-11-09T09-30-20-595Z-final-dist-after-review.txt">最终构建</a></td></tr>
+<tr><td>包内容检查</td><td>PE x64；100 个 asar 条目；main/preload/renderer 与运行时完整；无仓库或开发工具混入</td><td><a href="artifacts/2026-11-09T09-32-41-978Z-package-inspection-final.txt">最终检查与源文件哈希</a></td></tr>
+<tr><td>生产依赖审计</td><td>npm audit --omit=dev 返回 0 项漏洞、退出 0；不代表整机或 Electron 无风险</td><td><a href="artifacts/2026-11-09T09-29-18-336Z-production-audit.txt">审计原始输出</a></td></tr></tbody></table>
+<p>测试门函数：若生产目录混入 Avalon-dev、允许相对覆盖、设置路径前不创建目录、快照变成追加写入、吞掉真实加载失败或对已销毁窗口抛错，对应断言会失败。没有依赖源码字符串的功能测试。最后一次单元验证后仅整理 imports 的位置，最终打包重新执行。</p>
+<h3>交付产物</h3><p><a href="../../../../../../release/Avalon-0.1.0-x64-Setup.exe">Avalon-0.1.0-x64-Setup.exe</a>，121898484 字节（约 116 MiB），未签名；尚未安装验收。</p><pre><code>SHA256: 7e4d7a20b6c561954909e0b986ebf5a75090defb02478aa2e13549a2ebecf10c</code></pre>
+<p>Git 基线为 e02680d6054e14a50a50ff51446c6910b67433c9，当前实现未提交；包检查证据额外记录本轮源文件哈希，不能把 HEAD 误说成包含本轮实现。</p>
+<h2>4. 遇到的问题</h2><ul><li>asar 检查脚本首次使用斜杠文件名，在 Windows 库调用中无法读取文件；改为原生路径分隔符后检查通过。失败日志保留，产品包未因此修改。</li><li>打包器提示未配置作者与图标，使用默认图标；没有签名证书，安装包和应用 exe 均为 NotSigned，符合用户接受的自用边界。</li><li>npm 全量审计报告 6 个 moderate 条目，来源为打包开发依赖链中的 minimatch；生产依赖审计为 0。未运行 audit fix 或擅自降级批准的打包器。Squirrel 的 electron-winstaller 安装脚本未批准执行，当前使用 NSIS 且构建成功。</li></ul>
+<h2>5. 与方案的关系</h2><p>E1～E4 已实现，无产品范围扩展；T1 明确属于独立测试阶段，尚未执行。不修改用户安全策略、全局环境或旧桌面入口，不创建 Git 提交或推送。</p>
+<h2>6. 交接与限制</h2><p>请用户确认本实现报告后进入 spec-test：真实安装向导、Explorer / 桌面 / 开始菜单、提前关闭、重开、目录写入审计及卸载数据保留仍需验证。无开发工具的干净 Windows 11 环境尚未落实；该用例不能先写通过。SAC 开启态已按用户决定退出本项完成条件。当前没有最终测试报告，也不宣称 SPEC-007 或 v0.1 已完成。</p>
+<p>开发入口见 <a href="../../../../../../docs/windows-packaging.md">Windows 打包说明</a>。README 与开发流程整体拆分仍留在发版准备。</p></main>
+<h2>关联产物</h2><ul class="rk-links"><li><a href="../reviewer/update-001-review.html" data-rk-link="review">验收调整审查</a></li><li><a href="../updater/update-001-summary.html" data-rk-link="update-summary">验收调整总结</a></li><li><a href="../updater/update-001.html" data-rk-link="update">验收环境调整</a></li><li><a href="../tester/test-report.html" data-rk-link="test-report">测试报告</a></li><li><a href="../explorer/exploration-report.html" data-rk-link="exploration-report">探索报告</a></li><li><a href="../writer/plan.html" data-rk-link="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-link="test-plan">测试计划</a></li><li><a href="../debugger/debug-001.html" data-rk-link="debug">AWR 应用控制诊断</a></li><li><a href="../lead/team-context.md" data-rk-link="ledger">运行账本</a></li><li><a href="../../../plan.html" data-rk-link="version-plan">版本规划</a></li></ul>
+<h3>引用本报告</h3><ul class="rk-backlinks"><li class="rk-added" data-rev="3"><a href="../ender/end-report.html" data-rk-backlink="end-report">收尾报告</a></li><li><a href="../reviewer/update-001-review.html" data-rk-backlink="review">验收调整审查</a></li><li><a href="../updater/update-001-summary.html" data-rk-backlink="update-summary">验收调整总结</a></li><li><a href="../updater/update-001.html" data-rk-backlink="update">验收环境调整</a></li><li><a href="../tester/test-report.html" data-rk-backlink="test-report">测试报告</a></li><li><a href="../explorer/exploration-report.html" data-rk-backlink="exploration-report">探索报告</a></li><li><a href="../writer/plan.html" data-rk-backlink="plan">实现方案</a></li><li><a href="../tester/test-plan.html" data-rk-backlink="test-plan">测试计划</a></li><li><a href="../debugger/debug-001.html" data-rk-backlink="debug">AWR 应用控制诊断</a></li><li><a href="../lead/team-context.md" data-rk-backlink="ledger">运行账本</a></li></ul></body></html>

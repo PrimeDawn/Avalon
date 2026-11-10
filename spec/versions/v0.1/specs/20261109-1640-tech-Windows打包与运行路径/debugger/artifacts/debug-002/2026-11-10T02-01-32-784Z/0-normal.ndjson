@@ -1,0 +1,12 @@
+{"at":"382614366509500","event":"probe-start","mode":"normal","isPackaged":true}
+{"at":"382614835259500","event":"window-created"}
+{"at":"382614839264300","event":"loadFile-called"}
+{"at":"382615477650300","event":"did-finish-load"}
+{"at":"382615478307800","event":"load-resolved"}
+{"at":"382615478885300","event":"isDestroyed","value":false}
+{"at":"382615479323200","event":"isDestroyed","value":false}
+{"at":"382615482044700","event":"close-request","trigger":"did-finish-load","destroyed":false}
+{"at":"382615483015100","event":"close-event","destroyed":false}
+{"at":"382615493479000","event":"closed-event"}
+{"at":"382615504489200","event":"window-all-closed"}
+{"at":"382615505033500","event":"will-quit"}

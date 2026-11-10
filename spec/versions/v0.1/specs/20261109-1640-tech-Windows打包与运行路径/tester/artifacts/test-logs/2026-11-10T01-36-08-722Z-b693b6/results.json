@@ -1,0 +1,164 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\workspace\\Avalon\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.packaged.config.ts",
+      "--grep",
+      "P09"
+    ],
+    "configFile": "C:\\workspace\\Avalon\\playwright.packaged.config.ts",
+    "rootDir": "C:/workspace/Avalon/tests/packaged",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/workspace/Avalon/spec/versions/v0.1/specs/20261109-1640-tech-Windows打包与运行路径/tester/artifacts/test-logs/2026-11-10T01-36-08-722Z-b693b6/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/workspace/Avalon/tests/packaged",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\workspace\\Avalon\\spec\\versions\\v0.1\\specs\\20261109-1640-tech-Windows打包与运行路径\\tester\\artifacts\\test-logs\\2026-11-10T01-36-08-722Z-b693b6\\playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\workspace\\Avalon\\tests\\packaged",
+        "snapshotDir": "C:\\workspace\\Avalon\\tests\\packaged",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {},
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\workspace\\Avalon\\spec\\versions\\v0.1\\specs\\20261109-1640-tech-Windows打包与运行路径\\tester\\artifacts\\test-logs\\2026-11-10T01-36-08-722Z-b693b6\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "packaged-shell.spec.ts",
+      "file": "packaged-shell.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "P09 — close the first available packaged window immediately, then reopen",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30014,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-10T01:36:12.254Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\workspace\\Avalon\\spec\\versions\\v0.1\\specs\\20261109-1640-tech-Windows打包与运行路径\\tester\\artifacts\\test-logs\\2026-11-10T01-36-08-722Z-b693b6\\playwright\\packaged-shell-P09-—-close-2657c-dow-immediately-then-reopen\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c4bd4473afd78b85bc62-c42f5f089e7e4d69e63a",
+          "file": "packaged-shell.spec.ts",
+          "line": 79,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "message": "\u001b[31mWorker teardown timeout of 30000ms exceeded.\u001b[39m\n\n\u001b[31mFailed worker ran 1 test:\u001b[39m\ntests\\packaged\\packaged-shell.spec.ts:79:1 › P09 — close the first available packaged window immediately, then reopen",
+      "stack": "\u001b[31mWorker teardown timeout of 30000ms exceeded.\u001b[39m\n\n\u001b[31mFailed worker ran 1 test:\u001b[39m\ntests\\packaged\\packaged-shell.spec.ts:79:1 › P09 — close the first available packaged window immediately, then reopen"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-11-10T01:36:11.787Z",
+    "duration": 60849.409,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
